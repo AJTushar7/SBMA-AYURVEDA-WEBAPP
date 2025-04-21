@@ -1,0 +1,388 @@
+@import '../../../styles/variables';
+
+// Add top margin to compensate for fixed header
+.about-page {
+  padding-top: 120px;
+}
+
+// About Hero Section
+.about-hero {
+  padding: 60px 0;
+  
+  .about-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    position: relative;
+    
+    &:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: $primary-color;
+      margin-top: 15px;
+    }
+  }
+  
+  .about-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: $primary-color;
+  }
+  
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  .about-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    
+    img {
+      transition: transform 0.5s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+// Mission & Vision Section
+.mission-vision {
+  padding: 80px 0;
+  background-color: $light-green;
+  
+  .mission-card, .vision-card {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      color: $primary-color;
+      margin-bottom: 20px;
+      font-weight: 700;
+      
+      &:after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: $primary-color;
+        margin-top: 10px;
+      }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+  }
+  
+  .vision-card {
+    border-top: 5px solid $primary-color;
+  }
+  
+  .mission-card {
+    border-bottom: 5px solid $primary-color;
+  }
+}
+
+// Section Title Styling
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  
+  &:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: $primary-color;
+    margin: 15px auto 0;
+  }
+}
+
+// Our Journey / Timeline
+.our-journey {
+  padding: 100px 0;
+  
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: $light-green;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+  }
+  
+  .timeline-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background-color: #fff;
+      border: 4px solid $primary-color;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  }
+  
+  .left {
+    left: 0;
+    
+    &:before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid $light-green;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent $light-green;
+    }
+  }
+  
+  .right {
+    left: 50%;
+    
+    &:before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid $light-green;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent $light-green transparent transparent;
+    }
+    
+    &:after {
+      left: -12px;
+    }
+  }
+  
+  .timeline-content {
+    padding: 20px 30px;
+    background-color: $light-green;
+    position: relative;
+    border-radius: 6px;
+    
+    .year {
+      font-size: 2rem;
+      font-weight: 800;
+      color: $primary-color;
+      margin-bottom: 10px;
+    }
+    
+    h4 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Team Section
+.our-team {
+  padding: 100px 0;
+  background-color: $light-green;
+  
+  .team-member {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+    }
+    
+    .member-image {
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    
+    .member-info {
+      padding: 25px;
+      
+      .member-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      
+      .member-position {
+        color: $primary-color;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      
+      .member-bio {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// Values Section
+.our-values {
+  padding: 100px 0;
+  
+  .value-card {
+    padding: 30px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    border-top: 5px solid transparent;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-top-color: $primary-color;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: $primary-color;
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 1200px) {
+  .about-hero .about-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-hero {
+    text-align: center;
+    
+    .about-title:after {
+      margin: 15px auto;
+    }
+    
+    .about-image {
+      margin-top: 30px;
+    }
+  }
+  
+  .our-journey {
+    .timeline::after {
+      left: 31px;
+    }
+    
+    .timeline-container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+    
+    .timeline-container::before {
+      left: 60px;
+      border: medium solid $light-green;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent $light-green transparent transparent;
+    }
+    
+    .left::after, .right::after {
+      left: 18px;
+    }
+    
+    .right {
+      left: 0%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 100px;
+  }
+  
+  .about-hero .about-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero .about-title {
+    font-size: 2rem;
+  }
+  
+  .about-hero .about-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .mission-vision .mission-card, 
+  .mission-vision .vision-card {
+    padding: 25px 20px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}

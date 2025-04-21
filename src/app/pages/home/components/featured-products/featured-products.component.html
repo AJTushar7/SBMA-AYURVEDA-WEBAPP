@@ -1,0 +1,13 @@
+<div class="featured-products">
+  <div class="products-wrapper">
+    <div class="product-row" *ngFor="let productRow of displayProducts">
+      <div class="product-col" *ngFor="let product of productRow">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+  
+  <div class="view-all-container">
+    <a [routerLink]="['/products']" class="view-all-button">View All Products</a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="certifications-container">
+  <div class="certification-grid">
+    <div class="certification-item" *ngFor="let cert of certifications">
+      <div class="certification-icon">
+        <i class="fa" [ngClass]="cert.icon"></i>
+      </div>
+      <div class="certification-content">
+        <h3 class="certification-title">{{ cert.title }}</h3>
+        <p class="certification-description">{{ cert.description }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="certification-banner">
+    <h3>Trust in Our Quality</h3>
+    <p>SBMA products undergo rigorous quality testing and adhere to international standards</p>
+    <a href="javascript:void(0)" class="learn-more-button">Learn About Our Standards</a>
+  </div>
+</div>

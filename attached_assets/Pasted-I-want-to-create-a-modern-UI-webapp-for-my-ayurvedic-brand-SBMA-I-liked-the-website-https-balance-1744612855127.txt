@@ -1,0 +1,18 @@
+I want to create a modern UI webapp for my ayurvedic brand SBMA. I liked the website https://balanceayurveda.in/, its UI, its sections, So i want to create exact/clone like this but change theme use light green/white.  My webapps should be in angular framework, no backend, server services to be used. Create Mock data of products in the angular app and use that, so no calling of api in my webapps.
+
+Features to be in my webapps:
+1) Modern UI Homepage exact like https://balanceayurveda.in/.
+2) Copy its homepage, its headers, its carousel(When website in on top then header have transaprent background it have the slider images background color , but when scroll down then header sticks to top with white sleek background).
+3) On Top there is announcement section.
+4) Below slider there will be beautiful Featured products sections, show products beautiful like balance ayurveda.
+5) Below than there is section of our superpower, in this section display SBMA super power like 25 years exp,  indian heritage like that create youself.
+6) Below that there is section of available on, show amazon, flipkart logo.
+7) Below that there is section of customer reviews(Create beautiful, modern section for this like balance ayurveda).
+8) Then Below there is section of the certifications, exact like balance ayurveda.
+9) know what are client speak section.
+10) Modern footer
+
+I am attaching images of the products of sbma, its logo and its about section content, analyse them and create my webapp in angular only. Only FE app i require no api calling.
+About section content:
+SBMA, founded in 1999 and based in Faridabad, Haryana, is a marketing company specializing in Ayurvedic medicines and supplements. Our marketing unit, SBMA, specializes in bringing to market premium proprietary and patient Ayurvedic medicines. We meticulously combine the wisdom of original Ayurvedic Samhitas with the rigor of modern science and evidence-based practices. We believe in the power of Ayurveda to promote comprehensive health and well-being, offering both preventive and curative solutions.  Our commitment to quality is unwavering. We source the finest herbs and extracts from all over India and adhere to stringent Good Manufacturing Processes to ensure the efficacy and safety of our products.     Vision: To inspire a healthier world by championing the principles of Ayurveda, fostering a deep understanding of its potential for preventive and curative care, and delivering trusted, efficacious products that enhance the quality of life for all.    Mission: To empower individuals to achieve optimal health and well-being through access to superior Ayurvedic and Herbal Healthcare products. We are dedicated to providing highly efficacious and quality medicines and supplements, grounded in traditional Ayurvedic principles and validated by modern science. Our mission is to be a trusted brand, known for its commitment to customer satisfaction and the delivery of exceptional value.
+

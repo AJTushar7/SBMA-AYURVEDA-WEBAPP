@@ -1,0 +1,217 @@
+import { Product } from '../models/product.model';
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 1,
+    name: 'Liver Shodhan Syrup',
+    description: 'A Natural Ayurvedic Liver Tonic. Promotes Appetite & Growth Liver Naturally.',
+    price: 299,
+    discountPrice: 249,
+    imageUrl: 'assets/products/liver-shodhan.webp',
+    category: 'Syrup',
+    tag: 'bestseller',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Liver Shodhan Syrup',
+    benefits: [
+      'Supports healthy liver function',
+      'Promotes natural detoxification',
+      'Improves appetite and digestion',
+      'Helps maintain proper bile flow',
+      'Protects liver cells from damage'
+    ],
+    ingredients: [
+      'Bhumi Amla (Phyllanthus niruri)',
+      'Punarnava (Boerhavia diffusa)',
+      'Kutki (Picrorhiza kurroa)',
+      'Kasni (Cichorium intybus)',
+      'Kalmegh (Andrographis paniculata)',
+      'Makoy (Solanum nigrum)'
+    ],
+    howToUse: 'Take 2 teaspoons (10ml) twice daily after meals or as directed by your healthcare professional.',
+    dosage: 'Adults: 10ml twice daily. Children (5-12 years): 5ml twice daily.'
+  },
+  {
+    id: 2,
+    name: 'Kesh Sudharak Hair Oil',
+    description: 'An Ayurvedic Oil for Long & Thick Hair. Hair Regrowth Treatment.',
+    price: 349,
+    discountPrice: 299,
+    imageUrl: 'assets/products/kesh-sudharak.webp',
+    category: 'Hair Care',
+    tag: 'popular',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Kesh Sudharak Oil',
+    benefits: [
+      'Promotes hair growth and reduces hair fall',
+      'Strengthens hair roots and follicles',
+      'Prevents premature graying of hair',
+      'Nourishes scalp and improves blood circulation',
+      'Helps in treating dandruff and scalp infections'
+    ],
+    ingredients: [
+      'Bhringraj (Eclipta alba)',
+      'Amla (Emblica officinalis)',
+      'Brahmi (Bacopa monnieri)',
+      'Neem (Azadirachta indica)',
+      'Sesame oil (Til oil)'
+    ],
+    howToUse: 'Apply 10-15ml oil on scalp and gently massage for 10 minutes. Leave it for at least 2 hours or overnight for best results. Use 2-3 times a week.',
+    dosage: 'Regular usage: 2-3 times per week. For intensive treatment: Daily application for 1 month.'
+  },
+  {
+    id: 3,
+    name: 'Rakt Shodhak Syrup',
+    description: 'A natural blood purifier which also helps to get beautiful, glowing and pimple free skin.',
+    price: 279,
+    discountPrice: 229,
+    imageUrl: 'assets/products/rakt-shodhak.webp',
+    category: 'Syrup',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Rakt Shodhak Syrup',
+    benefits: [
+      'Purifies blood naturally',
+      'Improves skin health and complexion',
+      'Helps in treating skin disorders like acne and pimples',
+      'Detoxifies the body and boosts immunity',
+      'Provides relief from allergic skin conditions'
+    ],
+    ingredients: [
+      'Neem (Azadirachta indica)',
+      'Manjistha (Rubia cordifolia)',
+      'Haridra (Curcuma longa)',
+      'Giloy (Tinospora cordifolia)',
+      'Khadira (Acacia catechu)'
+    ],
+    howToUse: 'Take 2 teaspoons (10ml) twice daily after meals or as directed by your healthcare professional.',
+    dosage: 'Adults: 10ml twice daily. Children (12+ years): 5ml twice daily.'
+  },
+  {
+    id: 4,
+    name: 'Til Oil',
+    description: 'Pure Coldpressed Oil without mineral oil, paraffin, sulfate, silicon, colors, or fragrance.',
+    price: 249,
+    discountPrice: 199,
+    imageUrl: 'assets/products/til-oil.webp',
+    category: 'Oil',
+    tag: 'new',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Til Oil',
+    benefits: [
+      'Nourishes skin and hair naturally',
+      'Rich in antioxidants and vitamins',
+      'Anti-aging properties for healthy skin',
+      'Promotes hair growth and strength',
+      'Excellent natural moisturizer'
+    ],
+    ingredients: [
+      '100% Pure Cold Pressed Sesame Oil (Til)'
+    ],
+    howToUse: 'For skin: Apply a small amount and massage gently. For hair: Apply to scalp and hair, leave for 1-2 hours before washing.',
+    dosage: 'Use daily or as required for skin and hair care routine.'
+  },
+  {
+    id: 5,
+    name: 'Neem Oil',
+    description: 'Pure and natural extracted Neem oil for skin and hair care.',
+    price: 199,
+    discountPrice: 169,
+    imageUrl: 'assets/products/neem-oil.webp',
+    category: 'Oil',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Neem Oil',
+    benefits: [
+      'Natural antibacterial and antifungal properties',
+      'Treats acne and skin infections',
+      'Helps with dandruff and scalp issues',
+      'Natural insect repellent properties',
+      'Soothes dry skin and eczema'
+    ],
+    ingredients: [
+      '100% Pure Neem Oil (Azadirachta indica)'
+    ],
+    howToUse: 'For skin: Dilute with carrier oil before application. For hair: Mix with shampoo or carrier oil and apply to scalp.',
+    dosage: 'External use only. Use as needed in your skincare and haircare routine.'
+  },
+  {
+    id: 6,
+    name: 'Kidney Rakshak Syrup',
+    description: 'An Ayurvedic Formulation That Helps To Prevent Burning Micturition, Stone Formation, UTI Infection And Balance Urine pH.',
+    price: 329,
+    discountPrice: 279,
+    imageUrl: 'assets/products/kidney-rakshak.webp',
+    category: 'Syrup',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Kidney Rakshak Syrup',
+    benefits: [
+      'Supports kidney health and function',
+      'Helps prevent urinary tract infections',
+      'Reduces burning sensation during urination',
+      'Aids in preventing kidney stone formation',
+      'Maintains healthy pH balance of urine'
+    ],
+    ingredients: [
+      'Punarnava (Boerhavia diffusa)',
+      'Gokhru (Tribulus terrestris)',
+      'Varuna (Crataeva nurvala)',
+      'Pashanbhed (Bergenia ligulata)',
+      'Kultha (Dolichos biflorus)'
+    ],
+    howToUse: 'Take 2 teaspoons (10ml) twice daily after meals with water or as directed by your healthcare professional.',
+    dosage: 'Adults: 10ml twice daily. For maintenance: 10ml once daily.'
+  },
+  {
+    id: 7,
+    name: 'D.L.K. Liquid',
+    description: 'SBMA D.L.K. (Draksh+ Loh+ Kumari) Liquid - A Symbol Of Excellence in Ayurveda for strength and vitality.',
+    price: 399,
+    discountPrice: 349,
+    imageUrl: 'assets/products/dlk-liquid.webp',
+    category: 'Liquid',
+    tag: 'bestseller',
+    featured: true,
+    benefitsTitle: 'Key Benefits of D.L.K. Liquid',
+    benefits: [
+      'Boosts energy and stamina',
+      'Enhances physical strength and endurance',
+      'Improves digestion and appetite',
+      'Supports iron absorption and prevents anemia',
+      'Helps in building muscle mass'
+    ],
+    ingredients: [
+      'Draksha (Vitis vinifera)',
+      'Loh Bhasma (Iron compound)',
+      'Kumari (Aloe vera)',
+      'Amla (Emblica officinalis)',
+      'Ashwagandha (Withania somnifera)'
+    ],
+    howToUse: 'Take 2 teaspoons (10ml) twice daily after meals or as directed by your healthcare professional.',
+    dosage: 'Adults: 10ml twice daily. For intensive use: Morning and evening dose for at least 3 months.'
+  },
+  {
+    id: 8,
+    name: 'Kabz Ki Chabi',
+    description: 'Ayurvedic formulation for relief from constipation and digestive issues.',
+    price: 219,
+    discountPrice: 189,
+    imageUrl: 'assets/products/kabz-ki-chabi.webp',
+    category: 'Powder',
+    featured: true,
+    benefitsTitle: 'Key Benefits of Kabz Ki Chabi',
+    benefits: [
+      'Provides relief from constipation',
+      'Improves digestive function naturally',
+      'Cleanses colon and removes toxins',
+      'Prevents gas formation and bloating',
+      'Supports regular bowel movements'
+    ],
+    ingredients: [
+      'Senna (Cassia angustifolia)',
+      'Haritaki (Terminalia chebula)',
+      'Saunf (Foeniculum vulgare)',
+      'Ajwain (Trachyspermum ammi)',
+      'Triphala'
+    ],
+    howToUse: 'Take 1-2 teaspoons (5-10g) with lukewarm water before bedtime or as directed by your healthcare professional.',
+    dosage: 'Adults: 5-10g daily. Not recommended for long-term use without professional guidance.'
+  }
+];

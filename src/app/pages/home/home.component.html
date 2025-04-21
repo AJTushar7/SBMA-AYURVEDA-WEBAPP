@@ -1,0 +1,45 @@
+<div class="home-page">
+  <app-hero-slider></app-hero-slider>
+
+  <section id="products" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Discover our premium range of authentic Ayurvedic products</p>
+      </div>
+      <app-featured-products [products]="featuredProducts"></app-featured-products>
+    </div>
+  </section>
+  
+  <app-superpower-section></app-superpower-section>
+  
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Available On</h2>
+        <p class="section-subtitle">Shop our products on leading e-commerce platforms</p>
+      </div>
+      <app-available-on></app-available-on>
+    </div>
+  </section>
+  
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Real experiences from real people</p>
+      </div>
+      <app-testimonials [testimonials]="testimonials"></app-testimonials>
+    </div>
+  </section>
+  
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Certifications</h2>
+        <p class="section-subtitle">Quality assurance and standards we adhere to</p>
+      </div>
+      <app-certifications></app-certifications>
+    </div>
+  </section>
+</div>

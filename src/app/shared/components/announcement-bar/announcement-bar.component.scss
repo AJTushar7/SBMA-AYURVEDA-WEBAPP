@@ -1,0 +1,61 @@
+@import '../../../../styles/variables';
+
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $primary-color;
+  color: #fff;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  z-index: 1000; /* Higher than header */
+}
+
+.announcement-content {
+  display: flex;
+  justify-content: center; /* Center the content */
+  align-items: center;
+}
+
+.announcement-slider {
+  flex: 1;
+  overflow: hidden;
+  
+  .announcement-text {
+    animation: slide-up 0.5s ease-out;
+    font-weight: 500;
+  }
+}
+
+.announcement-actions {
+  display: flex;
+  gap: 15px;
+  
+  .social-link {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .announcement-actions {
+    display: none;
+  }
+}

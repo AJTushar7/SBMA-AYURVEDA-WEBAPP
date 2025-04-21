@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+    .main-text { fill: #1e704d; }
+    .leaf { fill: #1e704d; }
+    .accent { fill: #e7a83e; }
+    .est-text { font-size: 8px; letter-spacing: 1px; }
+  </style>
+  
+  <text x="10" y="40" class="logo-text main-text" font-size="32">SBMA</text>
+  
+  <text x="58" y="57" class="logo-text est-text main-text">EST.1999</text>
+  
+  <!-- Leaf symbol -->
+  <path class="leaf" d="M82,30 C85,20 95,25 90,35 C86,42 82,30 82,30 Z" />
+  
+  <!-- Small accent dot -->
+  <circle class="accent" cx="87" cy="33" r="2" />
+</svg>

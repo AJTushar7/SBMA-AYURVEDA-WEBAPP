@@ -1,0 +1,201 @@
+<app-announcement-bar></app-announcement-bar>
+<app-header></app-header>
+
+<div class="products-page">
+  <div class="products-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Our Products</h1>
+        <p>Discover our authentic Ayurvedic formulations</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="products-wrapper">
+      <!-- Search and Filter Section -->
+      <div class="search-filter-section">
+        <div class="search-box">
+          <div class="input-group">
+            <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Search products..." 
+              [(ngModel)]="searchQuery"
+              (keyup.enter)="applySearch()">
+            <button type="button" class="btn btn-primary" (click)="applySearch()">
+              <fa-icon [icon]="searchIcon"></fa-icon>
+            </button>
+          </div>
+        </div>
+        
+        <div class="filter-controls">
+          <div class="sort-dropdown">
+            <select class="form-select" [(ngModel)]="selectedSort" (change)="onSortChange()">
+              <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+            </select>
+          </div>
+          
+          <button class="filter-toggle" (click)="toggleFilterPanel()">
+            <fa-icon [icon]="filterIcon"></fa-icon> 
+            <span>Filter</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Filter Panel (slide down when active) -->
+      <div class="filter-panel" [ngClass]="{'active': isFilterPanelVisible}">
+        <div class="filter-panel-header">
+          <h4>Filter Products</h4>
+          <button class="btn-reset" (click)="resetFilters()">Reset All</button>
+        </div>
+        
+        <div class="filter-options">
+          <div class="filter-group">
+            <h5>Categories</h5>
+            <div class="filter-options-list">
+              <div class="form-check">
+                <input 
+                  type="radio" 
+                  id="category-all" 
+                  name="category" 
+                  class="form-check-input" 
+                  [value]="''" 
+                  [(ngModel)]="selectedCategory"
+                  (change)="applyFilters()">
+                <label for="category-all" class="form-check-label">All Categories</label>
+              </div>
+              <div class="form-check" *ngFor="let category of categories">
+                <input 
+                  type="radio" 
+                  [id]="'category-' + category" 
+                  name="category" 
+                  class="form-check-input" 
+                  [value]="category" 
+                  [(ngModel)]="selectedCategory"
+                  (change)="applyFilters()">
+                <label [for]="'category-' + category" class="form-check-label">{{ category }}</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h5>Price Range</h5>
+            <div class="filter-price-range">
+              <div class="input-group">
+                <span class="input-group-text">₹</span>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  placeholder="Min" 
+                  [(ngModel)]="minPrice"
+                  (change)="applyFilters()">
+              </div>
+              <span class="price-range-separator">to</span>
+              <div class="input-group">
+                <span class="input-group-text">₹</span>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  placeholder="Max" 
+                  [(ngModel)]="maxPrice"
+                  (change)="applyFilters()">
+              </div>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h5>Product Type</h5>
+            <div class="filter-options-list">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="filter-featured" 
+                  class="form-check-input" 
+                  [(ngModel)]="showFeatured"
+                  (change)="applyFilters()">
+                <label for="filter-featured" class="form-check-label">Featured Products</label>
+              </div>
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="filter-bestsellers" 
+                  class="form-check-input" 
+                  [(ngModel)]="showBestSellers"
+                  (change)="applyFilters()">
+                <label for="filter-bestsellers" class="form-check-label">Best Sellers</label>
+              </div>
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  id="filter-new" 
+                  class="form-check-input" 
+                  [(ngModel)]="showNewProducts"
+                  (change)="applyFilters()">
+                <label for="filter-new" class="form-check-label">New Arrivals</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="filter-panel-footer">
+          <button class="btn btn-primary btn-apply" (click)="applyFilters(); toggleFilterPanel();">Apply Filters</button>
+        </div>
+      </div>
+      
+      <!-- Results count -->
+      <div class="results-summary">
+        <p>Showing {{ filteredProducts.length }} of {{ products.length }} products</p>
+      </div>
+      
+      <!-- Product Grid -->
+      <div class="products-grid">
+        <div class="row">
+          <div class="col-md-4 col-sm-6" *ngFor="let product of filteredProducts">
+            <div class="product-card">
+              <div class="product-badges">
+                <span class="badge featured" *ngIf="product.featured">Featured</span>
+                <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
+                <span class="badge new" *ngIf="product.new">New</span>
+              </div>
+              <div class="product-image">
+                <a [routerLink]="['/products', product.id]">
+                  <img [src]="product.imageUrl" [alt]="product.name" class="img-fluid">
+                </a>
+              </div>
+              <div class="product-info">
+                <div class="product-category">{{ product.category }}</div>
+                <h3 class="product-title">
+                  <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+                </h3>
+                <div class="product-description">{{ product.shortDescription }}</div>
+                <div class="product-rating">
+                  <div class="stars">
+                    <span class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
+                         [ngClass]="{'checked': star <= product.rating}"></span>
+                  </div>
+                  <span class="rating-count">({{ product.reviews }})</span>
+                </div>
+                <div class="product-price">₹{{ product.price }}</div>
+                <div class="product-actions">
+                  <a [routerLink]="['/products', product.id]" class="btn btn-primary">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- No Results Message -->
+      <div class="no-results" *ngIf="filteredProducts.length === 0">
+        <div class="no-results-content">
+          <h3>No products found</h3>
+          <p>Try adjusting your search or filter criteria</p>
+          <button class="btn btn-primary" (click)="resetFilters()">Clear All Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

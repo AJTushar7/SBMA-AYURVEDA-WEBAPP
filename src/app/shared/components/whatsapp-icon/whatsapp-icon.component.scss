@@ -1,0 +1,77 @@
+/* Using variables directly instead of import */
+
+.whatsapp-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; // WhatsApp brand color
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    
+    fa-icon {
+      color: #fff;
+      font-size: 30px;
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+  }
+  
+  .pulse-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background-color: #25D366;
+    opacity: 0.5;
+    z-index: 1;
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-icon {
+    bottom: 20px;
+    right: 20px;
+    
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+      
+      fa-icon {
+        font-size: 25px;
+      }
+    }
+  }
+}

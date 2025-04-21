@@ -1,0 +1,120 @@
+<app-announcement-bar></app-announcement-bar>
+<app-header></app-header>
+
+<div class="about-page">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="about-title">Our Story</h1>
+          <p class="about-subtitle">Combining ancient wisdom with modern science</p>
+          <p class="about-description">
+            At SBMA, we believe in the timeless wisdom of Ayurveda and its ability to promote holistic wellness.
+            With over 25 years of experience, we've been dedicated to creating authentic Ayurvedic formulations
+            that meet the needs of modern lifestyles without compromising on traditional principles.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-image">
+            <img src="assets/images/IMG-20250327-WA0018.jpg" alt="SBMA Ayurvedic Products" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mission-vision">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mission-card">
+            <h2>Our Mission</h2>
+            <p>
+              To make authentic Ayurvedic wellness accessible to everyone by combining
+              age-old wisdom with modern scientific validation, creating products that enhance
+              quality of life and promote natural health solutions.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="vision-card">
+            <h2>Our Vision</h2>
+            <p>
+              To be the global leader in authentic Ayurvedic wellness solutions, recognized for
+              innovation, quality, and commitment to sustainability, while preserving and advancing
+              the ancient wisdom of Ayurveda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Journey -->
+  <section class="our-journey">
+    <div class="container">
+      <h2 class="section-title">Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-container" *ngFor="let milestone of companyHistory; let i = index" [class.right]="i % 2 !== 0" [class.left]="i % 2 === 0">
+          <div class="timeline-content">
+            <h3 class="year">{{milestone.year}}</h3>
+            <h4>{{milestone.title}}</h4>
+            <p>{{milestone.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team -->
+  <section class="our-team">
+    <div class="container">
+      <h2 class="section-title">Leadership Team</h2>
+      <div class="row">
+        <div class="col-lg-4 col-md-6" *ngFor="let member of teamMembers">
+          <div class="team-member">
+            <div class="member-image">
+              <img [src]="member.image" [alt]="member.name" class="img-fluid">
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">{{member.name}}</h3>
+              <p class="member-position">{{member.position}}</p>
+              <p class="member-bio">{{member.bio}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="our-values">
+    <div class="container">
+      <h2 class="section-title">Our Core Values</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="value-card">
+            <h3>Authenticity</h3>
+            <p>We stay true to traditional Ayurvedic principles while embracing scientific validation.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <h3>Sustainability</h3>
+            <p>We source ingredients responsibly and maintain eco-friendly practices throughout our operations.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <h3>Innovation</h3>
+            <p>We continuously research and develop new formulations to address contemporary wellness needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,10 @@
+<div class="marketplace-container">
+  <div class="marketplace-grid">
+    <a *ngFor="let market of marketplaces" [href]="market.link" class="marketplace-item" target="_blank" rel="noopener noreferrer">
+      <div class="marketplace-icon">
+        <i class="fa" [ngClass]="market.logo"></i>
+      </div>
+      <h3 class="marketplace-name">{{ market.name }}</h3>
+    </a>
+  </div>
+</div>
