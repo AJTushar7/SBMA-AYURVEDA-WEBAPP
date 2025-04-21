@@ -1,4 +1,4 @@
-@import '../../../../styles/variables';
+@import "../../../../styles/variables";
 
 .announcement-bar {
   position: fixed;
@@ -21,7 +21,9 @@
 .announcement-slider {
   flex: 1;
   overflow: hidden;
-  
+  display: flex;
+  justify-content: center;
+
   .announcement-text {
     animation: slide-up 0.5s ease-out;
     font-weight: 500;
@@ -31,12 +33,12 @@
 .announcement-actions {
   display: flex;
   gap: 15px;
-  
+
   .social-link {
     color: #fff;
     text-decoration: none;
     transition: opacity 0.3s ease;
-    
+
     &:hover {
       opacity: 0.8;
     }

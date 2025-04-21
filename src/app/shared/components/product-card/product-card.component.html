@@ -1,35 +1,29 @@
 <div class="product-card">
   <div class="product-image">
-    <img [src]="product.imageUrl" [alt]="product.name">
-    
+    <img [src]="product.imageUrl" [alt]="product.name" />
+
     <div class="product-tag" *ngIf="product.tag">
       {{ product.tag }}
     </div>
-    
-    <div class="product-actions">
-      <button class="action-btn">
-        <i class="fa fa-eye"></i>
-      </button>
-      <button class="action-btn">
-        <i class="fa fa-heart-o"></i>
-      </button>
-      <button class="action-btn">
-        <i class="fa fa-shopping-cart"></i>
-      </button>
-    </div>
   </div>
-  
+
   <div class="product-info">
     <h3 class="product-name">{{ product.name }}</h3>
     <p class="product-category">{{ product.category }}</p>
     <p class="product-description">{{ product.description }}</p>
-    
+
     <div class="product-price">
-      <span class="current-price" *ngIf="product.discountPrice">₹{{ product.discountPrice }}</span>
-      <span class="original-price" [class.has-discount]="product.discountPrice">₹{{ product.price }}</span>
-      <span class="discount-percentage" *ngIf="product.discountPrice">-{{ calculateDiscount() }}%</span>
+      <span class="current-price" *ngIf="product.discountPrice"
+        >₹{{ product.discountPrice }}</span
+      >
+      <span class="original-price" [class.has-discount]="product.discountPrice"
+        >₹{{ product.price }}</span
+      >
+      <span class="discount-percentage" *ngIf="product.discountPrice"
+        >-{{ calculateDiscount() }}%</span
+      >
     </div>
-    
+
     <button class="add-to-cart-btn">Add to Cart</button>
   </div>
 </div>

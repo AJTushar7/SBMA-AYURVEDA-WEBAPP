@@ -1,7 +1,10 @@
 <div class="hero-slider">
   <ngb-carousel #carousel>
     <ng-template ngbSlide *ngFor="let slide of slides">
-      <div class="slide-image" [style.background-image]="'url(' + slide.imageUrl + ')'">
+      <div
+        class="slide-image"
+        [style.background-image]="'url(' + slide.imageUrl + ')'"
+      >
         <div class="slide-overlay"></div>
       </div>
       <div class="slide-content container">
@@ -15,8 +18,7 @@
         </div>
       </div>
     </ng-template>
-    
-    <!-- Custom navigation icons -->
+
     <div class="carousel-navigation">
       <button class="carousel-control prev" (click)="carousel.prev()">
         <fa-icon [icon]="prevIcon"></fa-icon>

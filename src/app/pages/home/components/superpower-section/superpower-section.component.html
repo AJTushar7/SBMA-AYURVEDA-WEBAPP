@@ -2,9 +2,11 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Our Superpowers</h2>
-      <p class="section-subtitle">What makes SBMA stand out in the world of Ayurveda</p>
+      <h3 class="section-subtitle">
+        What makes SBMA stand out in the world of Ayurveda
+      </h3>
     </div>
-    
+
     <div class="superpower-container">
       <div class="superpower-item" *ngFor="let power of superpowers">
         <div class="superpower-icon">
@@ -13,10 +15,6 @@
         <h3 class="superpower-title">{{ power.title }}</h3>
         <p class="superpower-description">{{ power.description }}</p>
       </div>
-    </div>
-    
-    <div class="superpower-image">
-      <img src="https://images.unsplash.com/photo-1549963921-a936ee5b69e6" alt="Ayurvedic Wellness">
     </div>
   </div>
 </section>
