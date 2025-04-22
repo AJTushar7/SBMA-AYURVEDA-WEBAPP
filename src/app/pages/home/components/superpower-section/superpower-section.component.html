@@ -1,19 +1,20 @@
+
 <section class="superpower-section">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Our Superpowers</h2>
-      <h3 class="section-subtitle">
-        What makes SBMA stand out in the world of Ayurveda
-      </h3>
+      <h3 class="section-subtitle">What makes SBMA stand out in the world of Ayurveda</h3>
     </div>
 
-    <div class="superpower-container">
-      <div class="superpower-item" *ngFor="let power of superpowers">
-        <div class="superpower-icon">
-          <i class="fa" [ngClass]="power.icon"></i>
+    <div class="superpower-grid">
+      <div class="superpower-card" *ngFor="let power of superpowers">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i class="fa" [ngClass]="power.icon"></i>
+          </div>
+          <h3 class="power-title">{{ power.title }}</h3>
+          <p class="power-description">{{ power.description }}</p>
         </div>
-        <h3 class="superpower-title">{{ power.title }}</h3>
-        <p class="superpower-description">{{ power.description }}</p>
       </div>
     </div>
   </div>

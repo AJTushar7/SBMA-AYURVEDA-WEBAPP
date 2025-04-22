@@ -1,20 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgFor } from "@angular/common";
-import {
-  NgbCarousel,
-  NgbCarouselConfig,
-  NgbCarouselModule,
-  NgbSlideEvent,
-} from "@ng-bootstrap/ng-bootstrap";
-import {
-  FaIconLibrary,
-  FontAwesomeModule,
-} from "@fortawesome/angular-fontawesome";
-import {
-  faArrowRight,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { RouterModule } from "@angular/router";
+import { CarouselModule } from 'primeng/carousel';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface SlideItem {
   imageUrl: string;
@@ -27,15 +16,19 @@ interface SlideItem {
 @Component({
   selector: "app-hero-slider",
   standalone: true,
-  imports: [NgFor, NgbCarouselModule, FontAwesomeModule],
+  imports: [NgFor, CarouselModule, FontAwesomeModule, RouterModule],
   templateUrl: "./hero-slider.component.html",
   styleUrls: ["./hero-slider.component.scss"],
-  providers: [NgbCarouselConfig],
 })
 export class HeroSliderComponent implements OnInit {
   arrowRightIcon = faArrowRight;
-  prevIcon = faChevronLeft;
-  nextIcon = faChevronRight;
+  responsiveOptions = [
+    {
+      breakpoint: '1024px',
+      numVisible: 1,
+      numScroll: 1
+    }
+  ];
 
   slides: SlideItem[] = [
     {
@@ -63,15 +56,6 @@ export class HeroSliderComponent implements OnInit {
       buttonLink: "#products",
     },
   ];
-
-  constructor(private config: NgbCarouselConfig) {
-    this.config.interval = 6000;
-    this.config.wrap = true;
-    this.config.keyboard = true;
-    this.config.pauseOnHover = true;
-    this.config.showNavigationArrows = true;
-    this.config.showNavigationIndicators = true;
-  }
 
   ngOnInit(): void {}
 }

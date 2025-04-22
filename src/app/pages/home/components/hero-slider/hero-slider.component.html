@@ -1,31 +1,24 @@
+
 <div class="hero-slider">
-  <ngb-carousel #carousel>
-    <ng-template ngbSlide *ngFor="let slide of slides">
-      <div
-        class="slide-image"
-        [style.background-image]="'url(' + slide.imageUrl + ')'"
-      >
-        <div class="slide-overlay"></div>
-      </div>
-      <div class="slide-content container">
-        <div class="content-wrapper">
-          <h1 class="slide-title">{{ slide.title }}</h1>
-          <p class="slide-description">{{ slide.description }}</p>
-          <a [href]="slide.buttonLink" class="slide-button">
-            <span>{{ slide.buttonText }}</span>
-            <fa-icon [icon]="arrowRightIcon"></fa-icon>
-          </a>
+  <p-carousel [value]="slides" [numVisible]="1" [numScroll]="1" [circular]="true" 
+    [autoplayInterval]="6000" [showNavigators]="true" [showIndicators]="true"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="item" let-slide>
+      <div class="slide-wrapper">
+        <div class="slide-image" [style.background-image]="'url(' + slide.imageUrl + ')'">
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="slide-content container">
+          <div class="content-wrapper">
+            <h1 class="slide-title">{{ slide.title }}</h1>
+            <p class="slide-description">{{ slide.description }}</p>
+            <a [routerLink]="slide.buttonLink" class="slide-button">
+              <span>{{ slide.buttonText }}</span>
+              <fa-icon [icon]="arrowRightIcon"></fa-icon>
+            </a>
+          </div>
         </div>
       </div>
     </ng-template>
-
-    <div class="carousel-navigation">
-      <button class="carousel-control prev" (click)="carousel.prev()">
-        <fa-icon [icon]="prevIcon"></fa-icon>
-      </button>
-      <button class="carousel-control next" (click)="carousel.next()">
-        <fa-icon [icon]="nextIcon"></fa-icon>
-      </button>
-    </div>
-  </ngb-carousel>
+  </p-carousel>
 </div>

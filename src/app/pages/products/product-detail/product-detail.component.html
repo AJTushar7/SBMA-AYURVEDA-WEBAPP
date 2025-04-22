@@ -3,108 +3,88 @@
 
 <div class="product-detail-page" *ngIf="product">
   <div class="container">
-    <!-- Breadcrumb Navigation -->
     <div class="breadcrumb-nav">
       <a routerLink="/products" class="back-link">
         <fa-icon [icon]="backIcon"></fa-icon> Back to Products
       </a>
     </div>
-    
-    <!-- Product Main Info -->
+
     <div class="product-main">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="product-image-gallery">
-            <div class="product-image">
-              <div class="image-zoom-container">
-                <img [src]="product.imageUrl" [alt]="product.name" class="img-fluid">
-                <div class="zoom-lens"></div>
-                <div class="zoom-result"></div>
-              </div>
-              <div class="product-badges">
-                <span class="badge featured" *ngIf="product.featured">Featured</span>
-                <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
-                <span class="badge new" *ngIf="product.new">New</span>
-              </div>
+        <div class="col-md-6">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img [src]="product.imageUrl" [alt]="product.name">
+            </div>
+            <div class="product-badges" *ngIf="product.featured || product.bestSeller || product.new">
+              <span class="badge" *ngIf="product.featured">Featured</span>
+              <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
+              <span class="badge new" *ngIf="product.new">New</span>
             </div>
           </div>
         </div>
-        
-        <div class="col-lg-6">
+
+        <div class="col-md-6">
           <div class="product-info">
-            <div class="product-category">{{ product.category }}</div>
+            <span class="product-category">{{ product.category }}</span>
             <h1 class="product-title">{{ product.name }}</h1>
-            
+
             <div class="product-rating">
               <div class="stars">
-                <span class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
-                      [ngClass]="{'checked': star <= product.rating}"></span>
+                <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
+                   [class.filled]="star <= product.rating"></i>
               </div>
               <span class="reviews-count">{{ product.reviews }} reviews</span>
             </div>
-            
+
             <div class="product-price">₹{{ product.price }}</div>
-            
-            <div class="product-short-description">
+
+            <div class="product-description">
               {{ product.shortDescription }}
             </div>
-            
-            <div class="product-actions">
-              <button class="btn btn-primary btn-buy-now" (click)="buyNowViaWhatsApp()">
+
+            <div class="purchase-options">
+              <div class="quantity-selector">
+                <button class="qty-btn" (click)="decreaseQuantity()">-</button>
+                <input type="number" [value]="quantity" readonly>
+                <button class="qty-btn" (click)="increaseQuantity()">+</button>
+              </div>
+
+              <button class="btn-buy-now" (click)="buyNowViaWhatsApp()">
                 <i class="fa fa-whatsapp"></i> Buy Now via WhatsApp
               </button>
             </div>
-            
-            <div class="quantity-selector">
-              <label>Quantity:</label>
-              <div class="quantity-input">
-                <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
-                <input type="number" [value]="quantity" min="1" readonly>
-                <button class="quantity-btn" (click)="increaseQuantity()">+</button>
-              </div>
-            </div>
-            
+
             <div class="product-meta">
               <div class="meta-item">
-                <span class="label">Category:</span>
-                <span class="value">{{ product.category }}</span>
+                <span>Category:</span>
+                <span>{{ product.category }}</span>
               </div>
               <div class="meta-item">
-                <span class="label">Tags:</span>
-                <span class="value">Ayurvedic, Natural, Herbal</span>
-              </div>
-              <div class="meta-item">
-                <span class="label">SKU:</span>
-                <span class="value">SBMA-{{ product.id.toString().padStart(4, '0') }}</span>
-              </div>
-              <div class="meta-item">
-                <span class="label">Availability:</span>
-                <span class="value available">In Stock</span>
+                <span>SKU:</span>
+                <span>SBMA-{{ product.id.toString().padStart(4, '0') }}</span>
               </div>
             </div>
-            
-            <div class="product-share">
-              <span class="share-label">Share:</span>
-              <div class="social-icons">
-                <a href="javascript:void(0)" class="social-icon facebook" (click)="shareOnSocial('facebook')">
+
+            <div class="social-share">
+              <span>Share:</span>
+              <div class="share-buttons">
+                <button (click)="shareOnSocial('facebook')">
                   <i class="fa fa-facebook"></i>
-                </a>
-                <a href="javascript:void(0)" class="social-icon twitter" (click)="shareOnSocial('twitter')">
+                </button>
+                <button (click)="shareOnSocial('twitter')">
                   <i class="fa fa-twitter"></i>
-                </a>
-                <a href="javascript:void(0)" class="social-icon pinterest" (click)="shareOnSocial('pinterest')">
-                  <i class="fa fa-pinterest"></i>
-                </a>
-                <a href="javascript:void(0)" class="social-icon whatsapp" (click)="shareOnSocial('whatsapp')">
+                </button>
+                <button (click)="shareOnSocial('whatsapp')">
                   <i class="fa fa-whatsapp"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Product Details Tabs -->
     <div class="product-details">
       <div class="product-tabs">
@@ -121,7 +101,7 @@
           Usage
         </button>
       </div>
-      
+
       <div class="tab-content">
         <div class="tab-pane" [ngClass]="{active: activeTab === 'description'}">
           <h3>Product Description</h3>
@@ -130,7 +110,7 @@
             <p>Experience the authentic power of Ayurveda with our carefully crafted formulation. Made with ingredients sourced from the purest regions of India, processed using traditional methods that preserve their natural potency.</p>
           </div>
         </div>
-        
+
         <div class="tab-pane" [ngClass]="{active: activeTab === 'benefits'}">
           <h3>Key Benefits</h3>
           <div class="tab-inner-content">
@@ -139,7 +119,7 @@
             </ul>
           </div>
         </div>
-        
+
         <div class="tab-pane" [ngClass]="{active: activeTab === 'ingredients'}">
           <h3>Ingredients</h3>
           <div class="tab-inner-content">
@@ -149,7 +129,7 @@
             <p class="ingredients-note">All our ingredients are 100% natural, ethically sourced, and processed following authentic Ayurvedic principles.</p>
           </div>
         </div>
-        
+
         <div class="tab-pane" [ngClass]="{active: activeTab === 'usage'}">
           <h3>Recommended Usage</h3>
           <div class="tab-inner-content">
@@ -163,7 +143,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Related Products -->
     <div class="related-products" *ngIf="relatedProducts.length > 0">
       <h2 class="section-title">Related Products</h2>

@@ -1,13 +1,32 @@
-<div class="featured-products">
-  <div class="products-wrapper">
-    <div class="product-row" *ngFor="let productRow of displayProducts">
-      <div class="product-col" *ngFor="let product of productRow">
-        <app-product-card [product]="product"></app-product-card>
+
+<section class="featured-products">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">Discover our most popular Ayurvedic formulations</p>
+    </div>
+    
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of products.slice(0,4)">
+        <div class="product-image">
+          <img [src]="product.imageUrl" [alt]="product.name">
+          <div class="product-overlay">
+            <a [routerLink]="['/products', product.id]" class="quick-view-btn">Quick View</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">{{ product.name }}</h3>
+          <div class="product-rating">
+            <span class="stars">
+              <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
+                 [class.filled]="star <= product.rating"></i>
+            </span>
+            <span class="rating-count">({{ product.reviews }})</span>
+          </div>
+          <p class="product-price">₹{{ product.price }}</p>
+          <a [routerLink]="['/products', product.id]" class="view-details-btn">View Details</a>
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="view-all-container">
-    <a [routerLink]="['/products']" class="view-all-button">View All Products</a>
-  </div>
-</div>
+</section>
