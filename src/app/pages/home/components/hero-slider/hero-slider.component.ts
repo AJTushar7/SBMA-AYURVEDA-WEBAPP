@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgFor } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,7 +17,7 @@ interface SlideItem {
 @Component({
   selector: "app-hero-slider",
   standalone: true,
-  imports: [NgFor, CarouselModule, FontAwesomeModule, RouterModule],
+  imports: [NgFor, RouterModule, CarouselModule, ButtonModule, FontAwesomeModule],
   templateUrl: "./hero-slider.component.html",
   styleUrls: ["./hero-slider.component.scss"],
 })
@@ -31,6 +32,13 @@ export class HeroSliderComponent implements OnInit {
   ];
 
   slides: SlideItem[] = [
+    {
+      imageUrl: "assets/images/IMG-20250327-WA0006.jpg", //Using image from edited code
+      title: "Natural Ayurvedic Products", //Using title from edited code
+      description: "Discover our range of authentic Ayurvedic solutions", //Using description from edited code
+      buttonText: "", //Keeping it empty as the edited code doesn't provide this
+      buttonLink: "" //Keeping it empty as the edited code doesn't provide this
+    },
     {
       imageUrl: "assets/images/IMG-20250327-WA0018.jpg",
       title: "Premium Ayurvedic Products",

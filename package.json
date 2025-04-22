@@ -30,6 +30,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
+    "primeicons": "^6.0.1",
+    "primeng": "^16.9.1",
     "rxjs": "^7.8.2",
     "typescript": "^5.8.3",
     "zone.js": "^0.15.0"
