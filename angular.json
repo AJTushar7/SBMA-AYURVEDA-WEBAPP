@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "sbma-ayurveda:build"
+            "buildTarget": "sbma-ayurveda:build",
+            "allowedHosts": [".", "localhost", ".repl.co", ".repl.dev"]
           },
           "configurations": {
             "production": {
