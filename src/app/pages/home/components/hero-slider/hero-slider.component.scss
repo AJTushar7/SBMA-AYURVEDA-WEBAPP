@@ -1,117 +1,60 @@
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 500px;
   overflow: hidden;
+}
 
-  .slider-container {
-    position: relative;
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+
+  img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
-  .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
-  }
-
-  .slide {
-    min-width: 100%;
-    height: 100%;
-  }
-
-  .slide-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  .slide-content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    color: white;
-    z-index: 1;
-  }
-
-  .content-wrapper {
-    max-width: 600px;
-  }
-
-  .slide-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .slide-description {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .nav-button {
+  .content {
     position: absolute;
     top: 50%;
+    left: 50px;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 1rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.5);
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
 
-    &.prev {
-      left: 1rem;
-    }
-
-    &.next {
-      right: 1rem;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
   }
+}
 
-  .dots {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.3) !important;
+  color: white !important;
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
+  &.prev {
+    left: 20px;
+  }
 
-      &.active {
-        background: white;
-      }
-    }
+  &.next {
+    right: 20px;
   }
 }
 
@@ -119,12 +62,16 @@
   .hero-slider {
     height: 400px;
 
-    .slide-title {
-      font-size: 2rem;
-    }
+    .slide {
+      .content {
+        h2 {
+          font-size: 2rem;
+        }
 
-    .slide-description {
-      font-size: 1rem;
+        p {
+          font-size: 1rem;
+        }
+      }
     }
   }
 }

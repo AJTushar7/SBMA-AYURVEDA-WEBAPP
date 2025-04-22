@@ -1,75 +1,48 @@
-
-import { Component, OnInit } from "@angular/core";
-import { NgFor } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 interface SlideItem {
   imageUrl: string;
   title: string;
-  description: string;
-  buttonText: string;
-  buttonLink: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
 }
 
 @Component({
-  selector: "app-hero-slider",
+  selector: 'app-hero-slider',
   standalone: true,
-  imports: [NgFor, RouterModule, MatButtonModule, FontAwesomeModule],
-  templateUrl: "./hero-slider.component.html",
-  styleUrls: ["./hero-slider.component.scss"],
+  imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule],
+  templateUrl: './hero-slider.component.html',
+  styleUrls: ['./hero-slider.component.scss']
 })
-export class HeroSliderComponent implements OnInit {
-  arrowRightIcon = faArrowRight;
+export class HeroSliderComponent {
   currentSlide = 0;
   slides: SlideItem[] = [
     {
       imageUrl: "assets/images/IMG-20250327-WA0006.jpg",
       title: "Natural Ayurvedic Products",
       description: "Discover our range of authentic Ayurvedic solutions",
-      buttonText: "",
-      buttonLink: ""
+      buttonText: "Shop Now",
+      buttonLink: "/products"
     },
     {
       imageUrl: "assets/images/IMG-20250327-WA0018.jpg",
       title: "Premium Ayurvedic Products",
-      description: "Discover the healing power of Ayurveda with our authentic, science-backed formulations",
-      buttonText: "Shop Now",
-      buttonLink: "#products",
-    },
-    {
-      imageUrl: "assets/images/IMG-20250327-WA0016.jpg",
-      title: "Ancient Wisdom, Modern Science",
-      description: "SBMA combines 25+ years of Ayurvedic heritage with innovative research",
+      description: "Experience the power of traditional healing",
       buttonText: "Learn More",
-      buttonLink: "#about",
-    },
-    {
-      imageUrl: "assets/images/IMG-20250327-WA0017.jpg",
-      title: "100% Natural Ingredients",
-      description: "Ethically sourced herbs and extracts from the finest regions of India",
-      buttonText: "Explore",
-      buttonLink: "#products",
-    },
+      buttonLink: "/about"
+    }
   ];
 
-  ngOnInit(): void {
-    setInterval(() => {
-      this.nextSlide();
-    }, 6000);
-  }
-
-  nextSlide(): void {
+  nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
   }
 
-  prevSlide(): void {
+  prevSlide() {
     this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-  }
-
-  setSlide(index: number): void {
-    this.currentSlide = index;
   }
 }

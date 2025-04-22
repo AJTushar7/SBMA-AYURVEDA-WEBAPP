@@ -1,34 +1,18 @@
-
 <div class="hero-slider">
-  <div class="slider-container">
-    <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
-      <div class="slide" *ngFor="let slide of slides; let i = index">
-        <div class="slide-wrapper">
-          <div class="slide-image" [style.background-image]="'url(' + slide.imageUrl + ')'">
-            <div class="slide-overlay"></div>
-          </div>
-          <div class="slide-content container">
-            <div class="content-wrapper">
-              <h1 class="slide-title">{{ slide.title }}</h1>
-              <p class="slide-description">{{ slide.description }}</p>
-              <a [routerLink]="slide.buttonLink" mat-raised-button color="primary" *ngIf="slide.buttonText">
-                <span>{{ slide.buttonText }}</span>
-                <fa-icon [icon]="arrowRightIcon"></fa-icon>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <button class="nav-button prev" (click)="prevSlide()">❮</button>
-    <button class="nav-button next" (click)="nextSlide()">❯</button>
-    
-    <div class="dots">
-      <span class="dot" *ngFor="let slide of slides; let i = index" 
-            [class.active]="i === currentSlide"
-            (click)="setSlide(i)">
-      </span>
+  <div class="slide" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide">
+    <img [src]="slide.imageUrl" [alt]="slide.title">
+    <div class="content">
+      <h2>{{slide.title}}</h2>
+      <p *ngIf="slide.description">{{slide.description}}</p>
+      <a *ngIf="slide.buttonText" [routerLink]="slide.buttonLink" mat-raised-button color="primary">
+        {{slide.buttonText}}
+      </a>
     </div>
   </div>
+  <button mat-icon-button class="nav-button prev" (click)="prevSlide()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-icon-button class="nav-button next" (click)="nextSlide()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
 </div>
