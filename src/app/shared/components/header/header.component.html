@@ -77,8 +77,8 @@
                     <h4>Categories</h4>
                     <div class="category-links">
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ category: 'Syrups' }"
+                        href="#"
+                        (click)="showCategoryProducts('Syrups', $event)"
                         class="category-link"
                       >
                         <div class="category-icon">
@@ -90,8 +90,8 @@
                         </div>
                       </a>
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ category: 'Oils' }"
+                        href="#"
+                        (click)="showCategoryProducts('Oils', $event)"
                         class="category-link"
                       >
                         <div class="category-icon">
@@ -134,8 +134,8 @@
                     <h4>Featured Products</h4>
                     <div class="featured-products">
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ search: 'Liver Shodhan Syrup' }"
+                        href="#"
+                        (click)="navigateToProduct(1, $event)"
                         class="featured-product"
                       >
                         <div class="featured-img">

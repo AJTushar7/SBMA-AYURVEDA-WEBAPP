@@ -95,7 +95,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  navigateToProduct(productId: number) {
+  navigateToProduct(productId: number, event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
     this.isDropdownOpen = false;
     setTimeout(() => {
       this.router.navigate(['/products', productId]);
