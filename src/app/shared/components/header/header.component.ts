@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+
+import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
@@ -6,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch, faTimes, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
-import { debounceTime, distinctUntilChanged, Subject, Subscription, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -29,16 +31,14 @@ import { debounceTime, distinctUntilChanged, Subject, Subscription, Observable }
   ]
 })
 export class HeaderComponent implements OnInit {
-  // Component state
   isScrolled = false;
   isMobileMenuOpen = false;
   isSearchBarVisible = false;
   searchQuery = '';
   suggestions: string[] = [];
   private searchTerms = new Subject<string>();
-  categoryProducts: any[] = []; // Added to store category products
+  categoryProducts: any[] = [];
 
-  // Font Awesome icons
   searchIcon = faSearch;
   closeIcon = faTimes;
   userIcon = faUser;
@@ -50,13 +50,11 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initial check for scroll position
     this.checkScroll();
 
-    // Setup search suggestions debounce
     this.searchTerms.pipe(
-      debounceTime(300), // wait 300ms after each keystroke
-      distinctUntilChanged() // ignore if next search term is same as previous
+      debounceTime(300),
+      distinctUntilChanged()
     ).subscribe(term => {
       this.getSuggestions(term);
     });
@@ -71,7 +69,7 @@ export class HeaderComponent implements OnInit {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  closeDropdownMenu() {
+  closeMobileMenu() {
     this.isMobileMenuOpen = false;
   }
 
@@ -83,9 +81,7 @@ export class HeaderComponent implements OnInit {
   toggleSearchBar() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
     if (this.isSearchBarVisible) {
-      // When opening search, reset the query
       this.searchQuery = '';
-      // Add a class to body to prevent scrolling
       document.body.classList.add('search-active');
     } else {
       document.body.classList.remove('search-active');
@@ -99,7 +95,6 @@ export class HeaderComponent implements OnInit {
 
   performSearch() {
     if (this.searchQuery.trim()) {
-      // Navigate to products page with search query
       this.router.navigate(['/products'], { 
         queryParams: { search: this.searchQuery.trim() } 
       });
@@ -123,11 +118,10 @@ export class HeaderComponent implements OnInit {
     }
 
     this.productService.searchProducts(term).subscribe(products => {
-      // Extract product names for suggestions
       this.suggestions = products
         .map(product => product.name)
-        .filter((name, index, self) => self.indexOf(name) === index) // Remove duplicates
-        .slice(0, 6); // Limit to 6 suggestions
+        .filter((name, index, self) => self.indexOf(name) === index)
+        .slice(0, 6);
     });
   }
 
@@ -148,7 +142,6 @@ export class HeaderComponent implements OnInit {
   showCategoryProducts(category: string, event: Event) {
     event.preventDefault();
     event.stopPropagation();
-    // Update products list based on category
     this.productService.getProductsByCategory(category).subscribe(products => {
       this.categoryProducts = products;
     });
