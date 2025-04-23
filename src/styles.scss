@@ -27,8 +27,9 @@ body {
 }
 
 .section {
-  padding: 80px 0;
-  
+  padding: 50px 0; /* Reduced padding */
+  position: relative;
+
   &.bg-light {
     background: var(--light-bg);
   }
@@ -58,11 +59,11 @@ body {
   text-decoration: none;
   transition: all 0.3s;
   font-weight: 500;
-  
+
   &-primary {
     background: var(--primary-color);
     color: white;
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -104,7 +105,7 @@ body {
 // Global styles
 .section {
   padding: 4rem 0;
-  
+
   &.bg-light {
     background-color: #f8f9fa;
   }
@@ -175,7 +176,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background-color: darken($primary-color, 10%);
     transform: translateY(-3px);
@@ -192,7 +193,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background-color: $primary-color;
     color: #fff;
