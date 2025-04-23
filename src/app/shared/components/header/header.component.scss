@@ -240,9 +240,11 @@ $light-green: #f0f5f1; // Light green background
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 1000;
     padding: 24px;
     min-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
     
     &:before {
       content: '';

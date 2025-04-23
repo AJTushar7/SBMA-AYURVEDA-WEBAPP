@@ -22,8 +22,8 @@
         </button>
 
         <!-- Search suggestions -->
-        <div class="search-suggestions" *ngIf="suggestions.length > 0">
-          <ul>
+        <div class="search-suggestions" *ngIf="searchQuery.length >= 2">
+          <ul *ngIf="suggestions.length > 0">
             <li
               *ngFor="let suggestion of suggestions"
               (click)="selectSuggestion(suggestion)"
@@ -32,6 +32,9 @@
               {{ suggestion }}
             </li>
           </ul>
+          <div class="no-results" *ngIf="suggestions.length === 0">
+            <p>No products found</p>
+          </div>
         </div>
       </div>
       <button class="close-search" (click)="closeSearchBar()">

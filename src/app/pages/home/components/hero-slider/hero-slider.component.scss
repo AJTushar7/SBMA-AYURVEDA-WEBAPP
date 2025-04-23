@@ -30,15 +30,37 @@
       text-align: center;
       color: white;
       z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
 
       h2 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
       p {
         font-size: 1.2rem;
         margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      a {
+        padding: 12px 24px;
+        background: $primary-color;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          background: darken($primary-color, 10%);
+        }
       }
     }
   }
