@@ -1,13 +1,17 @@
-
 @import '../../../../../styles/variables';
 
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   overflow: hidden;
   margin-bottom: 0;
   background: #000;
+  padding-top: 35px; /* Height of announcement bar */
+
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
 
   .slide {
     position: absolute;
@@ -86,7 +90,7 @@
         transform: translateY(20px);
         transition: all 0.8s ease 0.7s;
         border: 2px solid transparent;
-        
+
         &:hover {
           background: transparent;
           border-color: white;

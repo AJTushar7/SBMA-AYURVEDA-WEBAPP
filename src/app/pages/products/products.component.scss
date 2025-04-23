@@ -308,7 +308,8 @@
     
     .product-image {
       position: relative;
-      padding-top: 100%; // 1:1 Aspect ratio
+      padding-top: 75%; // 4:3 Aspect ratio
+      max-height: 250px;
       overflow: hidden;
       
       img {

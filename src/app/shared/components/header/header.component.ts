@@ -86,11 +86,18 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
-  navigateToCategory(category: string) {
-    this.router.navigate(['/products'], { 
-      queryParams: { category: category },
-      queryParamsHandling: 'merge'
+  showCategoryProducts(category: string) {
+    this.productService.searchProducts('').subscribe(products => {
+      this.popupProducts = products.filter(p => p.category === category);
+      this.selectedCategory = category;
     });
+  }
+
+  navigateToProduct(productId: number) {
+    this.isDropdownOpen = false;
+    setTimeout(() => {
+      this.router.navigate(['/products', productId]);
+    }, 300);
   }
   
   toggleSearchBar() {
@@ -131,16 +138,23 @@ export class HeaderComponent implements OnInit {
   
   getSuggestions(term: string) {
     if (term.length < 2) {
-      this.suggestions = [];
+      // Show default suggestions
+      this.suggestions = [
+        'Best Sellers',
+        'New Arrivals',
+        'Liver Health',
+        'Hair Care',
+        'Digestive Health',
+        'Immunity Boosters'
+      ];
       return;
     }
     
     this.productService.searchProducts(term).subscribe(products => {
-      // Extract product names for suggestions
       this.suggestions = products
         .map(product => product.name)
-        .filter((name, index, self) => self.indexOf(name) === index) // Remove duplicates
-        .slice(0, 6); // Limit to 6 suggestions
+        .filter((name, index, self) => self.indexOf(name) === index)
+        .slice(0, 6);
     });
   }
   
