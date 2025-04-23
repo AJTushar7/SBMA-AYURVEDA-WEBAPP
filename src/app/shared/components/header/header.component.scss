@@ -232,9 +232,9 @@ $light-green: #f0f5f1; // Light green background
 
   .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 20px);
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%);
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);

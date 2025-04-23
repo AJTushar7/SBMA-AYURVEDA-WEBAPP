@@ -103,8 +103,8 @@
                         </div>
                       </a>
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ category: 'Powders' }"
+                        href="#"
+                        (click)="showCategoryProducts('Powders', $event)"
                         class="category-link"
                       >
                         <div class="category-icon">
@@ -116,8 +116,8 @@
                         </div>
                       </a>
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ category: 'Liquids' }"
+                        href="#"
+                        (click)="showCategoryProducts('Liquids', $event)"
                         class="category-link"
                       >
                         <div class="category-icon">

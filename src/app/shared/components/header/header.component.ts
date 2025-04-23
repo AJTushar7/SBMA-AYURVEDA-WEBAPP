@@ -89,7 +89,11 @@ export class HeaderComponent implements OnInit {
       event.stopPropagation();
     }
     this.productService.getAllProducts().subscribe(products => {
-      this.popupProducts = products.filter(p => p.category === category);
+      this.popupProducts = products.filter(p => 
+        p.category.toLowerCase() === category.toLowerCase() ||
+        (category === 'Liquids' && p.category.toLowerCase() === 'liquid') ||
+        (category === 'Powders' && p.category.toLowerCase() === 'powder')
+      );
       this.selectedCategory = category;
       this.isDropdownOpen = true;
     });
@@ -99,9 +103,7 @@ export class HeaderComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     this.isDropdownOpen = false;
-    setTimeout(() => {
-      this.router.navigate(['/products', productId]);
-    }, 300);
+    this.router.navigate(['/products', productId]);
   }
 
   viewAllProducts(event: Event) {
