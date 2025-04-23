@@ -1,60 +1,61 @@
 .hero-slider {
   position: relative;
-  width: 100%;
   height: 500px;
   overflow: hidden;
-}
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-
-  &.active {
-    opacity: 1;
-  }
-
-  img {
+  .slide {
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.active {
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+    }
   }
 
-  .content {
+  .nav-button {
     position: absolute;
     top: 50%;
-    left: 50px;
     transform: translateY(-50%);
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.5);
+    color: #333;
 
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    &.prev {
+      left: 20px;
     }
 
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+    &.next {
+      right: 20px;
     }
-  }
-}
-
-.nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.3) !important;
-  color: white !important;
-
-  &.prev {
-    left: 20px;
-  }
-
-  &.next {
-    right: 20px;
   }
 }
 
