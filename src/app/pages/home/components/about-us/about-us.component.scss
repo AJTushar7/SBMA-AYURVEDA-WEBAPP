@@ -35,18 +35,29 @@
   
   .main-image {
     width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
   }
   
   .floating-image {
     position: absolute;
-    bottom: -30px;
+    bottom: -25px;
     right: 0;
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border: 5px solid #fff;
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px) rotate(2deg);
+    }
     transition: transform 0.3s ease;
     
     &:hover {
