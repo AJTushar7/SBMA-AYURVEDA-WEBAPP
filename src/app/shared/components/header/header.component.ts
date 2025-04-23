@@ -78,6 +78,20 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
     this.closeMobileMenu();
   }
+
+  navigateToProduct(productId: number) {
+    this.closeMobileMenu();
+    setTimeout(() => {
+      this.router.navigate(['/products', productId]);
+    }, 300);
+  }
+
+  navigateToCategory(category: string) {
+    this.router.navigate(['/products'], { 
+      queryParams: { category: category },
+      queryParamsHandling: 'merge'
+    });
+  }
   
   toggleSearchBar() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
