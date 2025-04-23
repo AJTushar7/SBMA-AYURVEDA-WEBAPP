@@ -19,8 +19,9 @@ interface SlideItem {
   templateUrl: './hero-slider.component.html',
   styleUrls: ['./hero-slider.component.scss']
 })
-export class HeroSliderComponent {
+export class HeroSliderComponent implements OnInit, OnDestroy {
   currentSlide = 0;
+  private slideInterval: any;
   slides: SlideItem[] = [
     {
       imageUrl: "assets/images/IMG-20250327-WA0006.jpg",
@@ -44,5 +45,21 @@ export class HeroSliderComponent {
 
   prevSlide() {
     this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  }
+
+  ngOnInit() {
+    this.startSlideShow();
+  }
+
+  ngOnDestroy() {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  private startSlideShow() {
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 5000); // Change slide every 5 seconds
   }
 }
