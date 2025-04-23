@@ -83,10 +83,15 @@ export class HeaderComponent implements OnInit {
     this.closeMobileMenu();
   }
 
-  showCategoryProducts(category: string) {
+  showCategoryProducts(category: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     this.productService.searchProducts('').subscribe(products => {
       this.popupProducts = products.filter(p => p.category === category);
       this.selectedCategory = category;
+      this.isDropdownOpen = true;
     });
   }
 
@@ -94,6 +99,14 @@ export class HeaderComponent implements OnInit {
     this.isDropdownOpen = false;
     setTimeout(() => {
       this.router.navigate(['/products', productId]);
+    }, 300);
+  }
+
+  viewAllProducts(event: Event) {
+    event.preventDefault();
+    this.isDropdownOpen = false;
+    setTimeout(() => {
+      this.router.navigate(['/products']);
     }, 300);
   }
   

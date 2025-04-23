@@ -308,8 +308,8 @@
     
     .product-image {
       position: relative;
-      padding-top: 75%; // 4:3 Aspect ratio
-      max-height: 250px;
+      padding-top: 60%; // Reduced aspect ratio
+      max-height: 200px;
       overflow: hidden;
       
       img {

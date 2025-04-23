@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from './shared/components/announcement-bar/announcement-bar.component';
@@ -19,5 +21,25 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'SBMA - Ayurvedic Excellence';
+  constructor(
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      let title = 'SBMA - Ayurvedic Excellence';
+      const currentRoute = this.router.url;
+      
+      if (currentRoute.includes('/products/')) {
+        title = 'Product Details | ' + title;
+      } else if (currentRoute === '/products') {
+        title = 'Our Products | ' + title;
+      } else if (currentRoute === '/about') {
+        title = 'About Us | ' + title;
+      }
+      
+      this.titleService.setTitle(title);
+    });
+  }
 }
