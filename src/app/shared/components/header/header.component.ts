@@ -63,6 +63,9 @@ export class HeaderComponent implements OnInit {
     ).subscribe(term => {
       this.getSuggestions(term);
     });
+
+    // Load default category
+    this.showCategoryProducts('Syrups');
   }
 
   @HostListener('window:scroll', [])

@@ -2,15 +2,31 @@
 
 .hero-slider {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  height: 600px;
   overflow: hidden;
-  margin-bottom: 0;
-  background: #000;
-  padding-top: 35px; /* Height of announcement bar */
 
-  @media (max-width: 768px) {
-    padding-top: 70px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    mat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .slide {
@@ -48,12 +64,13 @@
       transform: scale(1);
     }
 
+
     .content {
       position: absolute;
       top: 50%;
-      left: 10%;
-      transform: translateY(-50%);
-      text-align: left;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Centered content */
+      text-align: center; /* Centered text */
       color: white;
       z-index: 2;
       max-width: 600px;
