@@ -76,7 +76,7 @@ $light-green: #f0f5f1; // Light green background
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: adjust-color-lightness($primary-color, -10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
     }
   }
 
@@ -447,7 +447,7 @@ $light-green: #f0f5f1; // Light green background
         }
 
         &:hover {
-          color: darken($primary-color, 10%);
+          color: color.adjust($primary-color, $lightness: -10%);
 
           i {
             transform: translateX(5px);
@@ -483,7 +483,7 @@ $light-green: #f0f5f1; // Light green background
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #195c3f; /* Darker version of primary color */
+      background-color: color.adjust($primary-color, $lightness: -10%);
     }
   }
 }
