@@ -154,25 +154,20 @@
                     <div class="featured-products">
                       <a
                         href="#"
-                        *ngFor="let product of popupProducts"
+                        *ngFor="let product of popupProducts.slice(0, 4)"
                         (click)="navigateToProduct(product.id, $event)"
                         class="featured-product"
                       >
                         <div class="featured-img">
                           <img [src]="product.imageUrl" [alt]="product.name" />
-                          <div class="product-badges">
-                            <span class="badge featured" *ngIf="product.featured">Featured</span>
-                            <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
-                            <span class="badge new" *ngIf="product.new">New</span>
-                          </div>
                         </div>
                         <div class="featured-info">
                           <h5>{{product.name}}</h5>
                           <span class="featured-price">₹{{product.price}}</span>
+                          <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
                         </div>
                       </a>
                     </div>
-                    <div class="dropdown-arrow"></div>
                   </div>
                 </div>
                 <div class="dropdown-footer">

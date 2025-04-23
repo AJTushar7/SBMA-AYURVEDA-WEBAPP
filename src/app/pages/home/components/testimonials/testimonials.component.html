@@ -7,7 +7,7 @@
       <i class="fa fa-chevron-right"></i>
     </button>
   </div>
-
+  
   <div class="slider-container">
     <div class="slider-track" [style.transform]="'translateX(-' + (activeSlide * (100 / slidesPerView)) + '%)'">
       <div class="testimonial-card" *ngFor="let testimonial of testimonials">
@@ -21,12 +21,7 @@
           </div>
         </div>
         <div class="testimonial-content">
-            <div class="testimonial-images">
-              <img [src]="testimonial.customerImage" alt="Customer" class="customer-image" *ngIf="testimonial.customerImage">
-              <img [src]="testimonial.productImage" alt="Product" class="product-image" *ngIf="testimonial.productImage">
-            </div>
-            <p class="testimonial-text">"{{ testimonial.comment }}"</p>
-            
+          <p class="testimonial-text">"{{ testimonial.comment }}"</p>
         </div>
         <div class="testimonial-footer">
           <p class="testimonial-product" *ngIf="testimonial.productUsed">
@@ -37,7 +32,7 @@
       </div>
     </div>
   </div>
-
+  
   <div class="slider-dots">
     <span 
       class="dot" 
