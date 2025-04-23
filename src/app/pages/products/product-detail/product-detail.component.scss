@@ -66,15 +66,10 @@
 
     .product-gallery {
       position: relative;
-      max-width: 500px;
-      margin: 0 auto;
 
       .main-image {
-        width: 100%;
-        max-height: 400px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 15px;
+        overflow: hidden;
 
         img {
           width: 100%;
@@ -610,24 +605,16 @@
         }
       }
 
-      .benefits-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .benefits-list li {
+        list-style-type: none;
+        padding-left: 25px;
 
-        li {
-          position: relative;
-          padding-left: 30px;
-          margin-bottom: 15px;
-          line-height: 1.5;
-
-          &:before {
-            content: '•';
-            position: absolute;
-            left: 10px;
-            color: $primary-color;
-            font-size: 1.5em;
-          }
+        &::before {
+          content: '✓';
+          color: $primary-color;
+          position: absolute;
+          left: 0;
+          font-weight: bold;
         }
       }
 

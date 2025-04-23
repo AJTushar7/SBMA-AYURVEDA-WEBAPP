@@ -34,7 +34,7 @@ $light-green: #f0f5f1; // Light green background
   position: relative;
   transform: translateY(-20px);
   animation: slideDown 0.3s forwards;
-
+  
   @media (max-width: 576px) {
     padding: 20px;
   }
@@ -49,7 +49,7 @@ $light-green: #f0f5f1; // Light green background
   display: flex;
   width: 100%;
   position: relative;
-
+  
   input {
     flex: 1;
     border: none;
@@ -58,12 +58,12 @@ $light-green: #f0f5f1; // Light green background
     font-size: 1.2rem;
     transition: border-color 0.3s;
     outline: none;
-
+    
     &:focus {
       border-color: $primary-color;
     }
   }
-
+  
   button {
     background-color: $primary-color;
     color: #fff;
@@ -74,12 +74,12 @@ $light-green: #f0f5f1; // Light green background
     margin-left: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
-
+    
     &:hover {
-      background-color: color.adjust($primary-color, $lightness: -10%);
+      background-color: darken($primary-color, 10%);
     }
   }
-
+  
   .search-suggestions {
     position: absolute;
     top: 100%;
@@ -92,24 +92,24 @@ $light-green: #f0f5f1; // Light green background
     max-height: 300px;
     overflow-y: auto;
     z-index: 100;
-
+    
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
-
+      
       li {
         padding: 12px 15px;
         cursor: pointer;
         transition: background-color 0.3s;
         display: flex;
         align-items: center;
-
+        
         &:hover {
           background-color: #f5f5f5;
           color: $primary-color;
         }
-
+        
         .suggestion-icon {
           margin-right: 10px;
           color: #aaa;
@@ -130,14 +130,14 @@ $light-green: #f0f5f1; // Light green background
   font-size: 1.3rem;
   cursor: pointer;
   transition: color 0.3s;
-
+  
   &:hover {
     color: $primary-color;
   }
 }
 
 // Prevent body scrolling when search is active
-::host-context(body.search-active) {
+:host-context(body.search-active) {
   overflow: hidden;
 }
 
@@ -150,7 +150,7 @@ $light-green: #f0f5f1; // Light green background
   transition: all 0.3s ease;
   padding: 8px 0;
   background-color: #fff;
-
+  
   &.solid {
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -165,7 +165,7 @@ $light-green: #f0f5f1; // Light green background
 
 .logo {
   cursor: pointer;
-
+  
   img {
     height: 40px;
   }
@@ -187,36 +187,34 @@ $light-green: #f0f5f1; // Light green background
     margin: 0;
     padding: 0;
   }
-
+  
   .nav-item {
     position: relative;
     margin: 0 10px;
-
+    
     &:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
   }
-
+  
   .nav-link {
-    color: #2c3e50;
+    color: $text-color;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 500;
     padding: 10px 15px;
     transition: color 0.3s ease;
     position: relative;
-    letter-spacing: 0.3px;
-
+    
     &:hover, &.active {
-      color: color.adjust($primary-color, $lightness: -10%);
-
+      color: $primary-color;
+      
       &::after {
         transform: scaleX(1);
       }
     }
-
+    
     &::after {
       content: '';
       position: absolute;
@@ -230,7 +228,7 @@ $light-green: #f0f5f1; // Light green background
       transition: transform 0.3s ease;
     }
   }
-
+  
   .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -247,7 +245,7 @@ $light-green: #f0f5f1; // Light green background
     min-width: 800px;
     max-height: 80vh;
     overflow-y: auto;
-
+    
     &:before {
       content: '';
       position: absolute;
@@ -260,53 +258,53 @@ $light-green: #f0f5f1; // Light green background
       border-radius: 2px;
     }
   }
-
+  
   .nav-item:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
   }
-
+  
   .dropdown-content {
     padding: 0;
     width: 800px;
-
+    
     .dropdown-header {
       background-color: $light-green;
       padding: 20px;
       border-bottom: 1px solid rgba(0,0,0,0.05);
-
+      
       h3 {
         font-size: 1.4rem;
         font-weight: 600;
         color: $primary-color;
         margin-bottom: 5px;
       }
-
+      
       p {
         color: #555;
         font-size: 0.95rem;
         margin-bottom: 0;
       }
     }
-
+    
     .dropdown-columns {
       display: flex;
       padding: 20px;
     }
-
+    
     .dropdown-column {
       padding: 0 15px;
-
+      
       &.category-column {
         flex: 1;
         border-right: 1px solid #eee;
       }
-
+      
       &.featured-column {
         flex: 1.5;
       }
-
+      
       h4 {
         font-size: 1rem;
         font-weight: 600;
@@ -316,17 +314,17 @@ $light-green: #f0f5f1; // Light green background
         letter-spacing: 1px;
         border-bottom: 1px solid #f0f5f1;
         padding-bottom: 8px;
-
+        
         &.mt-3 {
           margin-top: 20px;
         }
       }
-
+      
       .category-links {
         display: flex;
         flex-direction: column;
         gap: 10px;
-
+        
         .category-link {
           display: flex;
           align-items: center;
@@ -334,12 +332,12 @@ $light-green: #f0f5f1; // Light green background
           border-radius: 8px;
           text-decoration: none;
           transition: all 0.2s ease;
-
+          
           &:hover {
             background-color: $light-green;
             transform: translateX(5px);
           }
-
+          
           .category-icon {
             width: 40px;
             height: 40px;
@@ -352,17 +350,17 @@ $light-green: #f0f5f1; // Light green background
             margin-right: 15px;
             font-size: 1.1rem;
           }
-
+          
           .category-text {
             display: flex;
             flex-direction: column;
-
+            
             span {
               font-weight: 600;
               color: $text-color;
               margin-bottom: 2px;
             }
-
+            
             small {
               color: #666;
               font-size: 0.8rem;
@@ -370,32 +368,32 @@ $light-green: #f0f5f1; // Light green background
           }
         }
       }
-
+      
       .featured-products {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
-
+        
         .featured-product {
           text-decoration: none;
           border-radius: 8px;
           overflow: hidden;
           transition: all 0.3s ease;
           box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-
+          
           &:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-
+            
             .featured-img img {
               transform: scale(1.05);
             }
           }
-
+          
           .featured-img {
             height: 100px;
             overflow: hidden;
-
+            
             img {
               width: 100%;
               height: 100%;
@@ -403,11 +401,11 @@ $light-green: #f0f5f1; // Light green background
               transition: transform 0.5s ease;
             }
           }
-
+          
           .featured-info {
             padding: 10px;
             background-color: #fff;
-
+            
             h5 {
               font-size: 0.9rem;
               font-weight: 600;
@@ -417,7 +415,7 @@ $light-green: #f0f5f1; // Light green background
               overflow: hidden;
               text-overflow: ellipsis;
             }
-
+            
             .featured-price {
               font-weight: 600;
               color: $primary-color;
@@ -427,28 +425,28 @@ $light-green: #f0f5f1; // Light green background
         }
       }
     }
-
+    
     .dropdown-footer {
       padding: 15px 20px;
       background-color: #f9f9f9;
       border-top: 1px solid #eee;
       text-align: center;
-
+      
       .view-all-btn {
         color: $primary-color;
         font-weight: 600;
         text-decoration: none;
         font-size: 0.9rem;
         transition: all 0.3s ease;
-
+        
         i {
           margin-left: 5px;
           transition: transform 0.3s ease;
         }
-
+        
         &:hover {
-          color: color.adjust($primary-color, $lightness: -10%);
-
+          color: darken($primary-color, 10%);
+          
           i {
             transform: translateX(5px);
           }
@@ -461,18 +459,18 @@ $light-green: #f0f5f1; // Light green background
 .header-actions {
   display: flex;
   align-items: center;
-
+  
   .action-link {
     color: $text-color;
     font-size: 1.2rem;
     margin-right: 15px;
     transition: color 0.3s ease;
-
+    
     &:hover {
       color: $primary-color;
     }
   }
-
+  
   .btn-primary {
     background-color: $primary-color;
     color: #fff;
@@ -481,9 +479,9 @@ $light-green: #f0f5f1; // Light green background
     font-weight: 500;
     text-decoration: none;
     transition: background-color 0.3s ease;
-
+    
     &:hover {
-      background-color: color.adjust($primary-color, $lightness: -10%);
+      background-color: #195c3f; /* Darker version of primary color */
     }
   }
 }
@@ -492,7 +490,7 @@ $light-green: #f0f5f1; // Light green background
   .mobile-menu-toggle {
     display: block;
   }
-
+  
   .navigation, .header-actions {
     position: fixed;
     top: 70px;
@@ -505,23 +503,23 @@ $light-green: #f0f5f1; // Light green background
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-
+    
     &.open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
   }
-
+  
   .navigation {
     .nav-list {
       flex-direction: column;
     }
-
+    
     .nav-item {
       margin: 5px 0;
     }
-
+    
     .dropdown-menu {
       position: static;
       opacity: 1;
@@ -533,31 +531,31 @@ $light-green: #f0f5f1; // Light green background
       margin-left: 20px;
       border-left: 2px solid #f0f5f1; /* Light green */
     }
-
+    
     .dropdown-content {
       flex-direction: column;
     }
-
+    
     .dropdown-column {
       padding: 5px 0;
-
+      
       h4 {
         margin-bottom: 5px;
       }
-
+      
       a {
         padding: 3px 0;
       }
     }
   }
-
+  
   .header-actions {
     top: auto;
     bottom: 0;
     display: flex;
     justify-content: space-around;
     padding: 15px;
-
+    
     .action-link {
       margin: 0;
     }

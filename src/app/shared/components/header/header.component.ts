@@ -1,5 +1,4 @@
-
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
@@ -7,8 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSearch, faTimes, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -31,14 +29,15 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   ]
 })
 export class HeaderComponent implements OnInit {
+  // Component state
   isScrolled = false;
   isMobileMenuOpen = false;
   isSearchBarVisible = false;
   searchQuery = '';
   suggestions: string[] = [];
   private searchTerms = new Subject<string>();
-  categoryProducts: any[] = [];
-
+  
+  // Font Awesome icons
   searchIcon = faSearch;
   closeIcon = faTimes;
   userIcon = faUser;
@@ -50,11 +49,13 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Initial check for scroll position
     this.checkScroll();
-
+    
+    // Setup search suggestions debounce
     this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
+      debounceTime(300), // wait 300ms after each keystroke
+      distinctUntilChanged() // ignore if next search term is same as previous
     ).subscribe(term => {
       this.getSuggestions(term);
     });
@@ -77,31 +78,34 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
     this.closeMobileMenu();
   }
-
+  
   toggleSearchBar() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
     if (this.isSearchBarVisible) {
+      // When opening search, reset the query
       this.searchQuery = '';
+      // Add a class to body to prevent scrolling
       document.body.classList.add('search-active');
     } else {
       document.body.classList.remove('search-active');
     }
   }
-
+  
   closeSearchBar() {
     this.isSearchBarVisible = false;
     document.body.classList.remove('search-active');
   }
-
+  
   performSearch() {
     if (this.searchQuery.trim()) {
+      // Navigate to products page with search query
       this.router.navigate(['/products'], { 
         queryParams: { search: this.searchQuery.trim() } 
       });
       this.closeSearchBar();
     }
   }
-
+  
   onSearchKeyup() {
     const term = this.searchQuery.trim();
     if (term.length >= 2) {
@@ -110,40 +114,24 @@ export class HeaderComponent implements OnInit {
       this.suggestions = [];
     }
   }
-
+  
   getSuggestions(term: string) {
     if (term.length < 2) {
       this.suggestions = [];
       return;
     }
-
+    
     this.productService.searchProducts(term).subscribe(products => {
+      // Extract product names for suggestions
       this.suggestions = products
         .map(product => product.name)
-        .filter((name, index, self) => self.indexOf(name) === index)
-        .slice(0, 6);
+        .filter((name, index, self) => self.indexOf(name) === index) // Remove duplicates
+        .slice(0, 6); // Limit to 6 suggestions
     });
   }
-
+  
   selectSuggestion(suggestion: string) {
     this.searchQuery = suggestion;
     this.performSearch();
-  }
-
-  navigateToProduct(productId: number, event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.closeMobileMenu();
-    setTimeout(() => {
-      this.router.navigate(['/products', productId]);
-    }, 300);
-  }
-
-  showCategoryProducts(category: string, event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.productService.getProductsByCategory(category).subscribe(products => {
-      this.categoryProducts = products;
-    });
   }
 }
