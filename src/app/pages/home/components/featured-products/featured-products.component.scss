@@ -1,21 +1,24 @@
 @import '../../../../../styles/variables';
 
 .featured-products {
-  .products-wrapper {
-    margin-bottom: 40px;
+  padding: 4rem 0;
+  background-color: #fff;
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
   }
   
   .product-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
   }
   
-  .product-col {
-    flex: 0 0 25%;
-    max-width: 25%;
-    padding: 0 15px;
-    margin-bottom: 30px;
+  .product-item {
+    width: 100%;
   }
   
   .view-all-container {
