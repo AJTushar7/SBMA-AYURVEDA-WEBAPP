@@ -1,106 +1,78 @@
-@import "../../../../../styles/variables";
+@import '../../../../../styles/variables';
 
 .superpower-section {
-  background-color: #fff;
-  overflow: hidden;
-  position: relative;
-}
+  padding: 4rem 0;
+  background-color: #f8f9fa;
 
-.superpower-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
-}
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
 
-.superpower-item {
-  text-align: center;
-  padding: 30px 20px;
-  background-color: $light-green;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+    .section-title {
+      color: $primary-color;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-
-    .superpower-icon {
-      background-color: $primary-color;
-      color: #fff;
+    .section-subtitle {
+      color: $text-color;
+      font-size: 1.1rem;
     }
   }
-}
 
-.superpower-icon {
-  width: 80px;
-  height: 80px;
-  background-color: rgba($primary-color, 0.1);
-  color: $primary-color;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  transition: all 0.3s ease;
-
-  i {
-    font-size: 2rem;
+  .superpower-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
   }
-}
 
-.superpower-title {
-  font-size: 1.3rem;
-  color: $primary-color;
-  margin-bottom: 15px;
-}
-
-.superpower-description {
-  font-size: 0.95rem;
-  color: $text-color;
-  line-height: 1.6;
-}
-
-.superpower-image {
-  margin-top: 40px;
-  text-align: center;
-
-  img {
-    max-width: 100%;
+  .superpower-card {
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
-}
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 
-.section-title {
-  text-align: center;
-  margin-bottom: 5px;
-}
+    &:hover {
+      transform: translateY(-5px);
+    }
 
-.section-subtitle {
-  text-align: center;
-  margin-bottom: 15px;
-}
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: $light-green;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-@media (max-width: 768px) {
-  .superpower-section {
-    padding: 60px 0;
-  }
+      i {
+        font-size: 2rem;
+        color: $primary-color;
+      }
+    }
 
-  .superpower-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-  }
+    .power-title {
+      color: $primary-color;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
 
-  .superpower-icon {
-    width: 60px;
-    height: 60px;
-
-    i {
-      font-size: 1.5rem;
+    .power-description {
+      color: $text-color;
+      font-size: 1rem;
+      line-height: 1.5;
     }
   }
+}
 
-  .superpower-title {
-    font-size: 1.1rem;
-  }
+.available-on-section {
+  /* Add styles for available-on section here if needed */
+}
+
+.featured-products-section {
+  /* Add styles and logic to limit to 4 products here */
 }

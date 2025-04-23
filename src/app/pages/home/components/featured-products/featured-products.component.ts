@@ -12,6 +12,11 @@ import { ProductCardComponent } from '../../../../shared/components/product-card
   templateUrl: './featured-products.component.html',
   styleUrls: ['./featured-products.component.scss']
 })
-export class FeaturedProductsComponent {
+export class FeaturedProductsComponent implements OnInit {
   @Input() products: Product[] = [];
+  displayProducts: Product[] = [];
+
+  ngOnInit() {
+    this.displayProducts = this.products.slice(0, 4);
+  }
 }

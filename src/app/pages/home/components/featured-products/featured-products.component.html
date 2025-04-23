@@ -6,7 +6,7 @@
     </div>
 
     <div class="products-grid">
-      <div class="product-item" *ngFor="let product of products">
+      <div class="product-item" *ngFor="let product of displayProducts">
         <app-product-card [product]="product"></app-product-card>
       </div>
     </div>

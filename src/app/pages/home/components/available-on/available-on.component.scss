@@ -23,11 +23,11 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   width: 180px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    
+
     .marketplace-icon {
       color: $primary-color;
     }
@@ -52,12 +52,76 @@
     width: 140px;
     padding: 15px;
   }
-  
+
   .marketplace-icon {
     font-size: 2.5rem;
   }
-  
+
   .marketplace-name {
     font-size: 1rem;
+  }
+}
+
+@import '../../../../../styles/variables';
+
+.marketplace-section {
+  padding: 4rem 0;
+  background-color: white;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .section-title {
+      color: $primary-color;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: $text-color;
+      font-size: 1.1rem;
+    }
+  }
+
+  .marketplace-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .marketplace-card {
+    text-decoration: none;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: $primary-color;
+    }
+
+    .card-content {
+      .marketplace-icon {
+        font-size: 2.5rem;
+        color: $primary-color;
+        margin-bottom: 1rem;
+      }
+
+      .marketplace-name {
+        color: $text-color;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .visit-text {
+        color: $primary-color;
+        font-weight: 500;
+      }
+    }
   }
 }
