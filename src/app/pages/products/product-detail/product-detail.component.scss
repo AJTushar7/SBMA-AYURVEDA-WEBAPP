@@ -1,8 +1,132 @@
 @import '../../../../styles/variables';
 
 .product-detail-page {
-  padding-top: 120px; // Space for fixed header
+  padding-top: 0;
   padding-bottom: 80px;
+  background: #fafafa;
+
+  .product-hero {
+    height: 400px;
+    background: linear-gradient(135deg, #1a472a, #2a6f41);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('/assets/images/pattern.png') repeat;
+      opacity: 0.1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        color: rgba(255,255,255,0.8);
+
+        a {
+          color: white;
+          text-decoration: none;
+          transition: color 0.3s;
+
+          &:hover {
+            color: rgba(255,255,255,0.8);
+          }
+        }
+      }
+    }
+  }
+
+  .product-main {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 40px;
+    margin-bottom: 40px;
+
+    .product-gallery {
+      position: relative;
+
+      .main-image {
+        border-radius: 15px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: auto;
+          transition: transform 0.5s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .product-info {
+      .product-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .product-price {
+        font-size: 2rem;
+        color: $primary-color;
+        margin-bottom: 2rem;
+      }
+
+      .product-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .btn-buy-now {
+        background: $primary-color;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
 }
 
 // Breadcrumb Navigation
@@ -216,7 +340,7 @@
         gap: 10px;
 
         &.btn-buy-now {
-          background-color: #25D366; // WhatsApp green color
+          background-color: #25D366; 
           border: none;
           color: white;
           transition: all 0.3s ease;
@@ -377,10 +501,10 @@
     border-bottom: 1px solid #ddd;
     margin-bottom: 30px;
     overflow-x: auto;
-    scrollbar-width: none; // For Firefox
+    scrollbar-width: none; 
 
     &::-webkit-scrollbar {
-      display: none; // For Chrome/Safari
+      display: none; 
     }
 
     .tab-button {
@@ -572,7 +696,7 @@
 
     .product-image {
       position: relative;
-      padding-top: 100%; // 1:1 Aspect ratio
+      padding-top: 100%; 
       overflow: hidden;
 
       img {
