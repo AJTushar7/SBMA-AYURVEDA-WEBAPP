@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faTimes, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFillDrip } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
@@ -46,6 +46,10 @@ export class HeaderComponent implements OnInit {
   closeIcon = faTimes;
   userIcon = faUser;
   menuIcon = faBars;
+  syrupIcon = faTint;
+  oilIcon = faLeaf;
+  powderIcon = faMortarPestle;
+  liquidIcon = faFillDrip;
 
   constructor(
     private router: Router,
@@ -55,6 +59,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // Initial check for scroll position
     this.checkScroll();
+    // Set default category
+    this.showCategoryProducts('Syrups');
     
     // Setup search suggestions debounce
     this.searchTerms.pipe(

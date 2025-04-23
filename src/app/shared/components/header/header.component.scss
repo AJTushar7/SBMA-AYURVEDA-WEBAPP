@@ -151,7 +151,7 @@ $light-green: #f0f5f1; // Light green background
   padding: 8px 0;
   background-color: #fff;
   overflow: visible;
-  
+
   @media (max-width: 768px) {
     top: 0;
     padding-top: 43px;
@@ -377,7 +377,7 @@ $light-green: #f0f5f1; // Light green background
 
       .featured-products {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr); /* Updated grid layout */
         gap: 15px;
 
         .featured-product {
@@ -397,6 +397,7 @@ $light-green: #f0f5f1; // Light green background
           }
 
           .featured-img {
+            position: relative;
             height: 100px;
             overflow: hidden;
 
@@ -405,6 +406,34 @@ $light-green: #f0f5f1; // Light green background
               height: 100%;
               object-fit: cover;
               transition: transform 0.5s ease;
+            }
+            .product-badges {
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+
+              .badge {
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                color: #fff;
+
+                &.bestseller {
+                  background-color: #ff6b6b;
+                }
+
+                &.featured {
+                  background-color: #4CAF50;
+                }
+
+                &.new {
+                  background-color: #2196F3;
+                }
+              }
             }
           }
 

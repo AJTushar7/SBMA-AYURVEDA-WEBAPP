@@ -144,6 +144,11 @@
                             [src]="product.imageUrl"
                             [alt]="product.name"
                           />
+                          <div class="product-badges">
+                            <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
+                            <span class="badge featured" *ngIf="product.featured">Featured</span>
+                            <span class="badge new" *ngIf="product.new">New</span>
+                          </div>
                         </div>
                         <div class="featured-info">
                           <h5>{{product.name}}</h5>
@@ -160,11 +165,15 @@
                       >
                         <div class="featured-img">
                           <img [src]="product.imageUrl" [alt]="product.name" />
+                          <div class="product-badges">
+                            <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
+                            <span class="badge featured" *ngIf="product.featured">Featured</span>
+                            <span class="badge new" *ngIf="product.new">New</span>
+                          </div>
                         </div>
                         <div class="featured-info">
                           <h5>{{product.name}}</h5>
                           <span class="featured-price">₹{{product.price}}</span>
-                          <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
                         </div>
                       </a>
                     </div>
