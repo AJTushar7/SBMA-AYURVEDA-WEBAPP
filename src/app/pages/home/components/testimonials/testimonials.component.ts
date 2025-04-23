@@ -1,11 +1,13 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { Testimonial } from '../../../../core/models/testimonial.model';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, FontAwesomeModule],
   templateUrl: './testimonials.component.html',
   styleUrls: ['./testimonials.component.scss']
 })
@@ -13,10 +15,9 @@ export class TestimonialsComponent implements OnInit {
   @Input() testimonials: Testimonial[] = [];
   activeSlide = 0;
   slidesPerView = 3;
-  
-  constructor() { }
-
   private autoScrollInterval: any;
+
+  constructor() { }
 
   ngOnInit(): void {
     this.updateSlidesPerView();
@@ -30,6 +31,7 @@ export class TestimonialsComponent implements OnInit {
     if (this.autoScrollInterval) {
       clearInterval(this.autoScrollInterval);
     }
+    window.removeEventListener('resize', () => this.updateSlidesPerView());
   }
 
   private startAutoScroll(): void {
@@ -37,7 +39,7 @@ export class TestimonialsComponent implements OnInit {
       this.nextSlide();
     }, 3000);
   }
-  
+
   updateSlidesPerView() {
     if (window.innerWidth < 768) {
       this.slidesPerView = 1;
@@ -47,24 +49,33 @@ export class TestimonialsComponent implements OnInit {
       this.slidesPerView = 3;
     }
   }
-  
+
   nextSlide() {
-    this.activeSlide = (this.activeSlide + 1) % (this.testimonials.length - this.slidesPerView + 1);
+    if (this.isValidSlideIndex(this.activeSlide + 1)) {
+      this.activeSlide++;
+    } else {
+      this.activeSlide = 0;
+    }
   }
-  
+
   prevSlide() {
-    this.activeSlide = (this.activeSlide - 1 + (this.testimonials.length - this.slidesPerView + 1)) % (this.testimonials.length - this.slidesPerView + 1);
+    if (this.isValidSlideIndex(this.activeSlide - 1)) {
+      this.activeSlide--;
+    } else {
+      this.activeSlide = this.testimonials.length - this.slidesPerView;
+    }
   }
-  
+
   setActiveSlide(index: number) {
-    this.activeSlide = index;
+    if (this.isValidSlideIndex(index)) {
+      this.activeSlide = index;
+    }
   }
-  
+
   isValidSlideIndex(index: number): boolean {
     return index >= 0 && index <= this.testimonials.length - this.slidesPerView;
   }
-  
-  // Generate an array of stars based on rating
+
   generateStars(rating: number): number[] {
     return Array(rating).fill(0);
   }

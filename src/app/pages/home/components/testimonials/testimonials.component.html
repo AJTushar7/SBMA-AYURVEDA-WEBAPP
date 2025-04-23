@@ -1,3 +1,4 @@
+
 <div class="testimonials-slider">
   <div class="slider-controls">
     <button class="slider-arrow prev" (click)="prevSlide()" [disabled]="!isValidSlideIndex(activeSlide - 1)">
@@ -21,12 +22,7 @@
           </div>
         </div>
         <div class="testimonial-content">
-            <div class="testimonial-images">
-              <img [src]="testimonial.customerImage" alt="Customer" class="customer-image" *ngIf="testimonial.customerImage">
-              <img [src]="testimonial.productImage" alt="Product" class="product-image" *ngIf="testimonial.productImage">
-            </div>
-            <p class="testimonial-text">"{{ testimonial.comment }}"</p>
-            
+          <p class="testimonial-text">"{{ testimonial.comment }}"</p>
         </div>
         <div class="testimonial-footer">
           <p class="testimonial-product" *ngIf="testimonial.productUsed">
