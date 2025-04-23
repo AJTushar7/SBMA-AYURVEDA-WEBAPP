@@ -17,14 +17,6 @@ $info-color: #17a2b8;
   @return color.adjust($color, $lightness: $amount);
 }
 
-@function darken-color($color, $amount) {
-  @return color.adjust($color, $lightness: -$amount);
-}
-
-@function lighten-color($color, $amount) {
-  @return color.adjust($color, $lightness: $amount);
-}
-
 // Breakpoints
 $breakpoint-xs: 576px;
 $breakpoint-sm: 768px;

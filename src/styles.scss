@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'styles/variables' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -96,10 +99,8 @@ body {
   animation: slideUp 0.8s ease forwards;
 }
 
-@use 'sass:color';
-@use 'styles/variables' as *;
+
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
@@ -141,7 +142,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: $text-color; /* Use variable from imported file */
+  color: $text-color; 
   background-color: #fff;
   overflow-x: hidden;
 }
@@ -156,7 +157,7 @@ button {
 }
 
 .btn-primary {
-  background-color: $primary-color; /* Use variable from imported file */
+  background-color: $primary-color; 
   color: #fff;
   padding: 10px 25px;
   border-radius: 4px;
@@ -173,15 +174,15 @@ button {
 
 .btn-outline {
   background-color: transparent;
-  color: $primary-color; /* Use variable from imported file */
+  color: $primary-color; 
   padding: 10px 25px;
   border-radius: 4px;
-  border: 2px solid $primary-color; /* Use variable from imported file */
+  border: 2px solid $primary-color; 
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: $primary-color; /* Use variable from imported file */
+    background-color: $primary-color; 
     color: #fff;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -189,7 +190,7 @@ button {
 }
 
 .bg-light {
-  background-color: $light-green; /* Use variable from imported file */
+  background-color: $light-green; 
 }
 
 .text-center {

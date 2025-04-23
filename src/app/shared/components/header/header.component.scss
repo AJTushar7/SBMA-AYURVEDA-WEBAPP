@@ -76,7 +76,7 @@ $light-green: #f0f5f1; // Light green background
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: color.adjust($primary-color, $lightness: -10%);
+      background-color: adjust-color-lightness($primary-color, -10%);
     }
   }
 
