@@ -88,8 +88,8 @@ export class HeaderComponent implements OnInit {
       event.preventDefault();
       event.stopPropagation();
     }
-    this.productService.searchProducts('').subscribe(products => {
-      this.popupProducts = products.filter(p => p.category === category);
+    this.productService.getProductsByCategory(category).subscribe(products => {
+      this.popupProducts = products;
       this.selectedCategory = category;
       this.isDropdownOpen = true;
     });
@@ -108,7 +108,11 @@ export class HeaderComponent implements OnInit {
     event.preventDefault();
     this.isDropdownOpen = false;
     setTimeout(() => {
-      this.router.navigate(['/products']);
+      if (this.selectedCategory) {
+        this.router.navigate(['/products'], { queryParams: { category: this.selectedCategory } });
+      } else {
+        this.router.navigate(['/products']);
+      }
     }, 300);
   }
   

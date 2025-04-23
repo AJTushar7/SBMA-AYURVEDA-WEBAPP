@@ -131,38 +131,23 @@
                     </div>
                   </div>
                   <div class="dropdown-column featured-column">
-                    <h4>Featured Products</h4>
+                    <h4>{{ selectedCategory || 'Featured' }} Products</h4>
                     <div class="featured-products">
                       <a
                         href="#"
-                        (click)="navigateToProduct(1, $event)"
+                        *ngFor="let product of popupProducts.slice(0, 4)"
+                        (click)="navigateToProduct(product.id, $event)"
                         class="featured-product"
                       >
                         <div class="featured-img">
                           <img
-                            src="assets/images/products/liver-shodhan-syrup.jpg"
-                            alt="Liver Shodhan Syrup"
+                            [src]="product.imageUrl"
+                            [alt]="product.name"
                           />
                         </div>
                         <div class="featured-info">
-                          <h5>Liver Shodhan Syrup</h5>
-                          <span class="featured-price">₹280</span>
-                        </div>
-                      </a>
-                      <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ search: 'Kesh Sudharak Oil' }"
-                        class="featured-product"
-                      >
-                        <div class="featured-img">
-                          <img
-                            src="assets/images/products/kesh-sudharak-oil.jpg"
-                            alt="Kesh Sudharak Oil"
-                          />
-                        </div>
-                        <div class="featured-info">
-                          <h5>Kesh Sudharak Oil</h5>
-                          <span class="featured-price">₹320</span>
+                          <h5>{{product.name}}</h5>
+                          <span class="featured-price">₹{{product.price}}</span>
                         </div>
                       </a>
                     </div>
