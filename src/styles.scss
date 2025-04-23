@@ -1,7 +1,7 @@
-@use 'sass:color';
-@use 'styles/variables' as *;
+@use "sass:color";
+@use "styles/variables" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
   --primary-color: #1a472a;
@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background: var(--light-bg);
@@ -68,16 +68,20 @@ body {
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      background-color: color.adjust(var(--primary-color), $lightness: -10%);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      background-color: rgba(26, 71, 42, 0.9); // Adjusted color manually
     }
   }
 }
 
 // Animations
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -99,11 +103,9 @@ body {
   animation: slideUp 0.8s ease forwards;
 }
 
-
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 // Global styles (This section remains largely from the original, minor adjustments made for consistency)
 .section {
@@ -139,10 +141,10 @@ body {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: $text-color; 
+  color: $text-color;
   background-color: #fff;
   overflow-x: hidden;
 }
@@ -153,11 +155,11 @@ img {
 }
 
 button {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .btn-primary {
-  background-color: $primary-color; 
+  background-color: $primary-color;
   color: #fff;
   padding: 10px 25px;
   border-radius: 4px;
@@ -174,15 +176,15 @@ button {
 
 .btn-outline {
   background-color: transparent;
-  color: $primary-color; 
+  color: $primary-color;
   padding: 10px 25px;
   border-radius: 4px;
-  border: 2px solid $primary-color; 
+  border: 2px solid $primary-color;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: $primary-color; 
+    background-color: $primary-color;
     color: #fff;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -190,7 +192,7 @@ button {
 }
 
 .bg-light {
-  background-color: $light-green; 
+  background-color: $light-green;
 }
 
 .text-center {
