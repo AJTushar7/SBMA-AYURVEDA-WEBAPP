@@ -16,11 +16,26 @@ export class TestimonialsComponent implements OnInit {
   
   constructor() { }
 
+  private autoScrollInterval: any;
+
   ngOnInit(): void {
     this.updateSlidesPerView();
     window.addEventListener('resize', () => {
       this.updateSlidesPerView();
     });
+    this.startAutoScroll();
+  }
+
+  ngOnDestroy(): void {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+    }
+  }
+
+  private startAutoScroll(): void {
+    this.autoScrollInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3000);
   }
   
   updateSlidesPerView() {

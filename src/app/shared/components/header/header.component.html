@@ -151,38 +151,20 @@
                         </div>
                       </a>
                     </div>
-                    <h4 class="mt-3">Top Sellers</h4>
                     <div class="featured-products">
                       <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ search: 'Rakt Shodhak Syrup' }"
+                        href="#"
+                        *ngFor="let product of popupProducts.slice(0, 4)"
+                        (click)="navigateToProduct(product.id, $event)"
                         class="featured-product"
                       >
                         <div class="featured-img">
-                          <img
-                            src="assets/images/products/rakt-shodhak-syrup.jpg"
-                            alt="Rakt Shodhak Syrup"
-                          />
+                          <img [src]="product.imageUrl" [alt]="product.name" />
                         </div>
                         <div class="featured-info">
-                          <h5>Rakt Shodhak Syrup</h5>
-                          <span class="featured-price">₹240</span>
-                        </div>
-                      </a>
-                      <a
-                        [routerLink]="['/products']"
-                        [queryParams]="{ search: 'Kidney Rakshak Syrup' }"
-                        class="featured-product"
-                      >
-                        <div class="featured-img">
-                          <img
-                            src="assets/images/products/kidney-rakshak-syrup.jpg"
-                            alt="Kidney Rakshak Syrup"
-                          />
-                        </div>
-                        <div class="featured-info">
-                          <h5>Kidney Rakshak Syrup</h5>
-                          <span class="featured-price">₹295</span>
+                          <h5>{{product.name}}</h5>
+                          <span class="featured-price">₹{{product.price}}</span>
+                          <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
                         </div>
                       </a>
                     </div>
