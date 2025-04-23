@@ -50,8 +50,8 @@
     z-index: 2;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    cursor: pointer; /* Added cursor style */
-    padding: 10px 15px; /* Added padding for better click target */
+    cursor: pointer;
+    padding: 10px 15px;
 
     &.prev {
       left: 20px;
@@ -80,29 +80,3 @@
     }
   }
 }
-
-<script>
-  const slider = document.querySelector('.hero-slider');
-  const slides = slider.querySelectorAll('.slide');
-  const prevButton = slider.querySelector('.nav-button.prev');
-  const nextButton = slider.querySelector('.nav-button.next');
-  let currentSlide = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    currentSlide = index;
-  }
-
-  nextButton.addEventListener('click', () => {
-    showSlide((currentSlide + 1) % slides.length);
-  });
-
-  prevButton.addEventListener('click', () => {
-    showSlide((currentSlide - 1 + slides.length) % slides.length);
-  });
-
-  showSlide(0); // Show the first slide initially
-
-</script>
