@@ -154,16 +154,17 @@ export class HeaderComponent implements OnInit {
   }
   
   performSearch() {
-    if (this.searchQuery.trim()) {
+    const trimmedQuery = this.searchQuery.trim().toLowerCase();
+    if (trimmedQuery) {
       this.router.navigate(['/products'], { 
-        queryParams: { search: this.searchQuery.trim() } 
+        queryParams: { search: trimmedQuery } 
       });
       this.closeSearchBar();
     }
   }
   
   onSearchKeyup() {
-    const term = this.searchQuery.trim();
+    const term = this.searchQuery.trim().toLowerCase();
     if (term.length >= 2) {
       this.searchTerms.next(term);
     } else {

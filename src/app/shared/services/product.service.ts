@@ -23,7 +23,7 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductService {
-  
+
   private products: Product[] = [
     {
       id: 1,
@@ -206,43 +206,43 @@ export class ProductService {
     const product = this.products.find(p => p.id === id);
     return of(product);
   }
-  
+
   getProductsByCategory(category: string): Observable<Product[]> {
     const filteredProducts = this.products.filter(p => p.category === category);
     return of(filteredProducts);
   }
-  
+
   getFeaturedProducts(): Observable<Product[]> {
     const featuredProducts = this.products.filter(p => p.featured);
     return of(featuredProducts);
   }
-  
+
   getBestSellerProducts(): Observable<Product[]> {
     const bestSellers = this.products.filter(p => p.bestSeller);
     return of(bestSellers);
   }
-  
+
   getNewProducts(): Observable<Product[]> {
     const newProducts = this.products.filter(p => p.new);
     return of(newProducts);
   }
-  
+
   searchProducts(query: string): Observable<Product[]> {
-    if (!query || query.trim() === '') {
+    const searchTerm = query.toLowerCase().trim();
+    if (!searchTerm) {
       return of(this.products);
     }
-    
-    const searchTerm = query.toLowerCase().trim();
+
     const results = this.products.filter(p => 
       p.name.toLowerCase().includes(searchTerm) || 
       p.description.toLowerCase().includes(searchTerm) ||
       p.category.toLowerCase().includes(searchTerm) ||
       p.shortDescription.toLowerCase().includes(searchTerm)
     );
-    
+
     return of(results);
   }
-  
+
   filterProducts(options: {
     category?: string,
     minPrice?: number,
@@ -252,31 +252,31 @@ export class ProductService {
     newProducts?: boolean
   }): Observable<Product[]> {
     let filtered = [...this.products];
-    
+
     if (options.category) {
       filtered = filtered.filter(p => p.category === options.category);
     }
-    
+
     if (options.minPrice !== undefined) {
       filtered = filtered.filter(p => p.price >= options.minPrice!);
     }
-    
+
     if (options.maxPrice !== undefined) {
       filtered = filtered.filter(p => p.price <= options.maxPrice!);
     }
-    
+
     if (options.featured) {
       filtered = filtered.filter(p => p.featured);
     }
-    
+
     if (options.bestSeller) {
       filtered = filtered.filter(p => p.bestSeller);
     }
-    
+
     if (options.newProducts) {
       filtered = filtered.filter(p => p.new);
     }
-    
+
     return of(filtered);
   }
 }
