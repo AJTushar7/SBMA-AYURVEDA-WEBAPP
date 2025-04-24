@@ -8,10 +8,13 @@
   background-color: $primary-color;
   color: #fff;
   height: 35px;
+  min-height: 35px;
+  max-height: 35px;
   display: flex;
   align-items: center;
   font-size: 0.9rem;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .announcement-content {
