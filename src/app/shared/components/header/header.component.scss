@@ -143,15 +143,15 @@ $light-green: #f0f5f1; // Light green background
 
 .header {
   position: fixed;
-  top: 0;
+  top: 35px; /* Adjusted top position */
   left: 0;
   width: 100%;
   z-index: 950;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
   padding: 15px 0;
   background-color: #fff;
-  overflow: visible;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 
   @media (max-width: 768px) {
     padding: 10px 0;
@@ -500,6 +500,7 @@ $light-green: #f0f5f1; // Light green background
     font-size: 1.2rem;
     margin-right: 15px;
     transition: color 0.3s ease;
+    display: none; /* Hidden in all views */
 
     &:hover {
       color: $primary-color;
@@ -514,6 +515,7 @@ $light-green: #f0f5f1; // Light green background
     font-weight: 500;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    display: none; /* Hidden in all views */
 
     &:hover {
       background-color: #195c3f; /* Darker version of primary color */
@@ -614,30 +616,6 @@ $light-green: #f0f5f1; // Light green background
     }
   }
 
-  .header-actions {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 15px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 999;
-
-    .action-link {
-      margin: 0;
-      font-size: 1.3rem;
-    }
-
-    .btn-primary {
-      margin: 0;
-      padding: 8px 20px;
-    }
-  }
-
   .header {
     background-color: #fff;
     padding: 10px 0;
@@ -646,5 +624,8 @@ $light-green: #f0f5f1; // Light green background
     .logo img {
       height: 35px;
     }
+  }
+  .header-actions {
+    display: none; /* Hide the bottom bar in mobile view */
   }
 }
