@@ -6,7 +6,7 @@
   height: 100vh;
   overflow: hidden;
   margin-bottom: 0;
-  background: #000;
+  background: transparent;
   padding-top: 35px; /* Height of announcement bar */
   z-index: 1;
 
@@ -19,8 +19,8 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    background: #000;
+    transition: all 0.8s ease-in-out;
+    background: transparent;
 
     &.active {
       opacity: 1;
