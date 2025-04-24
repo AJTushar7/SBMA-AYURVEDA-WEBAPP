@@ -578,6 +578,8 @@ $light-green: #f0f5f1; // Light green background
       margin: 10px 0;
       border-radius: 4px;
       background-color: #f8f9fa;
+      overflow: hidden;
+      max-height: none;
 
       &:before {
         display: none;
