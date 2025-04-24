@@ -49,7 +49,8 @@
         <img src="assets/icons/sbma-logo.svg" alt="SBMA Logo" />
       </div>
 
-      <div class="mobile-actions">  <!-- Added div for mobile actions -->
+      <div class="mobile-actions">
+        <!-- Added div for mobile actions -->
         <button class="mobile-search" (click)="toggleSearchBar()">
           <fa-icon [icon]="searchIcon"></fa-icon>
         </button>
@@ -61,10 +62,12 @@
       <nav class="navigation" [ngClass]="{ open: isMobileMenuOpen }">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link active">Home</a>
+            <a [routerLink]="['/']" class="nav-link active">Home</a>
           </li>
           <li class="nav-item">
-            <a (click)="handleNavigation('/about')" class="nav-link">About Us</a>
+            <a (click)="handleNavigation('/about')" class="nav-link"
+              >About Us</a
+            >
           </li>
           <li class="nav-item dropdown">
             <a [routerLink]="['/products']" class="nav-link">Products</a>
@@ -112,8 +115,11 @@
                         (click)="showCategoryProducts('Powders', $event)"
                         class="category-link"
                       >
-                        <div class="category-icon" title="Natural herbal powders">
-                          <i class="fas fa-mortar-pestle"></i>
+                        <div
+                          class="category-icon"
+                          title="Natural herbal powders"
+                        >
+                          <i class="fa fa-leaf"></i>
                         </div>
                         <div class="category-text">
                           <span>Powders</span>
@@ -125,8 +131,11 @@
                         (click)="showCategoryProducts('Liquids', $event)"
                         class="category-link"
                       >
-                        <div class="category-icon" title="Traditional liquid formulations">
-                          <i class="fas fa-flask"></i>
+                        <div
+                          class="category-icon"
+                          title="Traditional liquid formulations"
+                        >
+                          <i class="fa-solid fa-flask"></i>
                         </div>
                         <div class="category-text">
                           <span>Liquids</span>
@@ -136,7 +145,7 @@
                     </div>
                   </div>
                   <div class="dropdown-column featured-column">
-                    <h4>{{ selectedCategory || 'Featured' }} Products</h4>
+                    <h4>{{ selectedCategory || "Featured" }} Products</h4>
                     <div class="featured-products">
                       <a
                         href="#"
@@ -145,19 +154,28 @@
                         class="featured-product"
                       >
                         <div class="featured-img">
-                          <img
-                            [src]="product.imageUrl"
-                            [alt]="product.name"
-                          />
+                          <img [src]="product.imageUrl" [alt]="product.name" />
                           <div class="product-badges">
-                            <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
-                            <span class="badge featured" *ngIf="product.featured">Featured</span>
-                            <span class="badge new" *ngIf="product.new">New</span>
+                            <span
+                              class="badge bestseller"
+                              *ngIf="product.bestSeller"
+                              >Best Seller</span
+                            >
+                            <span
+                              class="badge featured"
+                              *ngIf="product.featured"
+                              >Featured</span
+                            >
+                            <span class="badge new" *ngIf="product.new"
+                              >New</span
+                            >
                           </div>
                         </div>
                         <div class="featured-info">
-                          <h5>{{product.name}}</h5>
-                          <span class="featured-price">₹{{product.price}}</span>
+                          <h5>{{ product.name }}</h5>
+                          <span class="featured-price"
+                            >₹{{ product.price }}</span
+                          >
                         </div>
                       </a>
                     </div>
@@ -171,21 +189,37 @@
                         <div class="featured-img">
                           <img [src]="product.imageUrl" [alt]="product.name" />
                           <div class="product-badges">
-                            <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
-                            <span class="badge featured" *ngIf="product.featured">Featured</span>
-                            <span class="badge new" *ngIf="product.new">New</span>
+                            <span
+                              class="badge bestseller"
+                              *ngIf="product.bestSeller"
+                              >Best Seller</span
+                            >
+                            <span
+                              class="badge featured"
+                              *ngIf="product.featured"
+                              >Featured</span
+                            >
+                            <span class="badge new" *ngIf="product.new"
+                              >New</span
+                            >
                           </div>
                         </div>
                         <div class="featured-info">
-                          <h5>{{product.name}}</h5>
-                          <span class="featured-price">₹{{product.price}}</span>
+                          <h5>{{ product.name }}</h5>
+                          <span class="featured-price"
+                            >₹{{ product.price }}</span
+                          >
                         </div>
                       </a>
                     </div>
                   </div>
                 </div>
                 <div class="dropdown-footer">
-                  <a href="#" class="view-all-btn" (click)="viewAllProducts($event)">
+                  <a
+                    href="#"
+                    class="view-all-btn"
+                    (click)="viewAllProducts($event)"
+                  >
                     View All Products <i class="fa fa-arrow-right"></i>
                   </a>
                 </div>
@@ -195,9 +229,7 @@
           <li class="nav-item">
             <a href="#testimonials" class="nav-link">Testimonials</a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Blog</a>
-          </li>
+
           <li class="nav-item">
             <a href="#footer" class="nav-link">Contact Us</a>
           </li>

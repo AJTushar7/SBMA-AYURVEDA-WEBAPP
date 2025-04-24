@@ -11,7 +11,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 })
 export class WhatsappIconComponent {
   whatsappIcon = faWhatsapp;
-  whatsappNumber = "9999004423";
+  whatsappNumber = "919999004423";
 
   openWhatsapp(): void {
     const url = `https://wa.me/${this.whatsappNumber}?text=Hello%20SBMA%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products.`;

@@ -1,13 +1,13 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 .home-page {
   padding-top: 0;
 }
 
 .section {
-  padding: 80px 0;
+  padding: 110px 0;
   position: relative;
-  
+
   &.bg-light {
     background-color: $light-green;
   }
@@ -25,9 +25,9 @@
   margin-bottom: 15px;
   position: relative;
   display: inline-block;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 60px;
     height: 3px;
@@ -48,11 +48,11 @@
   .section {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
   }

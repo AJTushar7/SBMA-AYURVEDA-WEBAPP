@@ -1,7 +1,7 @@
-@import '../../../../styles/variables';
+@import "../../../../styles/variables";
 
 .product-detail-page {
-  padding: 80px 0;
+  padding: 110px 0;
   background: #fafafa;
 
   .breadcrumb-nav {
@@ -39,7 +39,7 @@
   .product-main {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     padding: 40px;
     margin-bottom: 40px;
 
@@ -75,12 +75,12 @@
           font-weight: 600;
 
           &.featured {
-            background: #FFD700;
+            background: #ffd700;
             color: #000;
           }
 
           &.bestseller {
-            background: #FF4E4E;
+            background: #ff4e4e;
             color: #fff;
           }
 
@@ -111,7 +111,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
           &:hover {
             transform: translateY(-2px);
@@ -204,7 +204,7 @@
           padding: 15px;
           border: none;
           border-radius: 8px;
-          background: #25D366;
+          background: #25d366;
           color: white;
           font-size: 1.1rem;
           font-weight: 600;
@@ -227,7 +227,7 @@
   .product-details {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 40px;
 
     .product-tabs {
@@ -247,7 +247,7 @@
         position: relative;
 
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: -1px;
           left: 0;
@@ -294,7 +294,7 @@
             position: relative;
 
             &:before {
-              content: '→';
+              content: "→";
               position: absolute;
               left: 0;
               color: $primary-color;
@@ -563,7 +563,7 @@
         gap: 10px;
 
         &.btn-buy-now {
-          background-color: #25D366;
+          background-color: #25d366;
           border: none;
           color: white;
           transition: all 0.3s ease;
@@ -573,7 +573,7 @@
           }
 
           &:hover {
-            background-color: darken(#25D366, 5%);
+            background-color: darken(#25d366, 5%);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           }
@@ -663,8 +663,6 @@
         }
       }
     }
-
-
   }
 }
 
@@ -694,7 +692,7 @@
       white-space: nowrap;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -1px;
         left: 0;
@@ -786,7 +784,7 @@
         padding-left: 25px;
 
         &::before {
-          content: '✓';
+          content: "✓";
           color: $primary-color;
           position: absolute;
           left: 0;
