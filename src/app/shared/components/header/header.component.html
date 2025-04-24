@@ -49,9 +49,14 @@
         <img src="assets/icons/sbma-logo.svg" alt="SBMA Logo" />
       </div>
 
-      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
-        <fa-icon [icon]="isMobileMenuOpen ? closeIcon : menuIcon"></fa-icon>
-      </button>
+      <div class="mobile-actions">  <!-- Added div for mobile actions -->
+        <button class="mobile-search" (click)="toggleSearchBar()">
+          <fa-icon [icon]="searchIcon"></fa-icon>
+        </button>
+        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+          <fa-icon [icon]="isMobileMenuOpen ? closeIcon : menuIcon"></fa-icon>
+        </button>
+      </div>
 
       <nav class="navigation" [ngClass]="{ open: isMobileMenuOpen }">
         <ul class="nav-list">
