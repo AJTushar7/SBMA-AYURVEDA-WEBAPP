@@ -807,20 +807,11 @@
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 30px;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background-color: $primary-color;
-    }
   }
 
   .product-card {
+    max-width: 260px;
+    margin: 0 auto;
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
