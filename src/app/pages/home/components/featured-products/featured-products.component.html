@@ -1,14 +1,36 @@
-<section class="featured-products">
+
+<div class="featured-products">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Featured Products</h2>
-      <h3 class="section-subtitle">Discover our most popular Ayurvedic formulations</h3>
+      <span class="section-tag">Featured Collection</span>
+      <h2 class="section-title">Our Most Popular Products</h2>
+      <div class="section-description">
+        <p>Discover our handpicked selection of premium Ayurvedic formulations</p>
+      </div>
     </div>
 
     <div class="products-grid">
-      <div class="product-item" *ngFor="let product of displayProducts" [routerLink]="['/products', product.id]" style="cursor: pointer">
-        <app-product-card [product]="product"></app-product-card>
+      <div class="product-item" *ngFor="let product of displayProducts" [routerLink]="['/products', product.id]">
+        <div class="product-card">
+          <div class="product-image">
+            <img [src]="product.imageUrl" [alt]="product.name">
+            <div class="product-overlay">
+              <div class="overlay-content">
+                <span class="view-details">View Details</span>
+              </div>
+            </div>
+            <div class="product-badge" *ngIf="product.tag">{{product.tag}}</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">{{product.name}}</h3>
+            <p class="product-category">{{product.category}}</p>
+            <div class="product-price">
+              <span class="current-price" *ngIf="product.discountPrice">₹{{product.discountPrice}}</span>
+              <span class="original-price" [class.has-discount]="product.discountPrice">₹{{product.price}}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
