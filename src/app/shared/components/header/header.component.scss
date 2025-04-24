@@ -148,8 +148,9 @@ $light-green: #f0f5f1; // Light green background
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   .mobile-menu-toggle {
     display: block;
@@ -209,9 +210,15 @@ $light-green: #f0f5f1; // Light green background
 
 .logo {
   cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+  border-radius: 4px;
 
   img {
     height: 40px;
+    display: block;
   }
 }
 
@@ -559,7 +566,7 @@ $light-green: #f0f5f1; // Light green background
     display: block;
   }
 
-  .navigation, .header-actions {
+  .navigation {
     position: fixed;
     top: 70px;
     left: 0;
@@ -568,6 +575,7 @@ $light-green: #f0f5f1; // Light green background
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
