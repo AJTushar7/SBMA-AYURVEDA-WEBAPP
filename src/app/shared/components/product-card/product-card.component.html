@@ -9,7 +9,20 @@
   </div>
 
   <div class="product-info">
-    <h3 class="product-name" [routerLink]="['/products', product.id]">{{ product.name }}</h3>
+    <div class="product-header">
+      <h3 class="product-name" [routerLink]="['/products', product.id]">{{ product.name }}</h3>
+      <div class="share-icons">
+        <button class="share-btn" (click)="shareProduct('facebook')" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </button>
+        <button class="share-btn" (click)="shareProduct('twitter')" title="Share on Twitter">
+          <i class="fa fa-twitter"></i>
+        </button>
+        <button class="share-btn" (click)="shareProduct('whatsapp')" title="Share on WhatsApp">
+          <i class="fa fa-whatsapp"></i>
+        </button>
+      </div>
+    </div>
     <p class="product-category">{{ product.category }}</p>
     <p class="product-description">{{ product.description }}</p>
 
