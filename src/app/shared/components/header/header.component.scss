@@ -148,9 +148,6 @@ $light-green: #f0f5f1; // Light green background
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   .mobile-menu-toggle {
     display: block;
@@ -210,15 +207,9 @@ $light-green: #f0f5f1; // Light green background
 
 .logo {
   cursor: pointer;
-  position: relative;
-  z-index: 1001;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 5px;
-  border-radius: 4px;
 
   img {
     height: 40px;
-    display: block;
   }
 }
 
@@ -278,9 +269,6 @@ $light-green: #f0f5f1; // Light green background
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
-    min-width: 800px;
-    left: calc(50% - 400px); /* Center the dropdown without transform */
-    transform: none;
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     opacity: 0;
@@ -566,22 +554,18 @@ $light-green: #f0f5f1; // Light green background
     display: block;
   }
 
-  .navigation {
+  .navigation, .header-actions {
     position: fixed;
     top: 70px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 70px);
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
 
     &.open {
       opacity: 1;
@@ -593,18 +577,10 @@ $light-green: #f0f5f1; // Light green background
   .navigation {
     .nav-list {
       flex-direction: column;
-      padding-bottom: 80px;
     }
 
     .nav-item {
-      margin: 10px 0;
-      width: 100%;
-
-      .nav-link {
-        display: block;
-        padding: 12px 15px;
-        font-size: 16px;
-      }
+      margin: 5px 0;
     }
 
     .dropdown-menu {
@@ -613,67 +589,25 @@ $light-green: #f0f5f1; // Light green background
       visibility: visible;
       transform: none;
       box-shadow: none;
-      min-width: 100%;
-      width: 100%;
-      padding: 0;
-      margin: 10px 0;
-      max-height: none;
-      overflow: visible;
+      min-width: auto;
+      padding: 10px;
+      margin-left: 20px;
+      border-left: 2px solid #f0f5f1; /* Light green */
     }
 
     .dropdown-content {
-      width: 100%;
-      padding: 0;
+      flex-direction: column;
+    }
 
-      .dropdown-header {
-        padding: 15px;
-        text-align: left;
-        border-radius: 8px 8px 0 0;
+    .dropdown-column {
+      padding: 5px 0;
+
+      h4 {
+        margin-bottom: 5px;
       }
 
-      .dropdown-columns {
-        flex-direction: column;
-        padding: 15px;
-        gap: 20px;
-      }
-
-      .dropdown-column {
-        width: 100%;
-        padding: 0;
-
-        &.category-column {
-          border-right: none;
-          border-bottom: 1px solid #eee;
-          padding-bottom: 20px;
-        }
-
-        .category-links {
-          .category-link {
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-          }
-        }
-
-        .featured-products {
-          grid-template-columns: 1fr;
-          gap: 10px;
-
-          .featured-product {
-            margin: 5px 0;
-
-            .featured-img {
-              height: 120px;
-            }
-          }
-        }
-      }
-
-      .dropdown-footer {
-        padding: 15px;
-        margin-top: 10px;
-        border-radius: 0 0 8px 8px;
+      a {
+        padding: 3px 0;
       }
     }
   }
@@ -681,21 +615,12 @@ $light-green: #f0f5f1; // Light green background
   .header-actions {
     top: auto;
     bottom: 0;
-    height: auto;
     display: flex;
     justify-content: space-around;
     padding: 15px;
-    background-color: #fff;
-    border-top: 1px solid #eee;
 
     .action-link {
       margin: 0;
-      padding: 10px;
-      font-size: 20px;
-    }
-
-    .btn-primary {
-      padding: 10px 20px;
     }
   }
 }
