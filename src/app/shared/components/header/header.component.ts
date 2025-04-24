@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFillDrip } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFillDrip, faFlask } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
