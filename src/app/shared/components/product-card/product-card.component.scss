@@ -3,32 +3,24 @@ $primary-color: #1e704d; // Dark green
 $text-color: #333333; // Text color
 
 .product-card {
-  background: white;
-  border-radius: 8px;
+  background-color: #fff;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  width: 100%;
-  margin-bottom: 20px;
-
-  @media (min-width: 576px) {
-    width: calc(50% - 20px);
-    margin: 10px;
-  }
-
-  @media (min-width: 992px) {
-    width: calc(33.333% - 20px);
-  }
-
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-
+    
     .product-actions {
       opacity: 1;
       visibility: visible;
     }
-
+    
     .product-image img {
       transform: scale(1.05);
     }
@@ -39,7 +31,7 @@ $text-color: #333333; // Text color
   position: relative;
   padding-top: 100%;
   overflow: hidden;
-
+  
   img {
     position: absolute;
     top: 0;
@@ -49,7 +41,7 @@ $text-color: #333333; // Text color
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-
+  
   .product-tag {
     position: absolute;
     top: 10px;
@@ -63,7 +55,7 @@ $text-color: #333333; // Text color
     text-transform: uppercase;
     z-index: 1;
   }
-
+  
   .product-actions {
     position: absolute;
     top: 50%;
@@ -75,7 +67,7 @@ $text-color: #333333; // Text color
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 1;
-
+    
     .action-btn {
       width: 40px;
       height: 40px;
@@ -88,7 +80,7 @@ $text-color: #333333; // Text color
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
-
+      
       &:hover {
         background-color: $primary-color;
         color: #fff;
@@ -130,24 +122,24 @@ $text-color: #333333; // Text color
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-
+  
   .current-price {
     font-size: 1.2rem;
     font-weight: 600;
     color: $primary-color;
     margin-right: 10px;
   }
-
+  
   .original-price {
     font-size: 1rem;
     color: $text-color;
-
+    
     &.has-discount {
       text-decoration: line-through;
       color: #8c8c8c; /* Lighter version of text color */
     }
   }
-
+  
   .discount-percentage {
     margin-left: auto;
     background-color: #a9e0c1; /* Lighter version of primary color */
@@ -169,7 +161,7 @@ $text-color: #333333; // Text color
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
+  
   &:hover {
     background-color: #195c3f; /* Darker version of primary color */
   }
