@@ -8,6 +8,7 @@
   margin-bottom: 0;
   background: #000;
   padding-top: 35px; /* Height of announcement bar */
+  z-index: 1;
 
   @media (max-width: 768px) {
     padding-top: 70px;

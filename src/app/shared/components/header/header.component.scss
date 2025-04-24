@@ -146,8 +146,8 @@ $light-green: #f0f5f1; // Light green background
   top: 35px; /* Adjusted top position */
   left: 0;
   width: 100%;
-  z-index: 1050;
-  transition: background-color 0.3s ease;
+  z-index: 998;
+  transition: all 0.3s ease;
   padding: 15px 0;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
