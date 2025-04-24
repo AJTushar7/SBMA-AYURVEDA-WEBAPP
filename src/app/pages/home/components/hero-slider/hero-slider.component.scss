@@ -85,7 +85,9 @@
       }
 
       a {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 15px 40px;
         background: $primary-color;
         color: white;
@@ -97,12 +99,7 @@
         transform: translateY(20px);
         transition: all 0.8s ease 0.7s;
         border: 2px solid transparent;
-
-        &:hover {
-          background: transparent;
-          border-color: white;
-          transform: translateY(-2px);
-        }
+        min-width: 180px;
       }
     }
 

@@ -73,10 +73,10 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   }
   
   loadRelatedProducts(category: string): void {
-    this.productService.getProductsByCategory(category).subscribe(products => {
+    this.productService.getAllProducts().subscribe(products => {
       // Filter out the current product and get up to 3 related products
       this.relatedProducts = products
-        .filter(p => p.id !== this.product?.id)
+        .filter(p => p.category === category && p.id !== this.product?.id)
         .slice(0, 3);
     });
   }
