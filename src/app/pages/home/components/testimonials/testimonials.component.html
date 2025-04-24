@@ -16,12 +16,12 @@
               <img [src]="'assets/images/IMG-20250327-WA00' + ((testimonial.id + 5) % 23 + 6) + '.jpg'" [alt]="testimonial.name" class="profile-image">
             </div>
             <div class="testimonial-content-header">
-              <div class="testimonial-rating">
-                <i class="fa fa-star" *ngFor="let star of generateStars(testimonial.rating)"></i>
-              </div>
               <div class="testimonial-info">
                 <h4 class="testimonial-name">{{ testimonial.name }}</h4>
                 <p class="testimonial-location">{{ testimonial.location }}</p>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa fa-star" *ngFor="let star of generateStars(testimonial.rating)"></i>
               </div>
             </div>
           </div>
