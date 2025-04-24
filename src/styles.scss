@@ -149,6 +149,8 @@ body {
   color: $text-color;
   background-color: #fff;
   overflow-x: hidden;
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
 }
 
 .container {
