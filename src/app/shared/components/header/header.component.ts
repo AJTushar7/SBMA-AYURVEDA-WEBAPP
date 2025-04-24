@@ -89,6 +89,11 @@ export class HeaderComponent implements OnInit {
     this.closeMobileMenu();
   }
 
+  handleNavigation(path: string) {
+    this.router.navigate([path]);
+    this.closeMobileMenu();
+  }
+
   showCategoryProducts(category: string, event?: Event) {
     if (event) {
       event.preventDefault();
