@@ -3,16 +3,26 @@
 
 <div class="product-detail-page" *ngIf="product">
   <div class="container">
-    <div class="breadcrumb-nav">
-      <a routerLink="/products" class="back-link">
-        <fa-icon [icon]="backIcon"></fa-icon> Back to Products
-      </a>
-    </div>
-
     <div class="product-main">
       <div class="row">
         <div class="col-md-6">
+          <div class="breadcrumb-nav">
+            <a routerLink="/products" class="back-link">
+              <fa-icon [icon]="backIcon"></fa-icon> Back to Products
+            </a>
+          </div>
           <div class="product-gallery">
+            <div class="share-buttons">
+              <button (click)="shareOnSocial('facebook')">
+                <i class="fa fa-facebook"></i>
+              </button>
+              <button (click)="shareOnSocial('twitter')">
+                <i class="fa fa-twitter"></i>
+              </button>
+              <button (click)="shareOnSocial('whatsapp')">
+                <i class="fa fa-whatsapp"></i>
+              </button>
+            </div>
             <div class="main-image">
               <img [src]="product.imageUrl" [alt]="product.name">
             </div>
@@ -66,20 +76,7 @@
               </div>
             </div>
 
-            <div class="social-share">
-              <span>Share:</span>
-              <div class="share-buttons">
-                <button (click)="shareOnSocial('facebook')">
-                  <i class="fa fa-facebook"></i>
-                </button>
-                <button (click)="shareOnSocial('twitter')">
-                  <i class="fa fa-twitter"></i>
-                </button>
-                <button (click)="shareOnSocial('whatsapp')">
-                  <i class="fa fa-whatsapp"></i>
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

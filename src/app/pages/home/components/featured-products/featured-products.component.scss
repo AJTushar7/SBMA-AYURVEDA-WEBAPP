@@ -129,11 +129,13 @@
       .product-badge {
         background: $primary-color;
         color: white;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.7rem;
         font-weight: 500;
         text-transform: uppercase;
+        min-width: fit-content;
+        text-align: center;
       }
     }
   }
