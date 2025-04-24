@@ -7,9 +7,11 @@
   width: 100%;
   background-color: $primary-color;
   color: #fff;
-  padding: 8px 0;
+  height: 35px;
+  display: flex;
+  align-items: center;
   font-size: 0.9rem;
-  z-index: 1000; /* Higher than header */
+  z-index: 1000;
 }
 
 .announcement-content {

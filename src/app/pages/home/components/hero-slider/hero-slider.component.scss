@@ -6,11 +6,10 @@
   height: 100vh;
   overflow: hidden;
   margin-bottom: 0;
-  background: #000;
-  padding-top: 35px; /* Height of announcement bar */
+  padding-top: 105px; /* Height of announcement bar + header */
 
   @media (max-width: 768px) {
-    padding-top: 70px;
+    padding-top: 120px;
   }
 
   .slide {
