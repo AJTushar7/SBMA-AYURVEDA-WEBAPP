@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   syrupIcon = faTint;
   oilIcon = faLeaf;
   powderIcon = faMortarPestle;
-  liquidIcon = faFillDrip;
+  liquidIcon = faFlask;
 
   constructor(
     private router: Router,
