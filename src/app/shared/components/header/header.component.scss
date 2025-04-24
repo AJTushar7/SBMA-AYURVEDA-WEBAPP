@@ -559,6 +559,7 @@ $light-green: #f0f5f1; // Light green background
     top: 70px;
     left: 0;
     width: 100%;
+    height: calc(100vh - 70px);
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -566,6 +567,8 @@ $light-green: #f0f5f1; // Light green background
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     &.open {
       opacity: 1;
@@ -577,10 +580,18 @@ $light-green: #f0f5f1; // Light green background
   .navigation {
     .nav-list {
       flex-direction: column;
+      padding-bottom: 80px;
     }
 
     .nav-item {
-      margin: 5px 0;
+      margin: 10px 0;
+      width: 100%;
+
+      .nav-link {
+        display: block;
+        padding: 12px 15px;
+        font-size: 16px;
+      }
     }
 
     .dropdown-menu {
@@ -589,25 +600,67 @@ $light-green: #f0f5f1; // Light green background
       visibility: visible;
       transform: none;
       box-shadow: none;
-      min-width: auto;
-      padding: 10px;
-      margin-left: 20px;
-      border-left: 2px solid #f0f5f1; /* Light green */
+      min-width: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 10px 0;
+      max-height: none;
+      overflow: visible;
     }
 
     .dropdown-content {
-      flex-direction: column;
-    }
+      width: 100%;
+      padding: 0;
 
-    .dropdown-column {
-      padding: 5px 0;
-
-      h4 {
-        margin-bottom: 5px;
+      .dropdown-header {
+        padding: 15px;
+        text-align: left;
+        border-radius: 8px 8px 0 0;
       }
 
-      a {
-        padding: 3px 0;
+      .dropdown-columns {
+        flex-direction: column;
+        padding: 15px;
+        gap: 20px;
+      }
+
+      .dropdown-column {
+        width: 100%;
+        padding: 0;
+
+        &.category-column {
+          border-right: none;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 20px;
+        }
+
+        .category-links {
+          .category-link {
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+          }
+        }
+
+        .featured-products {
+          grid-template-columns: 1fr;
+          gap: 10px;
+
+          .featured-product {
+            margin: 5px 0;
+
+            .featured-img {
+              height: 120px;
+            }
+          }
+        }
+      }
+
+      .dropdown-footer {
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 0 0 8px 8px;
       }
     }
   }
@@ -615,12 +668,21 @@ $light-green: #f0f5f1; // Light green background
   .header-actions {
     top: auto;
     bottom: 0;
+    height: auto;
     display: flex;
     justify-content: space-around;
     padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
 
     .action-link {
       margin: 0;
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
     }
   }
 }
