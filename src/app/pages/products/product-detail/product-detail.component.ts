@@ -50,6 +50,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   ) {}
   
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.loadProduct();
   }
   
