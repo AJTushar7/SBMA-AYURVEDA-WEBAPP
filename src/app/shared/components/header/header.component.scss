@@ -148,6 +148,8 @@ $light-green: #f0f5f1; // Light green background
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
 
   .mobile-menu-toggle {
     display: block;
@@ -269,6 +271,9 @@ $light-green: #f0f5f1; // Light green background
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
+    min-width: 800px;
+    left: calc(50% - 400px); /* Center the dropdown without transform */
+    transform: none;
     border-radius: 8px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     opacity: 0;
