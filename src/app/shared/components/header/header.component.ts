@@ -40,6 +40,14 @@ export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   selectedCategory = '';
   popupProducts: any[] = [];
+  currentPlaceholderIndex = 0;
+  placeholders = [
+    'Search for Liver Shodhan Syrup...',
+    'Try Kesh Sudharak Hair Oil...',
+    'Looking for Rakt Shodhak Syrup?',
+    'Find Kidney Rakshak Syrup...',
+    'Search D.L.K. Liquid...'
+  ];
   
   // Font Awesome icons
   searchIcon = faSearch;
@@ -69,6 +77,11 @@ export class HeaderComponent implements OnInit {
     ).subscribe(term => {
       this.getSuggestions(term);
     });
+
+    // Rotate placeholders
+    setInterval(() => {
+      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+    }, 3000);
   }
 
   @HostListener('window:scroll', [])

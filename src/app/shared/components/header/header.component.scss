@@ -537,7 +537,8 @@ $light-green: #f0f5f1; // Light green background
     font-size: 1.2rem;
     margin-right: 15px;
     transition: color 0.3s ease;
-    display: none; /* Hidden in all views */
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: $primary-color;
