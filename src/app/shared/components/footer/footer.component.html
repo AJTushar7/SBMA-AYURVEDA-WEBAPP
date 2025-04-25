@@ -32,12 +32,12 @@
       <div class="footer-col">
         <h4 class="footer-title">Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#products">Our Products</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#footer">Contact Us</a></li>
+          <li><a [routerLink]="['/']">Home</a></li>
+          <li><a [routerLink]="['/about']">About Us</a></li>
+          <li><a [routerLink]="['/products']">Our Products</a></li>
+          <li><a [routerLink]="['/']" [fragment]="'testimonials'">Testimonials</a></li>
+          <li><a [routerLink]="['/blog']">Blog</a></li>
+          <li><a [routerLink]="['/']" [fragment]="'footer'">Contact Us</a></li>
         </ul>
       </div>
 

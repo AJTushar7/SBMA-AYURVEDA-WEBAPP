@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -21,15 +22,16 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
-  }
   constructor(
     private router: Router,
     private titleService: Title
   ) {
+    // Handle scroll to top on page refresh
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
+
+    // Handle title updates on navigation
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
