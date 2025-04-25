@@ -60,6 +60,24 @@
                 <button class="qty-btn" (click)="increaseQuantity()">+</button>
               </div>
 
+              <div class="promo-code-section">
+                <input 
+                  type="text" 
+                  [(ngModel)]="promoCode" 
+                  placeholder="Enter promo code"
+                  class="promo-input"
+                >
+                <button (click)="applyPromoCode()" class="apply-btn">Apply</button>
+              </div>
+
+              <div class="price-breakdown" *ngIf="discount > 0">
+                <p>Subtotal: ₹{{ product.price * quantity }}</p>
+                <p>Discount: -₹{{ discount }}</p>
+                <p class="final-price">Final Price: ₹{{ getFinalPrice() }}</p>
+              </div>
+            </div>
+
+            <div class="product-actions">
               <button class="btn-buy-now" (click)="buyNowViaWhatsApp()">
                 <i class="fa fa-whatsapp"></i> Buy Now via WhatsApp
               </button>
@@ -76,7 +94,7 @@
               </div>
             </div>
 
-            
+
           </div>
         </div>
       </div>

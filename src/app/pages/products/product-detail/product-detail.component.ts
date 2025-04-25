@@ -48,8 +48,36 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   activeTab: "description" | "benefits" | "ingredients" | "usage" =
     "description";
   quantity: number = 1;
+  promoCode: string = '';
+  discount: number = 0;
+  availablePromoCodes = [
+    { code: 'WELCOME10', type: 'percent', value: 10 },
+    { code: 'FLAT500', type: 'price', value: 500 },
+    { code: 'AYURVEDA15', type: 'percent', value: 15 }
+  ];
 
   @ViewChild("zoomImage") zoomImage?: ElementRef;
+
+  applyPromoCode() {
+    const promoCode = this.availablePromoCodes.find(
+      p => p.code === this.promoCode.toUpperCase()
+    );
+    
+    if (promoCode) {
+      if (promoCode.type === 'percent') {
+        this.discount = (this.product!.price * this.quantity * promoCode.value) / 100;
+      } else {
+        this.discount = Math.min(promoCode.value, this.product!.price * this.quantity);
+      }
+    } else {
+      this.discount = 0;
+    }
+  }
+
+  getFinalPrice(): number {
+    if (!this.product) return 0;
+    return (this.product.price * this.quantity) - this.discount;
+  }
   @ViewChild("zoomLens") zoomLens?: ElementRef;
   @ViewChild("zoomResult") zoomResult?: ElementRef;
 

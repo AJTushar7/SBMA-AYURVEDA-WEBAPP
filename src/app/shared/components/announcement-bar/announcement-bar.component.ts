@@ -14,12 +14,29 @@ export class AnnouncementBarComponent {
   
   currentAnnouncementIndex = 0;
   
+  private rotationInterval: any;
+  isMobile = window.innerWidth < 768;
+
   constructor() {
-    this.startRotation();
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth < 768;
+      this.handleRotation();
+    });
+    this.handleRotation();
+  }
+
+  handleRotation() {
+    if (this.rotationInterval) {
+      clearInterval(this.rotationInterval);
+    }
+    
+    if (!this.isMobile) {
+      this.startRotation();
+    }
   }
   
   startRotation() {
-    setInterval(() => {
+    this.rotationInterval = setInterval(() => {
       this.currentAnnouncementIndex = (this.currentAnnouncementIndex + 1) % this.announcements.length;
     }, 5000);
   }
