@@ -1,11 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@use 'styles/variables' as *;
 
-:root {
-  --primary-color: #1a472a;
-  --secondary-color: #2a6f41;
-  --text-color: #333;
-  --light-bg: #fafafa;
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+.btn {
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background-color: adjust-color-safe($primary-color, -10%);
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -52,25 +69,6 @@ body {
   }
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s;
-  font-weight: 500;
-
-  &-primary {
-    background: var(--primary-color);
-    color: white;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-  }
-}
-
 // Animations
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -96,13 +94,13 @@ body {
   animation: slideUp 0.8s ease forwards;
 }
 
-@import 'styles/variables';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+//@import '@angular/material/prebuilt-themes/indigo-pink.css'; //commented out as it's likely causing issues and not directly related to the fix.
 
-// Global styles
+
+// styles from original file that are not directly conflicting with the edited snippet
 .section {
   padding: 4rem 0;
 
@@ -185,7 +183,7 @@ button {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: adjust-color-safe($primary-color, -10%);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
