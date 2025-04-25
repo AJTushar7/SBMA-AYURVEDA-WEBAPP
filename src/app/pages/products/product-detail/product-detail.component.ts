@@ -21,6 +21,7 @@ import {
   ProductService,
   Product,
 } from "../../../shared/services/product.service";
+import { FormsModule } from '@angular/forms'; // Added import
 
 @Component({
   selector: "app-product-detail",
@@ -29,6 +30,7 @@ import {
     CommonModule,
     RouterModule,
     FontAwesomeModule,
+    FormsModule, // Added FormsModule to imports
     HeaderComponent,
     FooterComponent,
     AnnouncementBarComponent,
@@ -62,7 +64,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     const promoCode = this.availablePromoCodes.find(
       p => p.code === this.promoCode.toUpperCase()
     );
-    
+
     if (promoCode) {
       if (promoCode.type === 'percent') {
         this.discount = (this.product!.price * this.quantity * promoCode.value) / 100;
