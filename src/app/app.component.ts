@@ -8,7 +8,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from './shared/components/announcement-bar/announcement-bar.component';
 import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsapp-icon.component';
-import { OfflineNotificationComponent } from './shared/components/offline-notification/offline-notification.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +18,6 @@ import { OfflineNotificationComponent } from './shared/components/offline-notifi
     FooterComponent,
     AnnouncementBarComponent,
     WhatsappIconComponent,
-    OfflineNotificationComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -42,6 +40,7 @@ export class AppComponent {
       e.preventDefault();
       e.returnValue = '';
     });
+    
     // Handle scroll to top on page refresh
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
@@ -57,7 +56,7 @@ export class AppComponent {
       if (currentRoute.includes('/products/')) {
         const productId = currentRoute.split('/').pop();
         const productService = this.injector.get(ProductService);
-        productService.getProduct(Number(productId)).subscribe(product => {
+        productService.getProductById(Number(productId)).subscribe(product => {
           if (product) {
             title = `${product.name} | ${title}`;
             this.titleService.setTitle(title);
