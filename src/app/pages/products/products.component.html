@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="products-wrapper">
       <!-- Search and Filter Section -->
@@ -28,28 +28,28 @@
             </button>
           </div>
         </div>
-        
+
         <div class="filter-controls">
           <div class="sort-dropdown">
             <select class="form-select" [(ngModel)]="selectedSort" (change)="onSortChange()">
               <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
             </select>
           </div>
-          
+
           <button class="filter-toggle" (click)="toggleFilterPanel()" title="Filter products">
             <fa-icon [icon]="filterIcon"></fa-icon> 
             <span>Filter</span>
           </button>
         </div>
       </div>
-      
+
       <!-- Filter Panel (slide down when active) -->
       <div class="filter-panel" [ngClass]="{'active': isFilterPanelVisible}">
         <div class="filter-panel-header">
           <h4>Filter Products</h4>
           <button class="btn-reset" (click)="resetFilters()">Reset All</button>
         </div>
-        
+
         <div class="filter-options">
           <div class="filter-group">
             <h5>Categories</h5>
@@ -78,7 +78,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="filter-group">
             <h5>Price Range</h5>
             <div class="filter-price-range">
@@ -103,7 +103,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="filter-group">
             <h5>Product Type</h5>
             <div class="filter-options-list">
@@ -137,17 +137,17 @@
             </div>
           </div>
         </div>
-        
+
         <div class="filter-panel-footer">
           <button class="btn btn-primary btn-apply" (click)="applyFilters(); toggleFilterPanel();">Apply Filters</button>
         </div>
       </div>
-      
+
       <!-- Results count -->
       <div class="results-summary">
         <p>Showing {{ filteredProducts.length }} of {{ products.length }} products</p>
       </div>
-      
+
       <!-- Product Grid -->
       <div class="products-grid">
         <div class="row">
@@ -185,7 +185,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- No Results Message -->
       <div class="no-results" *ngIf="filteredProducts.length === 0">
         <div class="no-results-content">

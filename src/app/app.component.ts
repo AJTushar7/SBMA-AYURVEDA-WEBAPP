@@ -21,6 +21,11 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor() {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
+  }
   constructor(
     private router: Router,
     private titleService: Title

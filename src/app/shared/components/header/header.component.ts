@@ -127,6 +127,7 @@ export class HeaderComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     this.isDropdownOpen = false;
+    this.isMobileMenuOpen = false;
     this.router.navigate(['/products', productId]);
   }
 

@@ -24,6 +24,16 @@ export class TestimonialsComponent implements OnInit {
       this.updateSlidesPerView();
     });
     this.startAutoScroll();
+    
+    // Handle anchor navigation
+    if (window.location.hash === '#testimonials') {
+      setTimeout(() => {
+        const element = document.getElementById('testimonials');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }
+      }, 100);
+    }
   }
 
   ngOnDestroy(): void {

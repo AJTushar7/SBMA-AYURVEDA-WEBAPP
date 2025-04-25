@@ -54,7 +54,7 @@
         <button class="mobile-search" (click)="toggleSearchBar()">
           <fa-icon [icon]="searchIcon"></fa-icon>
         </button>
-        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" [style.z-index]="999">
           <fa-icon [icon]="isMobileMenuOpen ? closeIcon : menuIcon"></fa-icon>
         </button>
       </div>
