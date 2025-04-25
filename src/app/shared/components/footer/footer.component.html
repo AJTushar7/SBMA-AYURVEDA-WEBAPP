@@ -44,12 +44,12 @@
       <div class="footer-col">
         <h4 class="footer-title">Products</h4>
         <ul class="footer-links">
-          <li><a href="#products">Liver Shodhan Syrup</a></li>
-          <li><a href="#products">Kesh Sudharak Oil</a></li>
-          <li><a href="#products">Rakt Shodhak Syrup</a></li>
-          <li><a href="#products">Kidney Rakshak Syrup</a></li>
-          <li><a href="#products">D.L.K. Liquid</a></li>
-          <li><a href="#products">All Products</a></li>
+          <li><a [routerLink]="['/products']" [queryParams]="{product: 'liver-shodhan'}">Liver Shodhan Syrup</a></li>
+          <li><a [routerLink]="['/products']" [queryParams]="{product: 'kesh-sudharak'}">Kesh Sudharak Oil</a></li>
+          <li><a [routerLink]="['/products']" [queryParams]="{product: 'rakt-shodhak'}">Rakt Shodhak Syrup</a></li>
+          <li><a [routerLink]="['/products']" [queryParams]="{product: 'kidney-rakshak'}">Kidney Rakshak Syrup</a></li>
+          <li><a [routerLink]="['/products']" [queryParams]="{product: 'dlk-liquid'}">D.L.K. Liquid</a></li>
+          <li><a [routerLink]="['/products']">All Products</a></li>
         </ul>
       </div>
 
