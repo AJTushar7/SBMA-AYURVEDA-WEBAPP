@@ -233,6 +233,15 @@ $light-green: #f0f5f1; // Light green background
     }
   }
 
+  @media (max-width: 992px) {
+    .mobile-menu-toggle {
+      display: block;
+      &.open {
+        color: #fff;
+      }
+    }
+  }
+
 .navigation {
   .nav-list {
     display: flex;

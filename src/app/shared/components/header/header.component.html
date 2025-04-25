@@ -227,11 +227,11 @@
             </div>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/']" [fragment]="'testimonials'" (click)="closeMobileMenu()" class="nav-link">Testimonials</a>
+            <a href="javascript:void(0)" (click)="navigateWithFragment('testimonials')" class="nav-link">Testimonials</a>
           </li>
 
           <li class="nav-item">
-            <a [routerLink]="['/']" [fragment]="'footer'" (click)="closeMobileMenu()" class="nav-link">Contact Us</a>
+            <a href="javascript:void(0)" (click)="navigateWithFragment('footer')" class="nav-link">Contact Us</a>
           </li>
         </ul>
       </nav>

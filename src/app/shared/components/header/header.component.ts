@@ -97,6 +97,18 @@ export class HeaderComponent implements OnInit {
     this.isMobileMenuOpen = false;
   }
 
+  navigateWithFragment(fragment: string) {
+    this.router.navigate(['/'], { fragment: fragment }).then(() => {
+      setTimeout(() => {
+        const element = document.getElementById(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    });
+    this.closeMobileMenu();
+  }
+
   navigateToHome() {
     this.router.navigate(['/']);
     this.closeMobileMenu();
