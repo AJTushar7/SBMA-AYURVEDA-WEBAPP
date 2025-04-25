@@ -16,7 +16,8 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
     HeaderComponent,
     FooterComponent,
     AnnouncementBarComponent,
-    WhatsappIconComponent
+    WhatsappIconComponent,
+    OfflineNotificationComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -26,6 +27,18 @@ export class AppComponent {
     private router: Router,
     private titleService: Title
   ) {
+    // Handle scroll to top on navigation
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
+
+    // Handle page leave confirmation
+    window.addEventListener('beforeunload', (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+    });
     // Handle scroll to top on page refresh
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);

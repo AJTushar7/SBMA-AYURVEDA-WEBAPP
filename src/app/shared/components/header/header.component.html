@@ -51,7 +51,7 @@
 
       <div class="mobile-actions">
         <!-- Added div for mobile actions -->
-        <button class="mobile-search" (click)="toggleSearchBar()">
+        <button class="mobile-search" (click)="toggleSearchBar()" title="Search products">
           <fa-icon [icon]="searchIcon"></fa-icon>
         </button>
         <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" [style.z-index]="999">
@@ -227,11 +227,11 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a [routerLink]="['/']" [fragment]="'testimonials'" (click)="closeMobileMenu()" class="nav-link">Testimonials</a>
           </li>
 
           <li class="nav-item">
-            <a href="#footer" class="nav-link">Contact Us</a>
+            <a [routerLink]="['/']" [fragment]="'footer'" (click)="closeMobileMenu()" class="nav-link">Contact Us</a>
           </li>
         </ul>
       </nav>
