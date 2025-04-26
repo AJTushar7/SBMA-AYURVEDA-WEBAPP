@@ -26,6 +26,22 @@ import { ProductService, Product } from '../../shared/services/product.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  isMobile: boolean = false;
+  isAccordionOpen: { [key: string]: boolean } = {
+    lifestyle: false,
+    products: false
+  };
+  
+  lifestyleConcerns: string[] = [
+    'Hair Care',
+    'Stress Care',
+    'Kidney Care',
+    'Liver Care',
+    'Digestive Health',
+    'Joint Care',
+    'Immunity Boost',
+    'Weight Management'
+  ];
   // Icons
   sortDownIcon = faSortAmountDown;
   sortUpIcon = faSortAmountUp;
@@ -67,7 +83,9 @@ export class ProductsComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
+    this.checkMobile();
     this.loadProducts();
+    window.addEventListener('resize', () => this.checkMobile());
     
     // Check for search query in URL parameters
     this.route.queryParams.subscribe(params => {
@@ -129,6 +147,27 @@ export class ProductsComponent implements OnInit {
     if (this.showFeatured) {
       filtered = filtered.filter(p => p.featured);
     }
+
+  checkMobile(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
+
+  toggleAccordion(section: string): void {
+    this.isAccordionOpen[section] = !this.isAccordionOpen[section];
+  }
+
+  filterByLifestyleConcern(concern: string, event: Event): void {
+    event.preventDefault();
+    this.searchQuery = concern;
+    this.applySearch();
+  }
+
+  selectCategory(category: string, event: Event): void {
+    event.preventDefault();
+    this.selectedCategory = category;
+    this.applyFilters();
+  }
+
     
     if (this.showBestSellers) {
       filtered = filtered.filter(p => p.bestSeller);
