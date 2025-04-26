@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSortAmountDown, faSortAmountUp, faFilter, faSearch, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { HeaderComponent } from '../../shared/components/header/header.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
+
 import { AnnouncementBarComponent } from '../../shared/components/announcement-bar/announcement-bar.component';
 import { ProductService } from '../../shared/services/product.service';
 // Assuming BaseProduct is defined elsewhere and imported
@@ -25,7 +25,7 @@ interface Product extends BaseProduct {
     FormsModule,
     FontAwesomeModule,
     HeaderComponent,
-    FooterComponent,
+    
     AnnouncementBarComponent
   ],
   templateUrl: './products.component.html',
