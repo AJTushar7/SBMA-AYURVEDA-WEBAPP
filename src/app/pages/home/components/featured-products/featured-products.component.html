@@ -19,9 +19,17 @@
                   <div class="product-title">{{ product.name }}</div>
                   <div class="product-specs" *ngIf="product.category === 'Oil'">19 Oils, 0 LLP</div>
                 </div>
+                <div class="product-features" *ngIf="product.category === 'Oil'">
+                  <div class="feature-arrow">
+                    <svg width="32" height="32" viewBox="0 0 24 24">
+                      <path d="M7 14l5-5 5 5" stroke="#4A4A4A" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span>19 Oils, 0 LLP</span>
+                  </div>
+                </div>
                 <button class="action-button" [routerLink]="['/products', product.id]">
                   Buy Here
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="12" fill="#D1B266"/>
                     <path d="M10 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
