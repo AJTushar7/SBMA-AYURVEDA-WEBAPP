@@ -62,7 +62,7 @@
       <nav class="navigation" [ngClass]="{ open: isMobileMenuOpen }">
         <ul class="nav-list">
           <li class="nav-item">
-            <a [routerLink]="['/']" class="nav-link active">Home</a>
+            <a [routerLink]="['/']" class="nav-link active" (click)="closeMobileMenu()">Home</a>
           </li>
           <li class="nav-item">
             <a (click)="handleNavigation('/about')" class="nav-link"
