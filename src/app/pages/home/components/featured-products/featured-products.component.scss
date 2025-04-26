@@ -102,25 +102,35 @@
         }
 
         .action-button {
+          position: absolute;
+          bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
           background: white;
           color: $primary-color;
           border: none;
-          padding: 0.8rem 1.5rem;
-          border-radius: 25px;
+          padding: 0.8rem 1.8rem;
+          border-radius: 30px;
           font-weight: 500;
+          font-size: 1rem;
           cursor: pointer;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
 
           svg {
+            width: 18px;
+            height: 18px;
             transition: transform 0.3s ease;
+            margin-left: 4px;
           }
 
           &:hover {
+            background: #f8f8f8;
             svg {
-              transform: translateX(5px);
+              transform: translateX(4px);
             }
           }
         }
