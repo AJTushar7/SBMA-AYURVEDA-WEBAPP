@@ -17,18 +17,23 @@ interface Marketplace {
 export class AvailableOnComponent {
   marketplaces: Marketplace[] = [
     {
-      name: 'Tata 1mg',
-      logo: 'assets/images/tata-1mg-logo.png',
-      link: 'javascript:void(0)'
-    },
-    {
       name: 'Amazon',
-      logo: 'assets/images/amazon-logo.png',
+      logo: 'fa-amazon',
       link: 'javascript:void(0)'
     },
     {
-      name: 'Netmeds',
-      logo: 'assets/images/netmeds-logo.png',
+      name: 'Flipkart',
+      logo: 'fa-shopping-cart', // Using a generic icon as Font Awesome doesn't have Flipkart
+      link: 'javascript:void(0)'
+    },
+    {
+      name: '1mg',
+      logo: 'fa-medkit',
+      link: 'javascript:void(0)'
+    },
+    {
+      name: 'PharmEasy',
+      logo: 'fa-heartbeat',
       link: 'javascript:void(0)'
     }
   ];
