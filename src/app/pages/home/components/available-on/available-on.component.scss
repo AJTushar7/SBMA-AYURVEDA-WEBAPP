@@ -65,63 +65,59 @@
 @import '../../../../../styles/variables';
 
 .marketplace-section {
-  padding: 4rem 0;
-  background-color: white;
+  padding: 2rem 0;
+  background-color: #fafafa;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    .section-title {
-      color: $primary-color;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      color: $text-color;
-      font-size: 1.1rem;
-    }
-  }
-
-  .marketplace-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
-    padding: 1rem;
   }
 
-  .marketplace-card {
+  .available-text {
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .marketplace-logos {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .marketplace-logo {
+    display: block;
     text-decoration: none;
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    transition: transform 0.3s ease;
-    border: 2px solid transparent;
+    transition: opacity 0.3s ease;
+
+    img {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+    }
 
     &:hover {
-      transform: translateY(-5px);
-      border-color: $primary-color;
+      opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .marketplace-section {
+    .container {
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .card-content {
-      .marketplace-icon {
-        font-size: 2.5rem;
-        color: $primary-color;
-        margin-bottom: 1rem;
-      }
+    .marketplace-logos {
+      gap: 2rem;
+    }
 
-      .marketplace-name {
-        color: $text-color;
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .visit-text {
-        color: $primary-color;
-        font-weight: 500;
-      }
+    .marketplace-logo img {
+      height: 24px;
     }
   }
 }

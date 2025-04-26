@@ -1,16 +1,11 @@
 
 <section class="marketplace-section">
   <div class="container">
-    <div class="marketplace-grid">
+    <div class="available-text">Available on:</div>
+    <div class="marketplace-logos">
       <a *ngFor="let market of marketplaces" [href]="market.link" 
-         class="marketplace-card" target="_blank" rel="noopener noreferrer">
-        <div class="card-content">
-          <div class="marketplace-icon">
-            <i class="fa" [ngClass]="market.logo"></i>
-          </div>
-          <h3 class="marketplace-name">{{ market.name }}</h3>
-          <span class="visit-text">Visit Store</span>
-        </div>
+         class="marketplace-logo" target="_blank" rel="noopener noreferrer">
+        <img [src]="market.logo" [alt]="market.name">
       </a>
     </div>
   </div>
