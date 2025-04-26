@@ -1,16 +1,20 @@
 export interface Product {
   id: number;
   name: string;
-  description: string;
+  category: string;
   price: number;
   discountPrice?: number;
+  description: string;
+  shortDescription: string;
   imageUrl: string;
-  category: string;
-  tag?: string;
   featured: boolean;
-  benefitsTitle?: string;
-  benefits?: string[];
-  ingredients?: string[];
-  howToUse?: string;
-  dosage?: string;
+  bestSeller: boolean;
+  new: boolean;
+  tag?: string;
+  tagline?: string;
+  rating: number;
+  reviews: number;
+  benefits: string[];
+  ingredients: string[];
+  usage: string[];
 }

@@ -1,18 +1,18 @@
 @import '../../../../../styles/variables';
 
 .featured-products {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background-color: #f8f9fa;
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 
     .section-tag {
       display: inline-block;
@@ -42,171 +42,90 @@
   .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .product-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .product-card {
+    height: 100%;
+    position: relative;
+
+    .image-container {
+      position: relative;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 15px;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
+        color: white;
+
+        .product-title {
+          font-size: 2rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .product-tagline {
+          font-size: 1.1rem;
+          opacity: 0.9;
+        }
+
+        .action-button {
+          align-self: flex-start;
+          background: white;
+          color: $primary-color;
+          border: none;
+          padding: 0.8rem 1.5rem;
+          border-radius: 25px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateX(5px);
+          }
+        }
+      }
+    }
   }
 
   @media (max-width: 768px) {
     .products-grid {
       grid-template-columns: 1fr;
     }
-  }
-
-  .product-item {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: translateY(-5px);
-
-      .product-overlay {
-        opacity: 1;
-      }
-    }
-  }
-
-  .product-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-image {
-    position: relative;
-    padding-top: 100%;
-    overflow: hidden;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
 
     .product-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba($primary-color, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-
-      .overlay-content {
-        text-align: center;
-        color: white;
-
-        .view-details {
-          display: inline-block;
-          padding: 10px 20px;
-          border: 2px solid white;
-          border-radius: 25px;
-          font-weight: 500;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background: white;
-            color: $primary-color;
-          }
-        }
+      .product-title {
+        font-size: 1.5rem !important;
       }
-    }
-
-    .product-badges {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 1;
-
-      .product-badge {
-        background: $primary-color;
-        color: white;
-        padding: 4px 10px;
-        border-radius: 12px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        min-width: fit-content;
-        text-align: center;
-      }
-    }
-  }
-
-  .product-info {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    .product-name {
-      font-size: 1.2rem;
-      color: #2d3436;
-      margin: 0;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .product-category {
-      color: #636e72;
-      font-size: 0.9rem;
-      margin: 0;
-      margin-bottom: 1rem;
-    }
-
-    .product-price {
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      .current-price {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: $primary-color;
-      }
-
-      .original-price {
-        font-size: 1rem;
-        color: #636e72;
-
-        &.has-discount {
-          text-decoration: line-through;
-          opacity: 0.7;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-products {
-    padding: 4rem 0;
-
-    .section-header {
-      .section-title {
-        font-size: 2rem;
-      }
-    }
-
-    .products-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
     }
   }
 }
