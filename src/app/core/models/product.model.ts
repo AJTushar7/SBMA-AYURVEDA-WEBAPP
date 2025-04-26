@@ -5,16 +5,19 @@ export interface Product {
   price: number;
   discountPrice?: number;
   description: string;
-  shortDescription: string;
+  shortDescription?: string;
   imageUrl: string;
   featured: boolean;
-  bestSeller: boolean;
-  new: boolean;
+  bestSeller?: boolean;
+  new?: boolean;
   tag?: string;
   tagline?: string;
-  rating: number;
-  reviews: number;
+  rating?: number;
+  reviews?: number;
   benefits: string[];
   ingredients: string[];
-  usage: string[];
+  usage?: string[];
+  benefitsTitle:string;
+  howToUse: string;
+  dosage: string;
 }
