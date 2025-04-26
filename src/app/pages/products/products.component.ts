@@ -1,14 +1,16 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSortAmountDown, faSortAmountUp, faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSortAmountDown, faSortAmountUp, faFilter, faSearch, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from '../../shared/components/announcement-bar/announcement-bar.component';
-import { ProductService, Product } from '../../shared/services/product.service';
+import { ProductService } from '../../shared/services/product.service';
+import { Product } from '../../core/models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -42,11 +44,14 @@ export class ProductsComponent implements OnInit {
     'Immunity Boost',
     'Weight Management'
   ];
+
   // Icons
   sortDownIcon = faSortAmountDown;
   sortUpIcon = faSortAmountUp;
   filterIcon = faFilter;
   searchIcon = faSearch;
+  chevronUpIcon = faChevronUp;
+  chevronDownIcon = faChevronDown;
   
   // Products data
   products: Product[] = [];
@@ -87,7 +92,6 @@ export class ProductsComponent implements OnInit {
     this.loadProducts();
     window.addEventListener('resize', () => this.checkMobile());
     
-    // Check for search query in URL parameters
     this.route.queryParams.subscribe(params => {
       if (params['search']) {
         this.searchQuery = params['search'];
@@ -100,11 +104,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe(products => {
       this.products = products;
       this.filteredProducts = [...products];
-      
-      // Extract unique categories
       this.categories = [...new Set(products.map(p => p.category))];
-      
-      // Apply initial sort
       this.applySorting();
     });
   }
@@ -116,10 +116,13 @@ export class ProductsComponent implements OnInit {
     }
     
     const query = this.searchQuery.toLowerCase().trim();
-    this.productService.searchProducts(query).subscribe(results => {
-      this.filteredProducts = results;
-      this.applyFilters(false);
-    });
+    this.filteredProducts = this.products.filter(p => 
+      p.name.toLowerCase().includes(query) || 
+      p.description.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query) ||
+      p.shortDescription.toLowerCase().includes(query)
+    );
+    this.applyFilters(false);
   }
   
   applyFilters(resetSearch: boolean = true): void {
@@ -129,12 +132,10 @@ export class ProductsComponent implements OnInit {
     
     let filtered = [...this.products];
     
-    // Apply category filter
     if (this.selectedCategory) {
       filtered = filtered.filter(p => p.category === this.selectedCategory);
     }
     
-    // Apply price range filter
     if (this.minPrice !== null) {
       filtered = filtered.filter(p => p.price >= this.minPrice!);
     }
@@ -143,31 +144,9 @@ export class ProductsComponent implements OnInit {
       filtered = filtered.filter(p => p.price <= this.maxPrice!);
     }
     
-    // Apply feature filters
     if (this.showFeatured) {
       filtered = filtered.filter(p => p.featured);
     }
-
-  checkMobile(): void {
-    this.isMobile = window.innerWidth <= 768;
-  }
-
-  toggleAccordion(section: string): void {
-    this.isAccordionOpen[section] = !this.isAccordionOpen[section];
-  }
-
-  filterByLifestyleConcern(concern: string, event: Event): void {
-    event.preventDefault();
-    this.searchQuery = concern;
-    this.applySearch();
-  }
-
-  selectCategory(category: string, event: Event): void {
-    event.preventDefault();
-    this.selectedCategory = category;
-    this.applyFilters();
-  }
-
     
     if (this.showBestSellers) {
       filtered = filtered.filter(p => p.bestSeller);
@@ -177,7 +156,6 @@ export class ProductsComponent implements OnInit {
       filtered = filtered.filter(p => p.new);
     }
     
-    // Apply search if there's a query
     if (this.searchQuery && this.searchQuery.trim() !== '') {
       const query = this.searchQuery.toLowerCase().trim();
       filtered = filtered.filter(p => 
@@ -233,5 +211,25 @@ export class ProductsComponent implements OnInit {
   
   onSortChange(): void {
     this.applySorting();
+  }
+
+  checkMobile(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
+
+  toggleAccordion(section: string): void {
+    this.isAccordionOpen[section] = !this.isAccordionOpen[section];
+  }
+
+  filterByLifestyleConcern(concern: string, event: Event): void {
+    event.preventDefault();
+    this.searchQuery = concern;
+    this.applySearch();
+  }
+
+  selectCategory(category: string, event: Event): void {
+    event.preventDefault();
+    this.selectedCategory = category;
+    this.applyFilters();
   }
 }
