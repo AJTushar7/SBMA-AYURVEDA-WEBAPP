@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
@@ -10,7 +9,12 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from '../../shared/components/announcement-bar/announcement-bar.component';
 import { ProductService } from '../../shared/services/product.service';
-import { Product } from '../../core/models/product.model';
+// Assuming BaseProduct is defined elsewhere and imported
+import { BaseProduct } from '../../core/models/base-product.model';
+
+
+interface Product extends BaseProduct {
+}
 
 @Component({
   selector: 'app-products',
@@ -33,7 +37,7 @@ export class ProductsComponent implements OnInit {
     lifestyle: false,
     products: false
   };
-  
+
   lifestyleConcerns: string[] = [
     'Hair Care',
     'Stress Care',
@@ -52,11 +56,11 @@ export class ProductsComponent implements OnInit {
   searchIcon = faSearch;
   chevronUpIcon = faChevronUp;
   chevronDownIcon = faChevronDown;
-  
+
   // Products data
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  
+
   // Search & Filtering
   searchQuery: string = '';
   selectedCategory: string = '';
@@ -65,7 +69,7 @@ export class ProductsComponent implements OnInit {
   showFeatured: boolean = false;
   showBestSellers: boolean = false;
   showNewProducts: boolean = false;
-  
+
   // Sort options
   sortOptions = [
     { value: 'name-asc', label: 'Name (A-Z)' },
@@ -75,23 +79,23 @@ export class ProductsComponent implements OnInit {
     { value: 'rating-desc', label: 'Rating (Highest first)' }
   ];
   selectedSort: string = 'name-asc';
-  
+
   // Filter panel visibility
   isFilterPanelVisible: boolean = false;
-  
+
   // Categories
   categories: string[] = [];
-  
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
   ) {}
-  
+
   ngOnInit(): void {
     this.checkMobile();
     this.loadProducts();
     window.addEventListener('resize', () => this.checkMobile());
-    
+
     this.route.queryParams.subscribe(params => {
       if (params['search']) {
         this.searchQuery = params['search'];
@@ -99,7 +103,7 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
-  
+
   loadProducts(): void {
     this.productService.getAllProducts().subscribe(products => {
       this.products = products;
@@ -108,13 +112,13 @@ export class ProductsComponent implements OnInit {
       this.applySorting();
     });
   }
-  
+
   applySearch(): void {
     if (!this.searchQuery || this.searchQuery.trim() === '') {
       this.applyFilters();
       return;
     }
-    
+
     const query = this.searchQuery.toLowerCase().trim();
     this.filteredProducts = this.products.filter(p => 
       p.name.toLowerCase().includes(query) || 
@@ -124,38 +128,38 @@ export class ProductsComponent implements OnInit {
     );
     this.applyFilters(false);
   }
-  
+
   applyFilters(resetSearch: boolean = true): void {
     if (resetSearch) {
       this.searchQuery = '';
     }
-    
+
     let filtered = [...this.products];
-    
+
     if (this.selectedCategory) {
       filtered = filtered.filter(p => p.category === this.selectedCategory);
     }
-    
+
     if (this.minPrice !== null) {
       filtered = filtered.filter(p => p.price >= this.minPrice!);
     }
-    
+
     if (this.maxPrice !== null) {
       filtered = filtered.filter(p => p.price <= this.maxPrice!);
     }
-    
+
     if (this.showFeatured) {
       filtered = filtered.filter(p => p.featured);
     }
-    
+
     if (this.showBestSellers) {
       filtered = filtered.filter(p => p.bestSeller);
     }
-    
+
     if (this.showNewProducts) {
       filtered = filtered.filter(p => p.new);
     }
-    
+
     if (this.searchQuery && this.searchQuery.trim() !== '') {
       const query = this.searchQuery.toLowerCase().trim();
       filtered = filtered.filter(p => 
@@ -165,14 +169,14 @@ export class ProductsComponent implements OnInit {
         p.shortDescription.toLowerCase().includes(query)
       );
     }
-    
+
     this.filteredProducts = filtered;
     this.applySorting();
   }
-  
+
   applySorting(): void {
     const [field, direction] = this.selectedSort.split('-');
-    
+
     this.filteredProducts.sort((a, b) => {
       if (field === 'name') {
         return direction === 'asc' 
@@ -190,11 +194,11 @@ export class ProductsComponent implements OnInit {
       return 0;
     });
   }
-  
+
   toggleFilterPanel(): void {
     this.isFilterPanelVisible = !this.isFilterPanelVisible;
   }
-  
+
   resetFilters(): void {
     this.searchQuery = '';
     this.selectedCategory = '';
@@ -204,11 +208,11 @@ export class ProductsComponent implements OnInit {
     this.showBestSellers = false;
     this.showNewProducts = false;
     this.selectedSort = 'name-asc';
-    
+
     this.filteredProducts = [...this.products];
     this.applySorting();
   }
-  
+
   onSortChange(): void {
     this.applySorting();
   }

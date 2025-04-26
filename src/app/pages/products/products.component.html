@@ -50,7 +50,7 @@
           <div class="accordion-item">
             <div class="accordion-header" (click)="toggleAccordion('lifestyle')">
               <h3>Lifestyle Concerns</h3>
-              <fa-icon [icon]="isAccordionOpen['lifestyle'] ? 'chevron-up' : 'chevron-down'"></fa-icon>
+              <fa-icon [icon]="isAccordionOpen['lifestyle'] ? chevronUpIcon : chevronDownIcon"></fa-icon>
             </div>
             <div class="accordion-content" [ngClass]="{'open': isAccordionOpen['lifestyle']}">
               <a href="#" *ngFor="let concern of lifestyleConcerns" (click)="filterByLifestyleConcern(concern, $event)">
@@ -63,7 +63,7 @@
           <div class="accordion-item">
             <div class="accordion-header" (click)="toggleAccordion('products')">
               <h3>Product Categories</h3>
-              <fa-icon [icon]="isAccordionOpen['products'] ? 'chevron-up' : 'chevron-down'"></fa-icon>
+              <fa-icon [icon]="isAccordionOpen['products'] ? chevronUpIcon : chevronDownIcon"></fa-icon>
             </div>
             <div class="accordion-content" [ngClass]="{'open': isAccordionOpen['products']}">
               <a href="#" *ngFor="let category of categories" (click)="selectCategory(category, $event)">
