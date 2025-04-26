@@ -110,21 +110,27 @@
           align-items: center;
           gap: 0.5rem;
           background: white;
-          color: $primary-color;
+          color: #000;
           border: none;
-          padding: 0.8rem 1.8rem;
-          border-radius: 30px;
+          padding: 0.6rem 1.4rem;
+          border-radius: 50px;
           font-weight: 500;
           font-size: 1rem;
           cursor: pointer;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
 
           svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             transition: transform 0.3s ease;
-            margin-left: 4px;
+            margin-left: 6px;
+            circle {
+              fill: #D1B266;
+            }
+            path {
+              stroke: white;
+            }
           }
 
           &:hover {
