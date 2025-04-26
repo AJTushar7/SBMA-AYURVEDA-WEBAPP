@@ -229,8 +229,7 @@ $light-green: #f0f5f1; // Light green background
     position: relative;
 
     &.open {
-      color: #fff;
-      z-index: 1002;
+      color: #000;
     }
 
     &:hover {

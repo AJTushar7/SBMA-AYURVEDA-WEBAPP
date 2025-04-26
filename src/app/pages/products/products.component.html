@@ -43,39 +43,8 @@
         </div>
       </div>
 
-      <!-- Mobile Categories Accordion -->
-      <div class="mobile-categories" *ngIf="isMobile">
-        <div class="accordion">
-          <!-- Lifestyle Concerns -->
-          <div class="accordion-item">
-            <div class="accordion-header" (click)="toggleAccordion('lifestyle')">
-              <h3>Lifestyle Concerns</h3>
-              <fa-icon [icon]="isAccordionOpen['lifestyle'] ? chevronUpIcon : chevronDownIcon"></fa-icon>
-            </div>
-            <div class="accordion-content" [ngClass]="{'open': isAccordionOpen['lifestyle']}">
-              <a href="#" *ngFor="let concern of lifestyleConcerns" (click)="filterByLifestyleConcern(concern, $event)">
-                {{concern}}
-              </a>
-            </div>
-          </div>
-
-          <!-- Product Categories -->
-          <div class="accordion-item">
-            <div class="accordion-header" (click)="toggleAccordion('products')">
-              <h3>Product Categories</h3>
-              <fa-icon [icon]="isAccordionOpen['products'] ? chevronUpIcon : chevronDownIcon"></fa-icon>
-            </div>
-            <div class="accordion-content" [ngClass]="{'open': isAccordionOpen['products']}">
-              <a href="#" *ngFor="let category of categories" (click)="selectCategory(category, $event)">
-                {{category}}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Filter Panel (slide down when active) -->
-      <div class="filter-panel" [ngClass]="{'active': isFilterPanelVisible}" *ngIf="!isMobile">
+      <div class="filter-panel" [ngClass]="{'active': isFilterPanelVisible}">
         <div class="filter-panel-header">
           <h4>Filter Products</h4>
           <button class="btn-reset" (click)="resetFilters()">Reset All</button>
@@ -228,3 +197,4 @@
     </div>
   </div>
 </div>
+

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from '../../shared/components/header/header.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from '../../shared/components/announcement-bar/announcement-bar.component';
 
 @Component({
@@ -10,7 +12,9 @@ import { AnnouncementBarComponent } from '../../shared/components/announcement-b
   imports: [
     CommonModule,
     RouterModule,
+    FontAwesomeModule,
     HeaderComponent,
+    FooterComponent,
     AnnouncementBarComponent
   ],
   templateUrl: './about.component.html',
@@ -39,7 +43,7 @@ export class AboutComponent {
       description: 'Embraced technology to make authentic Ayurveda accessible to the digital-first generation.'
     }
   ];
-
+  
   teamMembers = [
     {
       name: 'Dr. Ramesh Kumar',
