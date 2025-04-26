@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AnnouncementBarComponent } from './shared/components/announcement-bar/announcement-bar.component';
 import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsapp-icon.component';
+import { OfflineNotificationComponent } from './shared/components/offline-notification/offline-notification.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
     FooterComponent,
     AnnouncementBarComponent,
     WhatsappIconComponent,
+    OfflineNotificationComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
