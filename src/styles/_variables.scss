@@ -2,17 +2,17 @@
 @use "sass:color";
 
 // Colors
-$primary-color: #4CAF50;
-$secondary-color: #2196F3;
-$accent-color: #FFC107;
-$text-color: #333333;
-$light-text: #666666;
+$primary-color: #2E7D32;  // Deep forest green
+$secondary-color: #66BB6A; // Light green
+$accent-color: #C8E6C9;   // Very light green
+$text-color: #263238;     // Dark gray for text
+$light-text: #546E7A;     // Medium gray for secondary text
 $white: #FFFFFF;
 $black: #000000;
-$light-green: #8BC34A;
-$gray: #CCCCCC;
+$light-green: #81C784;    // Medium light green
+$gray: #ECEFF1;          // Very light gray
 $light-gray: #F5F5F5;
-$red: #FF5252;
+$red: #EF5350;          // Modern red
 $border-color: #E0E0E0;
 
 // Function to safely adjust color lightness
@@ -42,14 +42,14 @@ $font-size-xl: 24px;
 $font-size-xxl: 32px;
 
 // Border radius
-$border-radius-sm: 4px;
-$border-radius: 8px;
-$border-radius-lg: 12px;
+$border-radius-sm: 8px;
+$border-radius: 12px;
+$border-radius-lg: 16px;
 
 // Shadows
-$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-$shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 
 // Z-index
 $z-index-dropdown: 1000;
