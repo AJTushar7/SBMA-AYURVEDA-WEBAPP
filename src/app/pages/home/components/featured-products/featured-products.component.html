@@ -1,4 +1,3 @@
-
 <div class="featured-products">
   <div class="container">
     <div class="section-header">
@@ -16,13 +15,15 @@
             <img [src]="product.imageUrl" [alt]="product.name">
             <div class="product-overlay">
               <div class="content-wrapper">
-                <div class="product-title">{{ product.name }}</div>
-                <div class="product-tagline">{{ product.tagline }}</div>
+                <div class="product-info-text">
+                  <div class="product-title">{{ product.name }}</div>
+                  <div class="product-specs" *ngIf="product.category === 'Oil'">19 Oils, 0 LLP</div>
+                </div>
                 <button class="action-button" [routerLink]="['/products', product.id]">
-                  Get Now
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="8" fill="#D1B266"/>
-                    <path d="M6 4l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  Buy Here
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="#D1B266"/>
+                    <path d="M10 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </button>
               </div>
