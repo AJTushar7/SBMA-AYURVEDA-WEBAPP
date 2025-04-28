@@ -249,23 +249,34 @@
         }
         .btn-buy-now {
           width: 100%;
-          padding: 15px;
+          padding: 18px;
           border: none;
-          border-radius: 8px;
+          border-radius: 12px;
           background: #25d366;
           color: white;
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          i {
+            font-size: 1.4rem;
+          }
 
           &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+            background: #22c35e;
+          }
+
+          &:active {
+            transform: translateY(0);
           }
         }
       }
