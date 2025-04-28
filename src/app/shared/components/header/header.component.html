@@ -51,10 +51,18 @@
 
       <div class="mobile-actions">
         <!-- Added div for mobile actions -->
-        <button class="mobile-search" (click)="toggleSearchBar()" title="Search products">
+        <button
+          class="mobile-search"
+          (click)="toggleSearchBar()"
+          title="Search products"
+        >
           <fa-icon [icon]="searchIcon"></fa-icon>
         </button>
-        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" [style.z-index]="999">
+        <button
+          class="mobile-menu-toggle"
+          (click)="toggleMobileMenu()"
+          [style.z-index]="999"
+        >
           <fa-icon [icon]="isMobileMenuOpen ? closeIcon : menuIcon"></fa-icon>
         </button>
       </div>
@@ -62,18 +70,35 @@
       <nav class="navigation" [ngClass]="{ open: isMobileMenuOpen }">
         <ul class="nav-list">
           <li class="nav-item">
-            <a [routerLink]="['/']" class="nav-link active" (click)="closeMobileMenu()">Home</a>
+            <a
+              [routerLink]="['/']"
+              class="nav-link active"
+              (click)="closeMobileMenu()"
+              >Home</a
+            >
           </li>
           <li class="nav-item">
             <a (click)="handleNavigation('/about')" class="nav-link"
               >About Us</a
             >
           </li>
-          <li class="nav-item dropdown" [class.active]="isDropdownActive('products')">
+          <li
+            class="nav-item dropdown"
+            [class.active]="isDropdownActive('products')"
+          >
             <a class="nav-link" (click)="toggleDropdown('products', $event)">
-              Products <i class="fa" [class.fa-chevron-down]="!isDropdownActive('products')" [class.fa-chevron-up]="isDropdownActive('products')"></i>
+              Products
+              <i
+                class="fa"
+                [class.fa-chevron-down]="!isDropdownActive('products')"
+                [class.fa-chevron-up]="isDropdownActive('products')"
+              ></i>
             </a>
-            <div class="dropdown-menu" [class.show]="isDropdownActive('products')">
+            <div
+              class="dropdown-menu"
+              [class.show]="isDropdownActive('products')"
+              *ngIf="isDropdownOpen"
+            >
               <div class="dropdown-content">
                 <div class="dropdown-header">
                   <h3>Our Ayurvedic Collection</h3>
@@ -229,11 +254,21 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" (click)="navigateWithFragment('testimonials')" class="nav-link">Testimonials</a>
+            <a
+              href="javascript:void(0)"
+              (click)="navigateWithFragment('testimonials')"
+              class="nav-link"
+              >Testimonials</a
+            >
           </li>
 
           <li class="nav-item">
-            <a href="javascript:void(0)" (click)="navigateWithFragment('footer')" class="nav-link">Contact Us</a>
+            <a
+              href="javascript:void(0)"
+              (click)="navigateWithFragment('footer')"
+              class="nav-link"
+              >Contact Us</a
+            >
           </li>
         </ul>
       </nav>
