@@ -37,20 +37,8 @@ export class HeaderComponent implements OnInit {
   searchQuery = '';
   suggestions: string[] = [];
   private searchTerms = new Subject<string>();
-  activeDropdown: string | null = null;
+  isDropdownOpen = false;
   selectedCategory = '';
-  
-  isDropdownActive(section: string): boolean {
-    return this.activeDropdown === section;
-  }
-
-  toggleDropdown(section: string, event?: Event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.activeDropdown = this.activeDropdown === section ? null : section;
-  }
   popupProducts: any[] = [];
   currentPlaceholderIndex = 0;
   placeholders = [
