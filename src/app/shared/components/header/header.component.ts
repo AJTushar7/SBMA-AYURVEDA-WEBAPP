@@ -51,7 +51,6 @@ export class HeaderComponent implements OnInit {
     }
     this.activeDropdown = this.activeDropdown === section ? null : section;
   }
-  isDropdownOpen = false;
   popupProducts: any[] = [];
   currentPlaceholderIndex = 0;
   placeholders = [
