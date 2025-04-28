@@ -635,19 +635,22 @@ $light-green: #f0f5f1; // Light green background
 
     .dropdown-menu {
       position: static;
-      opacity: 1;
-      visibility: visible;
-      transform: none !important;
-      box-shadow: none;
+      display: none;
       width: 100%;
-      min-width: auto;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 4px;
-      background-color: #f8f9fa;
+      padding: 0;
+      margin: 0;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 0;
+      border: none;
       overflow: hidden;
-      max-height: none;
-      left: 0 !important;
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+      
+      &.show {
+        display: block;
+        max-height: 1000px;
+        transition: max-height 0.5s ease-in;
+      }
 
       &:before {
         display: block;
