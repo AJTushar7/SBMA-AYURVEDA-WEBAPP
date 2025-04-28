@@ -69,9 +69,11 @@
               >About Us</a
             >
           </li>
-          <li class="nav-item dropdown">
-            <a [routerLink]="['/products']" class="nav-link">Products</a>
-            <div class="dropdown-menu">
+          <li class="nav-item dropdown" [class.active]="isDropdownActive('products')">
+            <a class="nav-link" (click)="toggleDropdown('products', $event)">
+              Products <i class="fa" [class.fa-chevron-down]="!isDropdownActive('products')" [class.fa-chevron-up]="isDropdownActive('products')"></i>
+            </a>
+            <div class="dropdown-menu" [class.show]="isDropdownActive('products')">
               <div class="dropdown-content">
                 <div class="dropdown-header">
                   <h3>Our Ayurvedic Collection</h3>
