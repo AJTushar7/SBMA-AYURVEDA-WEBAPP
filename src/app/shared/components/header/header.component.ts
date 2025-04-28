@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit {
   oilIcon = faLeaf;
   powderIcon = faMortarPestle;
   liquidIcon = faFlask;
+  isDropdownOpen = false;
 
   constructor(
     private router: Router,
