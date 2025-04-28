@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /* Variables defined directly */
 $primary-color: #1e704d; // Dark green
 $text-color: #333333; // Text color
@@ -68,7 +70,7 @@ $light-green: #f0f5f1; // Light green background
     transition: all 0.3s ease;
 
     &:hover {
-      color: darken($primary-color, 10%);
+      color: color.adjust($primary-color, $lightness: -10%);
       transform: scale(1.1);
     }
   }
@@ -115,7 +117,7 @@ $light-green: #f0f5f1; // Light green background
     flex-shrink: 0;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
       transform: scale(1.05);
     }
   }
