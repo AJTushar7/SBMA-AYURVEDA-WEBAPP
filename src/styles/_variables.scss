@@ -4,16 +4,17 @@
 // Colors
 $primary-color: #2E7D32;  // Deep forest green
 $secondary-color: #66BB6A; // Light green
-$accent-color: #C8E6C9;   // Very light green
+$accent-color: #F0F4EC;   // Light sage
 $text-color: #263238;     // Dark gray for text
 $light-text: #546E7A;     // Medium gray for secondary text
 $white: #FFFFFF;
 $black: #000000;
 $light-green: #81C784;    // Medium light green
-$gray: #ECEFF1;          // Very light gray
-$light-gray: #F5F5F5;
+$gray: #F5F7F2;          // Light sage gray
+$light-gray: #FAF9F6;     // Soft beige
+$beige: #F5F2EA;         // Warm beige
 $red: #EF5350;          // Modern red
-$border-color: #E0E0E0;
+$border-color: #E8E8E3;
 
 // Function to safely adjust color lightness
 @function adjust-color-safe($color, $amount) {

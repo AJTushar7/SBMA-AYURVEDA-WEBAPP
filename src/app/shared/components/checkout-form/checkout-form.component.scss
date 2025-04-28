@@ -1,0 +1,86 @@
+
+@use "sass:color";
+@import "../../../../styles/variables";
+
+.checkout-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.checkout-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: $text-color;
+    font-weight: 500;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-lg;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust($primary-color, $lightness: -10%);
+  }
+
+  &:disabled {
+    background-color: $gray;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: $tablet) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
