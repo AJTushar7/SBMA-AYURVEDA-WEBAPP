@@ -24,11 +24,25 @@ export class CategoryProductsComponent implements OnInit {
 
   private autoScrollInterval: any;
 
+  private autoRotateInterval: any;
+
   ngOnInit() {
     this.loadProducts();
+    this.startAutoRotate();
   }
 
   ngOnDestroy() {
+    if (this.autoRotateInterval) {
+      clearInterval(this.autoRotateInterval);
+    }
+  }
+
+  private startAutoRotate() {
+    this.autoRotateInterval = setInterval(() => {
+      const currentIndex = this.categories.indexOf(this.selectedCategory);
+      const nextIndex = (currentIndex + 1) % this.categories.length;
+      this.selectCategory(this.categories[nextIndex]);
+    }, 3000);
   }
 
   selectCategory(category: string) {
