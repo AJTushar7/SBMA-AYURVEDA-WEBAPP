@@ -18,23 +18,46 @@ export class CategoryProductsComponent implements OnInit {
   ];
   selectedCategory = 'Hair Care';
   products: any[] = [];
+  displayedProducts: any[] = [];
   hoveredProduct: number | null = null;
-
-  constructor(private productService: ProductService) {}
-
+  currentProductIndex = 0;
+  isMobile = false;
   private autoScrollInterval: any;
+  private marqueeInterval: any;
 
-  private autoRotateInterval: any;
+  constructor(private productService: ProductService) {
+    this.checkScreenSize();
+    window.addEventListener('resize', () => this.checkScreenSize());
+  }
+
+  private checkScreenSize() {
+    this.isMobile = window.innerWidth <= 768;
+    this.updateDisplayedProducts();
+  }
 
   ngOnInit() {
     this.loadProducts();
-    this.startAutoRotate();
+    this.startMarquee();
   }
 
   ngOnDestroy() {
-    if (this.autoRotateInterval) {
-      clearInterval(this.autoRotateInterval);
+    if (this.marqueeInterval) {
+      clearInterval(this.marqueeInterval);
     }
+    window.removeEventListener('resize', () => this.checkScreenSize());
+  }
+
+  private startMarquee() {
+    this.marqueeInterval = setInterval(() => {
+      const container = document.querySelector('.categories') as HTMLElement;
+      if (container) {
+        if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += 1;
+        }
+      }
+    }, 30);
   }
 
   private startAutoRotate() {
@@ -56,3 +79,39 @@ export class CategoryProductsComponent implements OnInit {
     );
   }
 }
+
+  private updateDisplayedProducts() {
+    if (this.isMobile) {
+      this.displayedProducts = this.products.slice(this.currentProductIndex, this.currentProductIndex + 1);
+    } else {
+      this.displayedProducts = this.products.slice(0, 3);
+    }
+  }
+
+  nextProduct() {
+    if (this.currentProductIndex < this.products.length - 1) {
+      this.currentProductIndex++;
+      this.updateDisplayedProducts();
+    }
+  }
+
+  previousProduct() {
+    if (this.currentProductIndex > 0) {
+      this.currentProductIndex--;
+      this.updateDisplayedProducts();
+    }
+  }
+
+  private loadProducts() {
+    this.productService.getProductsByCategory(this.selectedCategory).subscribe(products => {
+      this.products = products;
+      this.updateDisplayedProducts();
+    });
+  }
+
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    this.currentProductIndex = 0;
+    this.loadProducts();
+  }
+

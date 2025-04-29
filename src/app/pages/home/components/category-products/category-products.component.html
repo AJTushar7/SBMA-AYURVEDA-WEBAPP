@@ -18,8 +18,16 @@
   </div>
 
   <div class="products-grid">
+    <div class="nav-arrows" *ngIf="isMobile">
+      <button (click)="previousProduct()" [disabled]="currentProductIndex === 0">
+        &#8592;
+      </button>
+      <button (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
+        &#8594;
+      </button>
+    </div>
     <div class="product-card" 
-         *ngFor="let product of products" 
+         *ngFor="let product of displayedProducts" 
          [routerLink]="['/products', product.id]"
          (mouseenter)="hoveredProduct = product.id"
          (mouseleave)="hoveredProduct = null">
