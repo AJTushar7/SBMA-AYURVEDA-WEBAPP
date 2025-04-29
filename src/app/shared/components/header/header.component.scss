@@ -647,7 +647,7 @@ $light-green: #f0f5f1; // Light green background
       overflow: hidden;
       max-height: 0;
       transition: max-height 0.3s ease-out;
-      
+
       &.show {
         display: block;
         max-height: 1000px;
@@ -687,6 +687,51 @@ $light-green: #f0f5f1; // Light green background
       .featured-products {
         grid-template-columns: 1fr;
         padding: 15px;
+
+        .featured-product {
+          .featured-img {
+            display: none;
+          }
+
+          .featured-info {
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 8px;
+
+            h5 {
+              font-size: 1rem;
+              margin-bottom: 8px;
+              white-space: normal;
+            }
+
+            .product-badges {
+              display: flex;
+              gap: 8px;
+              margin-top: 8px;
+
+              .badge {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+                border-radius: 4px;
+                background: $primary-color;
+                color: white;
+
+                &.bestseller {
+                  background: #ff6b6b;
+                }
+
+                &.featured {
+                  background: #4caf50;
+                }
+
+                &.new {
+                  background: #2196f3;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

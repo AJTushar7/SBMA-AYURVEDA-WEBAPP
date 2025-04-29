@@ -18,6 +18,7 @@ import { WhatsappIconComponent } from './shared/components/whatsapp-icon/whatsap
     FooterComponent,
     AnnouncementBarComponent,
     WhatsappIconComponent,
+    OfflineNotificationComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
