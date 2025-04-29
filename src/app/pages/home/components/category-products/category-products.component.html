@@ -1,0 +1,35 @@
+
+<div class="category-products-section">
+  <h2 class="section-title">Click on a Category</h2>
+  
+  <div class="categories-scroll">
+    <div class="categories">
+      <ng-container *ngFor="let category of categories">
+        <button 
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)"
+          class="category-btn">
+          {{ category }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card" 
+         *ngFor="let product of products" 
+         [routerLink]="['/products', product.id]"
+         (mouseenter)="hoveredProduct = product.id"
+         (mouseleave)="hoveredProduct = null">
+      <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
+      <div class="product-image">
+        <img [src]="hoveredProduct === product.id ? product.hoverImageUrl : product.imageUrl" 
+             [alt]="product.name">
+      </div>
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="price">From Rs. {{ product.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>

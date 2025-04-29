@@ -8,6 +8,7 @@ import { SuperpowerSectionComponent } from "./components/superpower-section/supe
 import { AvailableOnComponent } from "./components/available-on/available-on.component";
 import { TestimonialsComponent } from "./components/testimonials/testimonials.component";
 import { CertificationsComponent } from "./components/certifications/certifications.component";
+import { CategoryProductsComponent } from "./components/category-products/category-products.component";
 
 @Component({
   selector: "app-home",
@@ -19,6 +20,7 @@ import { CertificationsComponent } from "./components/certifications/certificati
     AvailableOnComponent,
     TestimonialsComponent,
     CertificationsComponent,
+    CategoryProductsComponent,
   ],
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
