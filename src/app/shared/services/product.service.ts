@@ -208,7 +208,22 @@ export class ProductService {
   }
 
   getProductsByCategory(category: string): Observable<Product[]> {
-    const filteredProducts = this.products.filter(p => p.category === category);
+    // Map UI categories to product categories
+    const categoryMap: { [key: string]: string[] } = {
+      'Hair Care': ['Oils'],
+      'Lung Care': ['Syrups', 'Liquids'],
+      'Liver Care': ['Syrups', 'Liquids'],
+      'Heart Care': ['Syrups', 'Liquids'],
+      'Man Care': ['Syrups', 'Powders'],
+      'Woman Care': ['Syrups', 'Powders'],
+      'Sugar Care': ['Syrups', 'Liquids'],
+      'Weight Care': ['Powders', 'Liquids']
+    };
+
+    const productCategories = categoryMap[category] || [];
+    const filteredProducts = this.products.filter(p => 
+      productCategories.includes(p.category)
+    );
     return of(filteredProducts);
   }
 

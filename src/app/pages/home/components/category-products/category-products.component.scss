@@ -49,12 +49,14 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 30px;
-      height: 2px;
-      background-color: #b8860b;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid #b8860b;
     }
   }
 }
