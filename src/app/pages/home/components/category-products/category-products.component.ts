@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -22,17 +21,11 @@ export class CategoryProductsComponent implements OnInit {
   hoveredProduct: number | null = null;
   currentProductIndex = 0;
   isMobile = false;
-  private autoScrollInterval: any;
   private marqueeInterval: any;
 
   constructor(private productService: ProductService) {
     this.checkScreenSize();
     window.addEventListener('resize', () => this.checkScreenSize());
-  }
-
-  private checkScreenSize() {
-    this.isMobile = window.innerWidth <= 768;
-    this.updateDisplayedProducts();
   }
 
   ngOnInit() {
@@ -45,6 +38,11 @@ export class CategoryProductsComponent implements OnInit {
       clearInterval(this.marqueeInterval);
     }
     window.removeEventListener('resize', () => this.checkScreenSize());
+  }
+
+  private checkScreenSize() {
+    this.isMobile = window.innerWidth <= 768;
+    this.updateDisplayedProducts();
   }
 
   private startMarquee() {
@@ -60,25 +58,18 @@ export class CategoryProductsComponent implements OnInit {
     }, 30);
   }
 
-  private startAutoRotate() {
-    this.autoRotateInterval = setInterval(() => {
-      const currentIndex = this.categories.indexOf(this.selectedCategory);
-      const nextIndex = (currentIndex + 1) % this.categories.length;
-      this.selectCategory(this.categories[nextIndex]);
-    }, 3000);
-  }
-
   selectCategory(category: string) {
     this.selectedCategory = category;
+    this.currentProductIndex = 0;
     this.loadProducts();
   }
 
   private loadProducts() {
-    this.productService.getProductsByCategory(this.selectedCategory).subscribe(
-      products => this.products = products
-    );
+    this.productService.getProductsByCategory(this.selectedCategory).subscribe(products => {
+      this.products = products;
+      this.updateDisplayedProducts();
+    });
   }
-}
 
   private updateDisplayedProducts() {
     if (this.isMobile) {
@@ -101,17 +92,4 @@ export class CategoryProductsComponent implements OnInit {
       this.updateDisplayedProducts();
     }
   }
-
-  private loadProducts() {
-    this.productService.getProductsByCategory(this.selectedCategory).subscribe(products => {
-      this.products = products;
-      this.updateDisplayedProducts();
-    });
-  }
-
-  selectCategory(category: string) {
-    this.selectedCategory = category;
-    this.currentProductIndex = 0;
-    this.loadProducts();
-  }
-
+}
