@@ -26,21 +26,9 @@ export class CategoryProductsComponent implements OnInit {
 
   ngOnInit() {
     this.loadProducts();
-    this.startAutoScroll();
   }
 
   ngOnDestroy() {
-    if (this.autoScrollInterval) {
-      clearInterval(this.autoScrollInterval);
-    }
-  }
-
-  private startAutoScroll() {
-    this.autoScrollInterval = setInterval(() => {
-      const currentIndex = this.categories.indexOf(this.selectedCategory);
-      const nextIndex = (currentIndex + 1) % this.categories.length;
-      this.selectCategory(this.categories[nextIndex]);
-    }, 3000);
   }
 
   selectCategory(category: string) {

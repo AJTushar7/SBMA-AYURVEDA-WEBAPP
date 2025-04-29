@@ -165,6 +165,7 @@ export class HeaderComponent implements OnInit {
   viewAllProducts(event: Event) {
     event.preventDefault();
     this.isDropdownOpen = false;
+    this.isMobileMenuOpen = false;
     setTimeout(() => {
       this.router.navigate(['/products']);
     }, 300);
