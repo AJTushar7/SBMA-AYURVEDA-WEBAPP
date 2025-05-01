@@ -1,7 +1,7 @@
 
 <div class="category-products-section">
   <div class="section-title-container">
-    <h2 class="section-title">Click on a Category <span class="arrow">➤</span></h2>
+    <h2 class="section-title">Click on a Category <span class="arrow">↓</span></h2>
   </div>
   
   <div class="categories-scroll">
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="products-grid">
+  <div class="products-grid" [style.justifyContent]="products.length <= 2 ? 'center' : 'flex-start'">
     <div class="nav-arrows" *ngIf="isMobile">
       <button (click)="previousProduct()" [disabled]="currentProductIndex === 0">
         ←

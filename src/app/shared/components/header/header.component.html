@@ -82,10 +82,10 @@
                     with authentic herbs
                   </p>
                 </div>
-                <div class="dropdown-columns">
+                <div class="dropdown-columns" [class.mobile-accordion]="isMobileMenuOpen">
                   <div class="dropdown-column category-column">
                     <h4>Categories</h4>
-                    <div class="category-links">
+                    <div class="category-links" [class.mobile-links]="isMobileMenuOpen">
                       <a
                         href="#"
                         (click)="showCategoryProducts('Syrups', $event)"
