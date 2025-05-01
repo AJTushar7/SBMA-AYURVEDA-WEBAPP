@@ -6,9 +6,10 @@
 
 // Hero Section
 .products-hero {
-  background-color: $light-green;
+  background-color: #fff;
   padding: 60px 0;
   margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
 
   .hero-content {
     text-align: center;
@@ -258,9 +259,13 @@
     padding: 0 15px;
 
     .row {
-      row-gap: 40px;
-      column-gap: 30px;
+      row-gap: 60px;
+      column-gap: 40px;
       justify-content: center;
+    }
+
+    .btn {
+      text-decoration: none !important;
     }
 
   .product-card {

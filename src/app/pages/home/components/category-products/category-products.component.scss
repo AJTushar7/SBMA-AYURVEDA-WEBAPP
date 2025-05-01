@@ -59,17 +59,28 @@
     
     .arrow {
       display: inline-block;
-      font-size: 0;
-      width: 35px;
-      height: 35px;
-      position: relative;
-      transform: rotate(45deg);
-      border-right: 4px solid #1e704d;
-      border-bottom: 4px solid #1e704d;
+      width: 50px;
+      height: 20px;
       margin-left: 10px;
-      top: -5px;
+      background-image: url('/assets/images/category-arrow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
+}
+
+.nav-arrows button {
+  z-index: 3;
+  background: rgba(30, 112, 77, 0.9) !important;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.product-card {
+  position: relative;
+  z-index: 1;
 }
 }
 
