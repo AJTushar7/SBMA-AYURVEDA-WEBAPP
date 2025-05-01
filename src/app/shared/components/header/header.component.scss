@@ -475,11 +475,11 @@ $light-green: #f0f5f1; // Light green background
               transition: transform 0.5s ease;
             }
             .product-badges {
-              position: relative;
               display: flex;
               flex-direction: row;
               gap: 5px;
-              margin: 8px 0;
+              margin: 4px 0;
+              flex-wrap: wrap;
 
               @media (min-width: 993px) {
                 position: absolute;
