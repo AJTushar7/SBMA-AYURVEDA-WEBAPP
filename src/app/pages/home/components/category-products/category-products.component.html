@@ -1,28 +1,18 @@
 
 <div class="category-products-section">
   <div class="section-title-container">
-    <h2 class="section-title">Click on a Category <span class="arrow">↓</span></h2>
+    <h2 class="section-title">Click on a Category <span class="arrow">➤</span></h2>
   </div>
   
-  <div class="categories-scroll" [class.mobile]="isMobile">
-    <div class="categories" [class.accordion]="isMobile">
+  <div class="categories-scroll">
+    <div class="categories">
       <ng-container *ngFor="let category of categories">
-        <div class="category-item" [class.mobile]="isMobile">
-          <button 
-            [class.active]="selectedCategory === category"
-            (click)="selectCategory(category)"
-            class="category-btn">
-            {{ category }}
-            <span class="accordion-icon" *ngIf="isMobile">{{ selectedCategory === category ? '−' : '+' }}</span>
-          </button>
-          <div class="category-content" *ngIf="isMobile && selectedCategory === category">
-            <div class="product-list">
-              <div *ngFor="let product of products" class="product-preview">
-                {{ product.name }}
-              </div>
-            </div>
-          </div>
-        </div>
+        <button 
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)"
+          class="category-btn">
+          {{ category }}
+        </button>
       </ng-container>
     </div>
   </div>
