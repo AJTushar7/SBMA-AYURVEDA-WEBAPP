@@ -51,6 +51,12 @@
   100% { transform: translateX(-50%); }
 }
 
+.categories {
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
 .category-btn {
   padding: 12px 24px;
   border: none;
@@ -185,9 +191,10 @@
     justify-content: space-between;
     z-index: 2;
     padding: 0 10px;
+    pointer-events: none;
 
     button {
-      background: rgba(139, 69, 19, 0.8);
+      background: rgba(139, 69, 19, 0.9);
       border: none;
       color: white;
       width: 40px;
@@ -197,10 +204,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: auto;
+      font-size: 20px;
 
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+      }
+
+      &:hover {
+        background: rgba(139, 69, 19, 1);
       }
     }
   }

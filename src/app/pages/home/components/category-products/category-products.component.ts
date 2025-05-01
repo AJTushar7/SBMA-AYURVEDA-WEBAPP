@@ -46,16 +46,12 @@ export class CategoryProductsComponent implements OnInit {
   }
 
   private startMarquee() {
-    this.marqueeInterval = setInterval(() => {
-      const container = document.querySelector('.categories') as HTMLElement;
-      if (container) {
-        if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
-          container.scrollLeft = 0;
-        } else {
-          container.scrollLeft += 2;
-        }
-      }
-    }, 20);
+    // Using CSS animation instead of JavaScript for smoother scrolling
+    const container = document.querySelector('.categories') as HTMLElement;
+    if (container) {
+      const scrollWidth = container.scrollWidth;
+      container.style.animationDuration = `${scrollWidth * 0.02}s`;
+    }
   }
 
   selectCategory(category: string) {

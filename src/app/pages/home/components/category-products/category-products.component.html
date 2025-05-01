@@ -14,6 +14,14 @@
           {{ category }}
         </button>
       </ng-container>
+      <ng-container *ngFor="let category of categories">
+        <button 
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)"
+          class="category-btn">
+          {{ category }}
+        </button>
+      </ng-container>
     </div>
   </div>
 
