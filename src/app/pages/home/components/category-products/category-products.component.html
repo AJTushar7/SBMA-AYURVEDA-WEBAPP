@@ -1,8 +1,8 @@
 
 <div class="category-products-section">
   <div class="section-title-container">
-  <h2 class="section-title">Click on a Category <span class="arrow">&#8594;</span></h2>
-</div>
+    <h2 class="section-title">Click on a Category <span class="arrow">➤</span></h2>
+  </div>
   
   <div class="categories-scroll">
     <div class="categories">
@@ -20,33 +20,26 @@
   <div class="products-grid">
     <div class="nav-arrows" *ngIf="isMobile">
       <button (click)="previousProduct()" [disabled]="currentProductIndex === 0">
-        &#8592;
+        ←
       </button>
       <button (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
-        &#8594;
+        →
       </button>
     </div>
+    
     <div class="product-card" 
          *ngFor="let product of displayedProducts" 
-         [routerLink]="['/products', product.id]"
-         (mouseenter)="hoveredProduct = product.id"
-         (mouseleave)="hoveredProduct = null">
+         [routerLink]="['/products', product.id]">
       <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
       <div class="product-image">
         <img [src]="hoveredProduct === product.id ? product.hoverImageUrl : product.imageUrl" 
-             [alt]="product.name">
+             [alt]="product.name"
+             (mouseenter)="hoveredProduct = product.id"
+             (mouseleave)="hoveredProduct = null">
       </div>
       <div class="product-info">
         <h3>{{ product.name }}</h3>
         <p class="price">From Rs. {{ product.price }}</p>
-      </div>
-      <div class="product-benefits">
-        <ul>
-          <li>✓ 100% Natural Ingredients</li>
-          <li>✓ Clinically Tested Formula</li>
-          <li>✓ No Side Effects</li>
-          <li>✓ Fast Acting Results</li>
-        </ul>
       </div>
     </div>
   </div>
