@@ -52,10 +52,10 @@ export class CategoryProductsComponent implements OnInit {
         if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
           container.scrollLeft = 0;
         } else {
-          container.scrollLeft += 1;
+          container.scrollLeft += 2;
         }
       }
-    }, 30);
+    }, 20);
   }
 
   selectCategory(category: string) {
