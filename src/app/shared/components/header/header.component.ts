@@ -1,19 +1,18 @@
-
 import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFlask } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
-import { debounceTime, distinctUntilChanged, Subject, map } from 'rxjs';
 import { Product } from '../../../core/models/product.model';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, NgClass, FormsModule, FontAwesomeModule, RouterModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
@@ -39,9 +38,14 @@ export class HeaderComponent implements OnInit {
   private searchTerms = new Subject<string>();
   activeDropdown: string | null = null;
   selectedCategory = '';
-  isDropdownOpen = false;
   expandedCategories: Set<string> = new Set();
   popupProducts: Product[] = [];
+
+  // Font Awesome icons
+  searchIcon = faSearch;
+  closeIcon = faTimes;
+  userIcon = faUser;
+  menuIcon = faBars;
 
   currentPlaceholderIndex = 0;
   placeholders = [
@@ -52,16 +56,6 @@ export class HeaderComponent implements OnInit {
     'Search D.L.K. Liquid...'
   ];
 
-  // Font Awesome icons
-  searchIcon = faSearch;
-  closeIcon = faTimes;
-  userIcon = faUser;
-  menuIcon = faBars;
-  syrupIcon = faTint;
-  oilIcon = faLeaf;
-  powderIcon = faMortarPestle;
-  liquidIcon = faFlask;
-
   constructor(
     private router: Router,
     private productService: ProductService
@@ -69,8 +63,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkScroll();
-    this.showCategoryProducts('Syrups');
-    
+    this.loadProducts('Syrups');
+
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -92,28 +86,16 @@ export class HeaderComponent implements OnInit {
       this.expandedCategories.delete(category);
     } else {
       this.expandedCategories.add(category);
+      this.loadProducts(category);
     }
   }
 
-  getFilteredProducts(category: string) {
-    return this.productService.getAllProducts().pipe(
-      map(products => products.filter(p => 
-        p.category.toLowerCase() === category.toLowerCase()
-      ))
-    );
+  loadProducts(category: string) {
+    this.productService.getProductsByCategory(category).subscribe(products => {
+      this.popupProducts = products;
+    });
   }
 
-  isDropdownActive(section: string): boolean {
-    return this.activeDropdown === section;
-  }
-
-  toggleDropdown(section: string, event?: Event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.activeDropdown = this.activeDropdown === section ? null : section;
-  }
 
   @HostListener('window:scroll', [])
   checkScroll() {
@@ -146,47 +128,21 @@ export class HeaderComponent implements OnInit {
     this.closeMobileMenu();
   }
 
-  navigateToHome() {
-    this.router.navigate(['/']);
-    this.closeMobileMenu();
-  }
-
   handleNavigation(path: string) {
     this.router.navigate([path]);
     this.closeMobileMenu();
   }
 
-  showCategoryProducts(category: string, event?: Event) {
+  isDropdownActive(section: string): boolean {
+    return this.activeDropdown === section;
+  }
+
+  toggleDropdown(section: string, event?: Event) {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
-    this.productService.getAllProducts().subscribe(products => {
-      this.popupProducts = products.filter(p => 
-        p.category.toLowerCase() === category.toLowerCase() ||
-        (category === 'Liquids' && p.category.toLowerCase() === 'liquid') ||
-        (category === 'Powders' && p.category.toLowerCase() === 'powder')
-      );
-      this.selectedCategory = category;
-      this.isDropdownOpen = true;
-    });
-  }
-
-  navigateToProduct(productId: number, event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.isDropdownOpen = false;
-    this.isMobileMenuOpen = false;
-    this.router.navigate(['/products', productId]);
-  }
-
-  viewAllProducts(event: Event) {
-    event.preventDefault();
-    this.isDropdownOpen = false;
-    this.isMobileMenuOpen = false;
-    setTimeout(() => {
-      this.router.navigate(['/products']);
-    }, 300);
+    this.activeDropdown = this.activeDropdown === section ? null : section;
   }
 
   toggleSearchBar() {
