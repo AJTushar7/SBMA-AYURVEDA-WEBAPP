@@ -14,40 +14,35 @@
           {{ category }}
         </button>
       </ng-container>
-      <ng-container *ngFor="let category of categories">
-        <button 
-          [class.active]="selectedCategory === category"
-          (click)="selectCategory(category)"
-          class="category-btn">
-          {{ category }}
-        </button>
-      </ng-container>
     </div>
   </div>
 
-  <div class="products-grid" [style.justifyContent]="products.length <= 2 ? 'center' : 'flex-start'">
-    <div class="navigation-controls" *ngIf="isMobile">
-      <button class="nav-btn prev" (click)="previousProduct()" [disabled]="currentProductIndex === 0">
+  <div class="products-container">
+    <div class="mobile-navigation" *ngIf="isMobile">
+      <button class="nav-arrow prev" (click)="previousProduct()" [disabled]="currentProductIndex === 0">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <button class="nav-btn next" (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
+      <button class="nav-arrow next" (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
     
-    <div class="product-card" 
-         *ngFor="let product of displayedProducts" 
-         [routerLink]="['/products', product.id]">
-      <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
-      <div class="product-image">
-        <img [src]="hoveredProduct === product.id ? product.hoverImageUrl : product.imageUrl" 
-             [alt]="product.name"
-             (mouseenter)="hoveredProduct = product.id"
-             (mouseleave)="hoveredProduct = null">
-      </div>
-      <div class="product-info">
-        <h3>{{ product.name }}</h3>
-        <p class="price">From Rs. {{ product.price }}</p>
+    <div class="products-grid" [style.justifyContent]="products.length <= 2 ? 'center' : 'flex-start'">
+      <div class="product-card" 
+           *ngFor="let product of displayedProducts" 
+           [routerLink]="['/products', product.id]">
+        <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
+        <div class="product-image">
+          <img [src]="hoveredProduct === product.id ? product.hoverImageUrl : product.imageUrl" 
+               [alt]="product.name"
+               (mouseenter)="hoveredProduct = product.id"
+               (mouseleave)="hoveredProduct = null">
+        </div>
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p class="price">From Rs. {{ product.price }}</p>
+          <button class="view-details">View Details</button>
+        </div>
       </div>
     </div>
   </div>

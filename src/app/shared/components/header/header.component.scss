@@ -318,6 +318,22 @@ $light-green: #f0f5f1; // Light green background
     max-height: 80vh;
     overflow-y: auto;
 
+    &.mobile-accordion {
+      @media (max-width: 768px) {
+        position: relative;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+
+        &.show {
+          max-height: 1000px;
+          transition: max-height 0.5s ease-in;
+        }
+      }
+    }
+
+
     &:before {
       content: "";
       position: absolute;
@@ -679,7 +695,7 @@ $light-green: #f0f5f1; // Light green background
             border-bottom: 1px solid #eee;
             padding: 15px;
             margin: 0;
-            
+
             &:hover {
               transform: none;
               background-color: #f5f5f5;

@@ -73,7 +73,7 @@
             <a class="nav-link" (click)="toggleDropdown('products', $event)">
               Products <i class="fa" [class.fa-chevron-down]="!isDropdownActive('products')" [class.fa-chevron-up]="isDropdownActive('products')"></i>
             </a>
-            <div class="dropdown-menu" [class.show]="isDropdownActive('products')">
+            <div class="dropdown-menu" [class.show]="isDropdownActive('products')" [class.mobile-accordion]="isMobileMenuOpen">
               <div class="dropdown-content">
                 <div class="dropdown-header">
                   <h3>Our Ayurvedic Collection</h3>
