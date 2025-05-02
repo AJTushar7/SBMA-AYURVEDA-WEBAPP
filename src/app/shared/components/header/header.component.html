@@ -86,64 +86,91 @@
                   <div class="dropdown-column category-column">
                     <h4>Categories</h4>
                     <div class="category-links" [class.mobile-links]="isMobileMenuOpen">
-                      <a
-                        href="#"
-                        (click)="showCategoryProducts('Syrups', $event)"
-                        class="category-link"
-                      >
-                        <div class="category-icon">
-                          <i class="fa fa-tint"></i>
+                      <div class="category-accordion">
+                        <!-- Syrups -->
+                        <div class="accordion-item">
+                          <div class="category-link" (click)="toggleCategoryAccordion('Syrups')">
+                            <div class="category-icon">
+                              <i class="fa fa-tint"></i>
+                            </div>
+                            <div class="category-text">
+                              <span>Syrups</span>
+                              <small>Natural liquid extracts</small>
+                            </div>
+                            <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Syrups')" [class.fa-chevron-up]="isCategoryExpanded('Syrups')"></i>
+                          </div>
+                          <div class="accordion-content" [class.expanded]="isCategoryExpanded('Syrups')">
+                            <a *ngFor="let product of getCategoryProducts('Syrups')" 
+                               [routerLink]="['/products', product.id]" 
+                               class="product-link">
+                              {{ product.name }}
+                            </a>
+                          </div>
                         </div>
-                        <div class="category-text">
-                          <span>Syrups</span>
-                          <small>Natural liquid extracts</small>
+
+                        <!-- Oils -->
+                        <div class="accordion-item">
+                          <div class="category-link" (click)="toggleCategoryAccordion('Oils')">
+                            <div class="category-icon">
+                              <i class="fa fa-leaf"></i>
+                            </div>
+                            <div class="category-text">
+                              <span>Oils</span>
+                              <small>Herbal massage oils</small>
+                            </div>
+                            <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Oils')" [class.fa-chevron-up]="isCategoryExpanded('Oils')"></i>
+                          </div>
+                          <div class="accordion-content" [class.expanded]="isCategoryExpanded('Oils')">
+                            <a *ngFor="let product of getCategoryProducts('Oils')" 
+                               [routerLink]="['/products', product.id]" 
+                               class="product-link">
+                              {{ product.name }}
+                            </a>
+                          </div>
                         </div>
-                      </a>
-                      <a
-                        href="#"
-                        (click)="showCategoryProducts('Oils', $event)"
-                        class="category-link"
-                      >
-                        <div class="category-icon">
-                          <i class="fa fa-leaf"></i>
+
+                        <!-- Powders -->
+                        <div class="accordion-item">
+                          <div class="category-link" (click)="toggleCategoryAccordion('Powders')">
+                            <div class="category-icon">
+                              <i class="fas fa-mortar-pestle"></i>
+                            </div>
+                            <div class="category-text">
+                              <span>Powders</span>
+                              <small>Pure herbal formulations</small>
+                            </div>
+                            <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Powders')" [class.fa-chevron-up]="isCategoryExpanded('Powders')"></i>
+                          </div>
+                          <div class="accordion-content" [class.expanded]="isCategoryExpanded('Powders')">
+                            <a *ngFor="let product of getCategoryProducts('Powders')" 
+                               [routerLink]="['/products', product.id]" 
+                               class="product-link">
+                              {{ product.name }}
+                            </a>
+                          </div>
                         </div>
-                        <div class="category-text">
-                          <span>Oils</span>
-                          <small>Herbal massage oils</small>
+
+                        <!-- Liquids -->
+                        <div class="accordion-item">
+                          <div class="category-link" (click)="toggleCategoryAccordion('Liquids')">
+                            <div class="category-icon">
+                              <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="category-text">
+                              <span>Liquids</span>
+                              <small>Potent liquid solutions</small>
+                            </div>
+                            <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Liquids')" [class.fa-chevron-up]="isCategoryExpanded('Liquids')"></i>
+                          </div>
+                          <div class="accordion-content" [class.expanded]="isCategoryExpanded('Liquids')">
+                            <a *ngFor="let product of getCategoryProducts('Liquids')" 
+                               [routerLink]="['/products', product.id]" 
+                               class="product-link">
+                              {{ product.name }}
+                            </a>
+                          </div>
                         </div>
-                      </a>
-                      <a
-                        href="#"
-                        (click)="showCategoryProducts('Powders', $event)"
-                        class="category-link"
-                      >
-                        <div
-                          class="category-icon"
-                          title="Natural herbal powders"
-                        >
-                          <i class="fa fa-leaf"></i>
-                        </div>
-                        <div class="category-text">
-                          <span>Powders</span>
-                          <small>Pure herbal formulations</small>
-                        </div>
-                      </a>
-                      <a
-                        href="#"
-                        (click)="showCategoryProducts('Liquids', $event)"
-                        class="category-link"
-                      >
-                        <div
-                          class="category-icon"
-                          title="Traditional liquid formulations"
-                        >
-                          <i class="fa-solid fa-flask"></i>
-                        </div>
-                        <div class="category-text">
-                          <span>Liquids</span>
-                          <small>Potent liquid solutions</small>
-                        </div>
-                      </a>
+                      </div>
                     </div>
                   </div>
                   <div class="dropdown-column featured-column">

@@ -71,6 +71,25 @@ export class HeaderComponent implements OnInit {
   powderIcon = faMortarPestle;
   liquidIcon = faFlask;
   isDropdownOpen = false;
+  expandedCategories: Set<string> = new Set();
+
+  isCategoryExpanded(category: string): boolean {
+    return this.expandedCategories.has(category);
+  }
+
+  toggleCategoryAccordion(category: string) {
+    if (this.expandedCategories.has(category)) {
+      this.expandedCategories.delete(category);
+    } else {
+      this.expandedCategories.add(category);
+    }
+  }
+
+  getCategoryProducts(category: string) {
+    return this.popupProducts.filter(p => 
+      p.category.toLowerCase() === category.toLowerCase()
+    );
+  }
 
   constructor(
     private router: Router,
