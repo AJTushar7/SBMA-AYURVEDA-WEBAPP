@@ -441,16 +441,34 @@ $light-green: #f0f5f1; // Light green background
             }
             
             .product-link {
-              display: block;
-              padding: 10px 15px 10px 60px;
+              display: flex;
+              align-items: center;
+              padding: 10px 15px;
               color: $text-color;
               text-decoration: none;
               font-size: 0.9rem;
+              gap: 15px;
               
               &:hover {
                 background-color: rgba(0, 0, 0, 0.05);
                 color: $primary-color;
               }
+
+              .product-thumb {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              span {
+                flex: 1;
+              }
+            }
+
+            .custom-icon {
+              width: 24px;
+              height: 24px;
             }
           }
         }

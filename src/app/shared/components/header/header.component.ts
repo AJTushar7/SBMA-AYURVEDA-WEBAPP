@@ -85,9 +85,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  getCategoryProducts(category: string) {
-    return this.popupProducts.filter(p => 
-      p.category.toLowerCase() === category.toLowerCase()
+  getFilteredProducts(category: string) {
+    return this.productService.getAllProducts().pipe(
+      map(products => products.filter(p => 
+        p.category.toLowerCase() === category.toLowerCase()
+      ))
     );
   }
 

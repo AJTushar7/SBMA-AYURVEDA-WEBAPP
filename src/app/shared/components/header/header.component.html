@@ -100,10 +100,11 @@
                             <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Syrups')" [class.fa-chevron-up]="isCategoryExpanded('Syrups')"></i>
                           </div>
                           <div class="accordion-content" [class.expanded]="isCategoryExpanded('Syrups')">
-                            <a *ngFor="let product of getCategoryProducts('Syrups')" 
+                            <a *ngFor="let product of getFilteredProducts('Syrups')" 
                                [routerLink]="['/products', product.id]" 
                                class="product-link">
-                              {{ product.name }}
+                              <img [src]="product.imageUrl" [alt]="product.name" class="product-thumb">
+                              <span>{{ product.name }}</span>
                             </a>
                           </div>
                         </div>
@@ -121,10 +122,11 @@
                             <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Oils')" [class.fa-chevron-up]="isCategoryExpanded('Oils')"></i>
                           </div>
                           <div class="accordion-content" [class.expanded]="isCategoryExpanded('Oils')">
-                            <a *ngFor="let product of getCategoryProducts('Oils')" 
+                            <a *ngFor="let product of getFilteredProducts('Oils')" 
                                [routerLink]="['/products', product.id]" 
                                class="product-link">
-                              {{ product.name }}
+                              <img [src]="product.imageUrl" [alt]="product.name" class="product-thumb">
+                              <span>{{ product.name }}</span>
                             </a>
                           </div>
                         </div>
@@ -133,7 +135,7 @@
                         <div class="accordion-item">
                           <div class="category-link" (click)="toggleCategoryAccordion('Powders')">
                             <div class="category-icon">
-                              <i class="fas fa-mortar-pestle"></i>
+                              <img src="assets/icons/powder-icon.png" alt="Powder" class="custom-icon">
                             </div>
                             <div class="category-text">
                               <span>Powders</span>
@@ -142,10 +144,11 @@
                             <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Powders')" [class.fa-chevron-up]="isCategoryExpanded('Powders')"></i>
                           </div>
                           <div class="accordion-content" [class.expanded]="isCategoryExpanded('Powders')">
-                            <a *ngFor="let product of getCategoryProducts('Powders')" 
+                            <a *ngFor="let product of getFilteredProducts('Powders')" 
                                [routerLink]="['/products', product.id]" 
                                class="product-link">
-                              {{ product.name }}
+                              <img [src]="product.imageUrl" [alt]="product.name" class="product-thumb">
+                              <span>{{ product.name }}</span>
                             </a>
                           </div>
                         </div>
@@ -154,7 +157,7 @@
                         <div class="accordion-item">
                           <div class="category-link" (click)="toggleCategoryAccordion('Liquids')">
                             <div class="category-icon">
-                              <i class="fas fa-vial"></i>
+                              <img src="assets/icons/liquid-icon.png" alt="Liquid" class="custom-icon">
                             </div>
                             <div class="category-text">
                               <span>Liquids</span>
@@ -163,10 +166,11 @@
                             <i class="fa" [class.fa-chevron-down]="!isCategoryExpanded('Liquids')" [class.fa-chevron-up]="isCategoryExpanded('Liquids')"></i>
                           </div>
                           <div class="accordion-content" [class.expanded]="isCategoryExpanded('Liquids')">
-                            <a *ngFor="let product of getCategoryProducts('Liquids')" 
+                            <a *ngFor="let product of getFilteredProducts('Liquids')" 
                                [routerLink]="['/products', product.id]" 
                                class="product-link">
-                              {{ product.name }}
+                              <img [src]="product.imageUrl" [alt]="product.name" class="product-thumb">
+                              <span>{{ product.name }}</span>
                             </a>
                           </div>
                         </div>
