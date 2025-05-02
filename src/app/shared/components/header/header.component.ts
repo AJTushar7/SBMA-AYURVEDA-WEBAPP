@@ -5,9 +5,10 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFillDrip, faFlask } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faUser, faBars, faTint, faLeaf, faMortarPestle, faFlask } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../../services/product.service';
-import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subject, map } from 'rxjs';
+import { Product } from '../../../core/models/product.model';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,6 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
   ]
 })
 export class HeaderComponent implements OnInit {
-  // Component state
   isScrolled = false;
   isMobileMenuOpen = false;
   isSearchBarVisible = false;
@@ -39,19 +39,10 @@ export class HeaderComponent implements OnInit {
   private searchTerms = new Subject<string>();
   activeDropdown: string | null = null;
   selectedCategory = '';
+  isDropdownOpen = false;
+  expandedCategories: Set<string> = new Set();
+  popupProducts: Product[] = [];
 
-  isDropdownActive(section: string): boolean {
-    return this.activeDropdown === section;
-  }
-
-  toggleDropdown(section: string, event?: Event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.activeDropdown = this.activeDropdown === section ? null : section;
-  }
-  popupProducts: any[] = [];
   currentPlaceholderIndex = 0;
   placeholders = [
     'Search for Liver Shodhan Syrup...',
@@ -60,7 +51,7 @@ export class HeaderComponent implements OnInit {
     'Find Kidney Rakshak Syrup...',
     'Search D.L.K. Liquid...'
   ];
-  
+
   // Font Awesome icons
   searchIcon = faSearch;
   closeIcon = faTimes;
@@ -70,8 +61,27 @@ export class HeaderComponent implements OnInit {
   oilIcon = faLeaf;
   powderIcon = faMortarPestle;
   liquidIcon = faFlask;
-  isDropdownOpen = false;
-  expandedCategories: Set<string> = new Set();
+
+  constructor(
+    private router: Router,
+    private productService: ProductService
+  ) {}
+
+  ngOnInit(): void {
+    this.checkScroll();
+    this.showCategoryProducts('Syrups');
+    
+    this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(term => {
+      this.getSuggestions(term);
+    });
+
+    setInterval(() => {
+      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+    }, 3000);
+  }
 
   isCategoryExpanded(category: string): boolean {
     return this.expandedCategories.has(category);
@@ -93,29 +103,16 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-  constructor(
-    private router: Router,
-    private productService: ProductService
-  ) { }
+  isDropdownActive(section: string): boolean {
+    return this.activeDropdown === section;
+  }
 
-  ngOnInit(): void {
-    // Initial check for scroll position
-    this.checkScroll();
-    // Set default category
-    this.showCategoryProducts('Syrups');
-    
-    // Setup search suggestions debounce
-    this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe(term => {
-      this.getSuggestions(term);
-    });
-
-    // Rotate placeholders
-    setInterval(() => {
-      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
-    }, 3000);
+  toggleDropdown(section: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.activeDropdown = this.activeDropdown === section ? null : section;
   }
 
   @HostListener('window:scroll', [])
@@ -132,7 +129,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateWithFragment(fragment: string) {
-    this.router.navigate(['/'], { fragment: fragment }).then(() => {
+    this.router.navigate(['/'], { fragment }).then(() => {
       setTimeout(() => {
         const element = document.querySelector(`#${fragment}`);
         const headerOffset = 100;
@@ -191,7 +188,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/products']);
     }, 300);
   }
-  
+
   toggleSearchBar() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
     if (this.isSearchBarVisible) {
@@ -201,12 +198,12 @@ export class HeaderComponent implements OnInit {
       document.body.classList.remove('search-active');
     }
   }
-  
+
   closeSearchBar() {
     this.isSearchBarVisible = false;
     document.body.classList.remove('search-active');
   }
-  
+
   performSearch() {
     const trimmedQuery = this.searchQuery.trim().toLowerCase();
     if (trimmedQuery) {
@@ -216,7 +213,7 @@ export class HeaderComponent implements OnInit {
       this.closeSearchBar();
     }
   }
-  
+
   onSearchKeyup() {
     const term = this.searchQuery.trim().toLowerCase();
     if (term.length >= 2) {
@@ -225,7 +222,7 @@ export class HeaderComponent implements OnInit {
       this.suggestions = [];
     }
   }
-  
+
   getSuggestions(term: string) {
     if (term.length < 2) {
       this.suggestions = [
@@ -238,7 +235,7 @@ export class HeaderComponent implements OnInit {
       ];
       return;
     }
-    
+
     this.productService.searchProducts(term).subscribe(products => {
       this.suggestions = products
         .map(product => product.name)
@@ -246,7 +243,7 @@ export class HeaderComponent implements OnInit {
         .slice(0, 6);
     });
   }
-  
+
   selectSuggestion(suggestion: string) {
     this.searchQuery = suggestion;
     this.performSearch();
