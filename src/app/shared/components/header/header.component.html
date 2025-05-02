@@ -86,81 +86,64 @@
                   <div class="dropdown-column category-column">
                     <h4>Categories</h4>
                     <div class="category-links" [class.mobile-links]="isMobileMenuOpen">
-                      <!-- Syrups -->
-                      <div class="category-accordion" [class.active]="selectedMobileCategory === 'Syrups'">
-                        <div class="category-header" (click)="toggleMobileCategory('Syrups')">
-                          <div class="category-icon">
-                            <i class="fa fa-tint"></i>
-                          </div>
-                          <div class="category-text">
-                            <span>Syrups</span>
-                            <small>Natural liquid extracts</small>
-                          </div>
-                          <i class="fa" [class.fa-chevron-down]="selectedMobileCategory !== 'Syrups'" [class.fa-chevron-up]="selectedMobileCategory === 'Syrups'"></i>
+                      <a
+                        href="#"
+                        (click)="showCategoryProducts('Syrups', $event)"
+                        class="category-link"
+                      >
+                        <div class="category-icon">
+                          <i class="fa fa-tint"></i>
                         </div>
-                        <div class="category-content" *ngIf="selectedMobileCategory === 'Syrups'">
-                          <div class="subcategories">
-                            <a href="#" (click)="showCategoryProducts('Syrups', $event)">View All Syrups</a>
-                          </div>
+                        <div class="category-text">
+                          <span>Syrups</span>
+                          <small>Natural liquid extracts</small>
                         </div>
-                      </div>
-
-                      <!-- Oils -->
-                      <div class="category-accordion" [class.active]="selectedMobileCategory === 'Oils'">
-                        <div class="category-header" (click)="toggleMobileCategory('Oils')">
-                          <div class="category-icon">
-                            <i class="fa fa-leaf"></i>
-                          </div>
-                          <div class="category-text">
-                            <span>Oils</span>
-                            <small>Herbal massage oils</small>
-                          </div>
-                          <i class="fa" [class.fa-chevron-down]="selectedMobileCategory !== 'Oils'" [class.fa-chevron-up]="selectedMobileCategory === 'Oils'"></i>
+                      </a>
+                      <a
+                        href="#"
+                        (click)="showCategoryProducts('Oils', $event)"
+                        class="category-link"
+                      >
+                        <div class="category-icon">
+                          <i class="fa fa-leaf"></i>
                         </div>
-                        <div class="category-content" *ngIf="selectedMobileCategory === 'Oils'">
-                          <div class="subcategories">
-                            <a href="#" (click)="showCategoryProducts('Oils', $event)">View All Oils</a>
-                          </div>
+                        <div class="category-text">
+                          <span>Oils</span>
+                          <small>Herbal massage oils</small>
                         </div>
-                      </div>
-
-                      <!-- Powders -->
-                      <div class="category-accordion" [class.active]="selectedMobileCategory === 'Powders'">
-                        <div class="category-header" (click)="toggleMobileCategory('Powders')">
-                          <div class="category-icon">
-                            <i class="fa fa-mortar-pestle"></i>
-                          </div>
-                          <div class="category-text">
-                            <span>Powders</span>
-                            <small>Pure herbal formulations</small>
-                          </div>
-                          <i class="fa" [class.fa-chevron-down]="selectedMobileCategory !== 'Powders'" [class.fa-chevron-up]="selectedMobileCategory === 'Powders'"></i>
+                      </a>
+                      <a
+                        href="#"
+                        (click)="showCategoryProducts('Powders', $event)"
+                        class="category-link"
+                      >
+                        <div
+                          class="category-icon"
+                          title="Natural herbal powders"
+                        >
+                          <i class="fa fa-leaf"></i>
                         </div>
-                        <div class="category-content" *ngIf="selectedMobileCategory === 'Powders'">
-                          <div class="subcategories">
-                            <a href="#" (click)="showCategoryProducts('Powders', $event)">View All Powders</a>
-                          </div>
+                        <div class="category-text">
+                          <span>Powders</span>
+                          <small>Pure herbal formulations</small>
                         </div>
-                      </div>
-
-                      <!-- Liquids -->
-                      <div class="category-accordion" [class.active]="selectedMobileCategory === 'Liquids'">
-                        <div class="category-header" (click)="toggleMobileCategory('Liquids')">
-                          <div class="category-icon">
-                            <i class="fa fa-vial"></i>
-                          </div>
-                          <div class="category-text">
-                            <span>Liquids</span>
-                            <small>Potent liquid solutions</small>
-                          </div>
-                          <i class="fa" [class.fa-chevron-down]="selectedMobileCategory !== 'Liquids'" [class.fa-chevron-up]="selectedMobileCategory === 'Liquids'"></i>
+                      </a>
+                      <a
+                        href="#"
+                        (click)="showCategoryProducts('Liquids', $event)"
+                        class="category-link"
+                      >
+                        <div
+                          class="category-icon"
+                          title="Traditional liquid formulations"
+                        >
+                          <i class="fa-solid fa-flask"></i>
                         </div>
-                        <div class="category-content" *ngIf="selectedMobileCategory === 'Liquids'">
-                          <div class="subcategories">
-                            <a href="#" (click)="showCategoryProducts('Liquids', $event)">View All Liquids</a>
-                          </div>
+                        <div class="category-text">
+                          <span>Liquids</span>
+                          <small>Potent liquid solutions</small>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   <div class="dropdown-column featured-column">

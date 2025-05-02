@@ -39,11 +39,6 @@ export class HeaderComponent implements OnInit {
   private searchTerms = new Subject<string>();
   activeDropdown: string | null = null;
   selectedCategory = '';
-  selectedMobileCategory: string | null = null;
-
-  toggleMobileCategory(category: string) {
-    this.selectedMobileCategory = this.selectedMobileCategory === category ? null : category;
-  }
 
   isDropdownActive(section: string): boolean {
     return this.activeDropdown === section;
