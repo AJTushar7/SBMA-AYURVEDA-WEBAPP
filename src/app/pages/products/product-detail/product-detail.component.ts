@@ -17,10 +17,8 @@ import {
 import { HeaderComponent } from "../../../shared/components/header/header.component";
 import { FooterComponent } from "../../../shared/components/footer/footer.component";
 import { AnnouncementBarComponent } from "../../../shared/components/announcement-bar/announcement-bar.component";
-import {
-  ProductService,
-  Product,
-} from "../../../shared/services/product.service";
+import { ProductService } from "../../../shared/services/product.service";
+import { Product } from "../../../core/models/product.model";
 import { FormsModule } from '@angular/forms'; // Added import
 
 @Component({

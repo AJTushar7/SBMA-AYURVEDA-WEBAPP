@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from '../../core/models/product.model';
@@ -11,6 +12,14 @@ export class ProductService {
 
   getAllProducts(): Observable<Product[]> {
     return of(this.products);
+  }
+
+  getFeaturedProducts(): Observable<Product[]> {
+    return of(this.products.filter(p => p.featured));
+  }
+
+  getAllTestimonials(): Observable<any[]> {
+    return of([]); // Return empty array for now or implement testimonials data
   }
 
   getProductById(id: number): Observable<Product | undefined> {
