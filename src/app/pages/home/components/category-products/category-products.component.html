@@ -26,12 +26,12 @@
   </div>
 
   <div class="products-grid" [style.justifyContent]="products.length <= 2 ? 'center' : 'flex-start'">
-    <div class="nav-arrows" *ngIf="isMobile">
-      <button (click)="previousProduct()" [disabled]="currentProductIndex === 0">
-        ←
+    <div class="navigation-controls" *ngIf="isMobile">
+      <button class="nav-btn prev" (click)="previousProduct()" [disabled]="currentProductIndex === 0">
+        <i class="fa fa-chevron-left"></i>
       </button>
-      <button (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
-        →
+      <button class="nav-btn next" (click)="nextProduct()" [disabled]="currentProductIndex >= products.length - 1">
+        <i class="fa fa-chevron-right"></i>
       </button>
     </div>
     

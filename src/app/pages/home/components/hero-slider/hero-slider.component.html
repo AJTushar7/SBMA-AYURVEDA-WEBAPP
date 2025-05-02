@@ -1,3 +1,4 @@
+
 <div class="hero-slider">
   <div class="slide" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide">
     <img [src]="slide.imageUrl" [alt]="slide.title">
@@ -9,10 +10,12 @@
       </a>
     </div>
   </div>
-  <button mat-icon-button class="nav-button prev" (click)="prevSlide()">
-    <mat-icon>chevron_left</mat-icon>
-  </button>
-  <button mat-icon-button class="nav-button next" (click)="nextSlide()">
-    <mat-icon>chevron_right</mat-icon>
-  </button>
+  <div class="navigation-arrows">
+    <button class="nav-button prev" (click)="prevSlide()">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button class="nav-button next" (click)="nextSlide()">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+  </div>
 </div>
