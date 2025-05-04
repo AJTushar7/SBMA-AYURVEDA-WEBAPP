@@ -1,34 +1,28 @@
+
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
-import { PRODUCTS } from '../data/products.data';
-import { Testimonial } from '../models/testimonial.model';
-import { TESTIMONIALS } from '../data/testimonials.data';
+import { products } from '../data/products.data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  constructor() { }
+  constructor() {}
 
   getAllProducts(): Observable<Product[]> {
-    return of(PRODUCTS);
+    return of(products);
   }
 
   getFeaturedProducts(): Observable<Product[]> {
-    return of(PRODUCTS.filter(product => product.featured));
+    return of(products.filter((product: Product) => product.featured));
   }
 
   getProductById(id: number): Observable<Product | undefined> {
-    return of(PRODUCTS.find(product => product.id === id));
+    return of(products.find((product: Product) => product.id === id));
   }
 
   getProductsByCategory(category: string): Observable<Product[]> {
-    return of(PRODUCTS.filter(product => product.category === category));
-  }
-
-  getAllTestimonials(): Observable<Testimonial[]> {
-    return of(TESTIMONIALS);
+    return of(products.filter((product: Product) => product.category === category));
   }
 }

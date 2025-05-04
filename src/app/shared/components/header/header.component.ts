@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
   selectedCategory = '';
   expandedCategories: Set<string> = new Set();
   popupProducts: Product[] = [];
+  products: Product[] = []; // Added from edited code
 
   // Font Awesome icons
   searchIcon = faSearch;
@@ -59,12 +60,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private productService: ProductService
-  ) {}
+  ) {
+    this.productService.getAllProducts().subscribe(products => { //from edited code
+      this.products = products;
+    });
+  }
 
   ngOnInit(): void {
     this.checkScroll();
-    this.loadProducts('Syrups');
-
+    //this.loadProducts('Syrups'); //Commented out, potentially redundant with getAllProducts
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -86,14 +90,8 @@ export class HeaderComponent implements OnInit {
       this.expandedCategories.delete(category);
     } else {
       this.expandedCategories.add(category);
-      this.loadProducts(category);
+      //this.loadProducts(category); //Commented out, potentially redundant
     }
-  }
-
-  loadProducts(category: string) {
-    this.productService.getProductsByCategory(category).subscribe(products => {
-      this.popupProducts = products;
-    });
   }
 
 
@@ -163,8 +161,8 @@ export class HeaderComponent implements OnInit {
   performSearch() {
     const trimmedQuery = this.searchQuery.trim().toLowerCase();
     if (trimmedQuery) {
-      this.router.navigate(['/products'], { 
-        queryParams: { search: trimmedQuery } 
+      this.router.navigate(['/products'], {
+        queryParams: { search: trimmedQuery }
       });
       this.closeSearchBar();
     }
@@ -203,5 +201,19 @@ export class HeaderComponent implements OnInit {
   selectSuggestion(suggestion: string) {
     this.searchQuery = suggestion;
     this.performSearch();
+  }
+
+  getFilteredProducts(category: string): Product[] { //from edited code
+    return this.products.filter(product => product.category === category);
+  }
+
+  navigateToProduct(id: number, event: Event): void { //from edited code
+    event.preventDefault();
+    this.router.navigate(['/products', id]);
+  }
+
+  viewAllProducts(event: Event): void { //from edited code
+    event.preventDefault();
+    this.router.navigate(['/products']);
   }
 }
