@@ -6,7 +6,7 @@ import { TESTIMONIALS } from "../data/testimonials.data";
 import { Testimonial } from "../models/testimonial.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ProductService {
   constructor() {}
@@ -33,8 +33,8 @@ export class ProductService {
       products.filter(
         (product) =>
           product.name.toLowerCase().includes(searchTerm) ||
-          product.description.toLowerCase().includes(searchTerm)
-      )
+          product.description.toLowerCase().includes(searchTerm),
+      ),
     );
   }
 
