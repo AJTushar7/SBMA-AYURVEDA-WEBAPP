@@ -1,9 +1,8 @@
-
 <div class="category-products-section">
   <div class="section-title-container">
     <h2 class="section-title">Click on a Category <span class="arrow">↓</span></h2>
   </div>
-  
+
   <div class="categories-scroll">
     <div class="categories">
       <ng-container *ngFor="let category of categories">
@@ -26,14 +25,14 @@
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
-    
+
     <div class="products-grid" [style.justifyContent]="products.length <= 2 ? 'center' : 'flex-start'">
       <div class="product-card" 
            *ngFor="let product of displayedProducts" 
            [routerLink]="['/products', product.id]">
         <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
         <div class="product-image">
-          <img [src]="hoveredProduct === product.id ? 'assets/images/' + product.name.toLowerCase().split(' ').join('-') + '-hover.jpg' : product.imageUrl" 
+          <img [src]="hoveredProduct === product.id ? ('assets/images/' + product.name.split(' ').join('-').toLowerCase() + '-hover.jpg') : product.imageUrl" 
                [alt]="product.name"
                (mouseenter)="hoveredProduct = product.id"
                (mouseleave)="hoveredProduct = null"

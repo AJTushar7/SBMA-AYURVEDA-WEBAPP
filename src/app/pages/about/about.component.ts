@@ -14,7 +14,6 @@ import { AnnouncementBarComponent } from '../../shared/components/announcement-b
     RouterModule,
     FontAwesomeModule,
     HeaderComponent,
-    FooterComponent,
     AnnouncementBarComponent
   ],
   templateUrl: './about.component.html',
@@ -43,7 +42,7 @@ export class AboutComponent {
       description: 'Embraced technology to make authentic Ayurveda accessible to the digital-first generation.'
     }
   ];
-  
+
   teamMembers = [
     {
       name: 'Dr. Ramesh Kumar',

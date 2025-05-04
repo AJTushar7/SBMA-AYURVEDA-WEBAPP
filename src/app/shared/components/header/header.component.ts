@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   selectedCategory = '';
   expandedCategories: Set<string> = new Set();
   popupProducts: Product[] = [];
-  products: Product[] = []; // Added from edited code
+  products: Product[] = [];
 
   // Font Awesome icons
   searchIcon = faSearch;
@@ -61,14 +61,13 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private productService: ProductService
   ) {
-    this.productService.getAllProducts().subscribe(products => { //from edited code
+    this.productService.getAllProducts().subscribe(products => {
       this.products = products;
     });
   }
 
   ngOnInit(): void {
     this.checkScroll();
-    //this.loadProducts('Syrups'); //Commented out, potentially redundant with getAllProducts
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -90,7 +89,6 @@ export class HeaderComponent implements OnInit {
       this.expandedCategories.delete(category);
     } else {
       this.expandedCategories.add(category);
-      //this.loadProducts(category); //Commented out, potentially redundant
     }
   }
 
@@ -203,16 +201,16 @@ export class HeaderComponent implements OnInit {
     this.performSearch();
   }
 
-  getFilteredProducts(category: string): Product[] { //from edited code
+  getFilteredProducts(category: string): Product[] {
     return this.products.filter(product => product.category === category);
   }
 
-  navigateToProduct(id: number, event: Event): void { //from edited code
+  navigateToProduct(id: number, event: Event): void {
     event.preventDefault();
     this.router.navigate(['/products', id]);
   }
 
-  viewAllProducts(event: Event): void { //from edited code
+  viewAllProducts(event: Event): void {
     event.preventDefault();
     this.router.navigate(['/products']);
   }

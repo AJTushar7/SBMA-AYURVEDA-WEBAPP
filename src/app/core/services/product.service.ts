@@ -15,14 +15,22 @@ export class ProductService {
   }
 
   getFeaturedProducts(): Observable<Product[]> {
-    return of(products.filter((product: Product) => product.featured));
+    return of(products.filter(product => product.featured));
   }
 
   getProductById(id: number): Observable<Product | undefined> {
-    return of(products.find((product: Product) => product.id === id));
+    return of(products.find(product => product.id === id));
   }
 
   getProductsByCategory(category: string): Observable<Product[]> {
-    return of(products.filter((product: Product) => product.category === category));
+    return of(products.filter(product => product.category === category));
+  }
+
+  searchProducts(term: string): Observable<Product[]> {
+    const searchTerm = term.toLowerCase();
+    return of(products.filter(product => 
+      product.name.toLowerCase().includes(searchTerm) || 
+      product.description.toLowerCase().includes(searchTerm)
+    ));
   }
 }
