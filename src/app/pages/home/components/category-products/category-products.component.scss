@@ -44,6 +44,18 @@
   width: max-content;
   margin: 0 auto;
   animation: scroll 20s linear infinite;
+  padding: 0 20px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 @keyframes scroll {
@@ -154,7 +166,18 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      
+      &.hover {
+        transform: scale(1.05);
+      }
+      
+      &.product-image {
+        opacity: 1;
+        &:hover {
+          opacity: 0.9;
+        }
+      }
     }
   }
 

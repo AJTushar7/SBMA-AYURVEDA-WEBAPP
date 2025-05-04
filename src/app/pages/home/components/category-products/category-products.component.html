@@ -33,10 +33,12 @@
            [routerLink]="['/products', product.id]">
         <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
         <div class="product-image">
-          <img [src]="hoveredProduct === product.id ? product.hoverImageUrl : product.imageUrl" 
+          <img [src]="hoveredProduct === product.id ? ('assets/images/' + product.name.toLowerCase().replace(/\s+/g, '-') + '-hover.jpg') : product.imageUrl" 
                [alt]="product.name"
                (mouseenter)="hoveredProduct = product.id"
-               (mouseleave)="hoveredProduct = null">
+               (mouseleave)="hoveredProduct = null"
+               class="product-image"
+               [class.hover]="hoveredProduct === product.id">
         </div>
         <div class="product-info">
           <h3>{{ product.name }}</h3>

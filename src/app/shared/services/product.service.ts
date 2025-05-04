@@ -20,7 +20,7 @@ export class ProductService {
 
   getProductsByCategory(category: string): Observable<Product[]> {
     return of(this.products.filter(p => 
-      p.category.toLowerCase() === category.toLowerCase()
+      p.category && p.category.toLowerCase() === category.toLowerCase()
     ));
   }
 
