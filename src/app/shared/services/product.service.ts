@@ -18,18 +18,18 @@ export class ProductService {
     return of(this.products.filter(p => p.featured));
   }
 
-  getAllTestimonials(): Observable<any[]> {
-    return of([]); // Return empty array for now or implement testimonials data
-  }
-
-  getProductById(id: number): Observable<Product | undefined> {
-    return of(this.products.find(p => p.id === id));
-  }
-
   getProductsByCategory(category: string): Observable<Product[]> {
     return of(this.products.filter(p => 
       p.category.toLowerCase() === category.toLowerCase()
     ));
+  }
+
+  getAllTestimonials(): Observable<any[]> {
+    return of([]); 
+  }
+
+  getProductById(id: number): Observable<Product | undefined> {
+    return of(this.products.find(p => p.id === id));
   }
 
   searchProducts(term: string): Observable<Product[]> {

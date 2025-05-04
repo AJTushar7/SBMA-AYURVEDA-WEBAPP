@@ -1,69 +1,35 @@
 import { Product } from "../models/product.model";
 
-export const PRODUCTS: Product[] = [
+export const products: Product[] = [
   {
     id: 1,
     name: "Liver Shodhan Syrup",
-    description:
-      "A Natural Ayurvedic Liver Tonic. Promotes Appetite & Growth Liver Naturally.",
+    description: "Natural liver cleansing syrup",
+    shortDescription: "Ayurvedic liver care",
     price: 299,
-    discountPrice: 249,
-    imageUrl: "assets/images/IMG-20250327-WA0010.jpg",
-    category: "Syrup",
-    tag: "bestseller",
+    category: "Syrups",
+    imageUrl: "/assets/images/IMG-20250327-WA0006.jpg",
     featured: true,
-    benefitsTitle: "Key Benefits of Liver Shodhan Syrup",
-    benefits: [
-      "Supports healthy liver function",
-      "Promotes natural detoxification",
-      "Improves appetite and digestion",
-      "Helps maintain proper bile flow",
-      "Protects liver cells from damage",
-    ],
-    ingredients: [
-      "Bhumi Amla (Phyllanthus niruri)",
-      "Punarnava (Boerhavia diffusa)",
-      "Kutki (Picrorhiza kurroa)",
-      "Kasni (Cichorium intybus)",
-      "Kalmegh (Andrographis paniculata)",
-      "Makoy (Solanum nigrum)",
-    ],
-    howToUse:
-      "Take 2 teaspoons (10ml) twice daily after meals or as directed by your healthcare professional.",
-    dosage: "Adults: 10ml twice daily. Children (5-12 years): 5ml twice daily.",
+    bestSeller: true,
+    new: false,
+    rating: 4.5,
+    reviews: 128
   },
   {
     id: 2,
     name: "Kesh Sudharak Hair Oil",
-    description:
-      "An Ayurvedic Oil for Long & Thick Hair. Hair Regrowth Treatment.",
-    price: 349,
-    discountPrice: 299,
-    imageUrl: "assets/images/IMG-20250327-WA0016.jpg",
-    category: "Hair Care",
-    tag: "popular",
+    description: "Natural hair growth oil",
+    shortDescription: "Ayurvedic hair care",
+    price: 399,
+    category: "Oils",
+    imageUrl: "/assets/images/IMG-20250327-WA0007.jpg",
     featured: true,
-    benefitsTitle: "Key Benefits of Kesh Sudharak Oil",
-    benefits: [
-      "Promotes hair growth and reduces hair fall",
-      "Strengthens hair roots and follicles",
-      "Prevents premature graying of hair",
-      "Nourishes scalp and improves blood circulation",
-      "Helps in treating dandruff and scalp infections",
-    ],
-    ingredients: [
-      "Bhringraj (Eclipta alba)",
-      "Amla (Emblica officinalis)",
-      "Brahmi (Bacopa monnieri)",
-      "Neem (Azadirachta indica)",
-      "Sesame oil (Til oil)",
-    ],
-    howToUse:
-      "Apply 10-15ml oil on scalp and gently massage for 10 minutes. Leave it for at least 2 hours or overnight for best results. Use 2-3 times a week.",
-    dosage:
-      "Regular usage: 2-3 times per week. For intensive treatment: Daily application for 1 month.",
+    bestSeller: false,
+    new: true,
+    rating: 4.8,
+    reviews: 95
   },
-  {
+{
     id: 3,
     name: "Rakt Shodhak Syrup",
     description:
@@ -229,4 +195,67 @@ export const PRODUCTS: Product[] = [
     dosage:
       "Adults: 5-10g daily. Not recommended for long-term use without professional guidance.",
   },
+  {
+    id: 1,
+    name: "Liver Shodhan Syrup",
+    description:
+      "A Natural Ayurvedic Liver Tonic. Promotes Appetite & Growth Liver Naturally.",
+    price: 299,
+    discountPrice: 249,
+    imageUrl: "assets/images/IMG-20250327-WA0010.jpg",
+    category: "Syrup",
+    tag: "bestseller",
+    featured: true,
+    benefitsTitle: "Key Benefits of Liver Shodhan Syrup",
+    benefits: [
+      "Supports healthy liver function",
+      "Promotes natural detoxification",
+      "Improves appetite and digestion",
+      "Helps maintain proper bile flow",
+      "Protects liver cells from damage",
+    ],
+    ingredients: [
+      "Bhumi Amla (Phyllanthus niruri)",
+      "Punarnava (Boerhavia diffusa)",
+      "Kutki (Picrorhiza kurroa)",
+      "Kasni (Cichorium intybus)",
+      "Kalmegh (Andrographis paniculata)",
+      "Makoy (Solanum nigrum)",
+    ],
+    howToUse:
+      "Take 2 teaspoons (10ml) twice daily after meals or as directed by your healthcare professional.",
+    dosage: "Adults: 10ml twice daily. Children (5-12 years): 5ml twice daily.",
+  },
+  {
+    id: 2,
+    name: "Kesh Sudharak Hair Oil",
+    description:
+      "An Ayurvedic Oil for Long & Thick Hair. Hair Regrowth Treatment.",
+    price: 349,
+    discountPrice: 299,
+    imageUrl: "assets/images/IMG-20250327-WA0016.jpg",
+    category: "Hair Care",
+    tag: "popular",
+    featured: true,
+    benefitsTitle: "Key Benefits of Kesh Sudharak Oil",
+    benefits: [
+      "Promotes hair growth and reduces hair fall",
+      "Strengthens hair roots and follicles",
+      "Prevents premature graying of hair",
+      "Nourishes scalp and improves blood circulation",
+      "Helps in treating dandruff and scalp infections",
+    ],
+    ingredients: [
+      "Bhringraj (Eclipta alba)",
+      "Amla (Emblica officinalis)",
+      "Brahmi (Bacopa monnieri)",
+      "Neem (Azadirachta indica)",
+      "Sesame oil (Til oil)",
+    ],
+    howToUse:
+      "Apply 10-15ml oil on scalp and gently massage for 10 minutes. Leave it for at least 2 hours or overnight for best results. Use 2-3 times a week.",
+    dosage:
+      "Regular usage: 2-3 times per week. For intensive treatment: Daily application for 1 month.",
+  },
+
 ];
