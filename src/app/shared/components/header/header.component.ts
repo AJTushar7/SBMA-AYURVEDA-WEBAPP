@@ -1,43 +1,60 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSearch, faTimes, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../../core/models/product.model';
-import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { Component, HostListener, OnInit } from "@angular/core";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from "@angular/animations";
+import { Router, RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import {
+  faSearch,
+  faTimes,
+  faUser,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
+import { ProductService } from "../../services/product.service";
+import { Product } from "../../../core/models/product.model";
+import { debounceTime, distinctUntilChanged, Subject } from "rxjs";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   standalone: true,
   imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
   animations: [
-    trigger('headerAnimation', [
-      state('transparent', style({
-        backgroundColor: 'transparent',
-        boxShadow: 'none'
-      })),
-      state('solid', style({
-        backgroundColor: '#ffffff',
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
-      })),
-      transition('transparent <=> solid', animate('300ms ease-in-out'))
-    ])
-  ]
+    trigger("headerAnimation", [
+      state(
+        "transparent",
+        style({
+          backgroundColor: "transparent",
+          boxShadow: "none",
+        })
+      ),
+      state(
+        "solid",
+        style({
+          backgroundColor: "#ffffff",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+        })
+      ),
+      transition("transparent <=> solid", animate("300ms ease-in-out")),
+    ]),
+  ],
 })
 export class HeaderComponent implements OnInit {
   isScrolled = false;
   isMobileMenuOpen = false;
   isSearchBarVisible = false;
-  searchQuery = '';
+  searchQuery = "";
   suggestions: string[] = [];
   private searchTerms = new Subject<string>();
   activeDropdown: string | null = null;
-  selectedCategory = '';
+  selectedCategory = "";
   expandedCategories: Set<string> = new Set();
   popupProducts: Product[] = [];
   products: Product[] = [];
@@ -50,47 +67,44 @@ export class HeaderComponent implements OnInit {
 
   currentPlaceholderIndex = 0;
   placeholders = [
-    'Search for Liver Shodhan Syrup...',
-    'Try Kesh Sudharak Hair Oil...',
-    'Looking for Rakt Shodhak Syrup?',
-    'Find Kidney Rakshak Syrup...',
-    'Search D.L.K. Liquid...'
+    "Search for Liver Shodhan Syrup...",
+    "Try Kesh Sudharak Hair Oil...",
+    "Looking for Rakt Shodhak Syrup?",
+    "Find Kidney Rakshak Syrup...",
+    "Search D.L.K. Liquid...",
   ];
 
-  constructor(
-    private router: Router,
-    private productService: ProductService
-  ) {
-    this.productService.getAllProducts().subscribe(products => {
+  constructor(private router: Router, private productService: ProductService) {
+    this.productService.getAllProducts().subscribe((products) => {
       this.products = products;
     });
   }
 
   getFilteredProducts(category: string): Product[] {
-    return this.products.filter(product => product.category === category);
+    return this.products.filter((product) => product.category === category);
   }
 
   navigateToProduct(id: number, event: Event): void {
     event.preventDefault();
-    this.router.navigate(['/products', id]);
+    this.router.navigate(["/products", id]);
   }
 
   viewAllProducts(event: Event): void {
     event.preventDefault();
-    this.router.navigate(['/products']);
+    this.router.navigate(["/products"]);
   }
 
   ngOnInit(): void {
     this.checkScroll();
-    this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe(term => {
-      this.getSuggestions(term);
-    });
+    this.searchTerms
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((term) => {
+        this.getSuggestions(term);
+      });
 
     setInterval(() => {
-      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+      this.currentPlaceholderIndex =
+        (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
   }
 
@@ -106,8 +120,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-
-  @HostListener('window:scroll', [])
+  @HostListener("window:scroll", [])
   checkScroll() {
     this.isScrolled = window.scrollY > 60;
   }
@@ -121,16 +134,17 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateWithFragment(fragment: string) {
-    this.router.navigate(['/'], { fragment }).then(() => {
+    this.router.navigate(["/"], { fragment }).then(() => {
       setTimeout(() => {
         const element = document.querySelector(`#${fragment}`);
         const headerOffset = 100;
         if (element) {
           const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         }
       }, 100);
@@ -158,23 +172,23 @@ export class HeaderComponent implements OnInit {
   toggleSearchBar() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
     if (this.isSearchBarVisible) {
-      this.searchQuery = '';
-      document.body.classList.add('search-active');
+      this.searchQuery = "";
+      document.body.classList.add("search-active");
     } else {
-      document.body.classList.remove('search-active');
+      document.body.classList.remove("search-active");
     }
   }
 
   closeSearchBar() {
     this.isSearchBarVisible = false;
-    document.body.classList.remove('search-active');
+    document.body.classList.remove("search-active");
   }
 
   performSearch() {
     const trimmedQuery = this.searchQuery.trim().toLowerCase();
     if (trimmedQuery) {
-      this.router.navigate(['/products'], {
-        queryParams: { search: trimmedQuery }
+      this.router.navigate(["/products"], {
+        queryParams: { search: trimmedQuery },
       });
       this.closeSearchBar();
     }
@@ -192,19 +206,19 @@ export class HeaderComponent implements OnInit {
   getSuggestions(term: string) {
     if (term.length < 2) {
       this.suggestions = [
-        'Best Sellers',
-        'New Arrivals',
-        'Liver Health',
-        'Hair Care',
-        'Digestive Health',
-        'Immunity Boosters'
+        "Best Sellers",
+        "New Arrivals",
+        "Liver Health",
+        "Hair Care",
+        "Digestive Health",
+        "Immunity Boosters",
       ];
       return;
     }
 
-    this.productService.searchProducts(term).subscribe(products => {
+    this.productService.searchProducts(term).subscribe((products) => {
       this.suggestions = products
-        .map(product => product.name)
+        .map((product) => product.name)
         .filter((name, index, self) => self.indexOf(name) === index)
         .slice(0, 6);
     });
@@ -213,19 +227,5 @@ export class HeaderComponent implements OnInit {
   selectSuggestion(suggestion: string) {
     this.searchQuery = suggestion;
     this.performSearch();
-  }
-
-  getFilteredProducts(category: string): Product[] {
-    return this.products.filter(product => product.category === category);
-  }
-
-  navigateToProduct(id: number, event: Event): void {
-    event.preventDefault();
-    this.router.navigate(['/products', id]);
-  }
-
-  viewAllProducts(event: Event): void {
-    event.preventDefault();
-    this.router.navigate(['/products']);
   }
 }

@@ -24,11 +24,16 @@
               </button>
             </div>
             <div class="main-image">
-              <img [src]="product.imageUrl" [alt]="product.name">
+              <img [src]="product.imageUrl" [alt]="product.name" />
             </div>
-            <div class="product-badges" *ngIf="product.featured || product.bestSeller || product.new">
+            <div
+              class="product-badges"
+              *ngIf="product.featured || product.bestSeller || product.new"
+            >
               <span class="badge" *ngIf="product.featured">Featured</span>
-              <span class="badge bestseller" *ngIf="product.bestSeller">Best Seller</span>
+              <span class="badge bestseller" *ngIf="product.bestSeller"
+                >Best Seller</span
+              >
               <span class="badge new" *ngIf="product.new">New</span>
             </div>
           </div>
@@ -41,8 +46,11 @@
 
             <div class="product-rating">
               <div class="stars">
-                <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
-                   [class.filled]="star <= product.rating"></i>
+                <i
+                  class="fa fa-star"
+                  *ngFor="let star of [1, 2, 3, 4, 5]"
+                  [class.filled]="star <= (product?.rating || 0)"
+                ></i>
               </div>
               <span class="reviews-count">{{ product.reviews }} reviews</span>
             </div>
@@ -56,18 +64,20 @@
             <div class="purchase-options">
               <div class="quantity-selector">
                 <button class="qty-btn" (click)="decreaseQuantity()">-</button>
-                <input type="number" [value]="quantity" readonly>
+                <input type="number" [value]="quantity" readonly />
                 <button class="qty-btn" (click)="increaseQuantity()">+</button>
               </div>
 
               <div class="promo-code-section">
-                <input 
-                  type="text" 
-                  [(ngModel)]="promoCode" 
+                <input
+                  type="text"
+                  [(ngModel)]="promoCode"
                   placeholder="Enter promo code"
                   class="promo-input"
-                >
-                <button (click)="applyPromoCode()" class="apply-btn">Apply</button>
+                />
+                <button (click)="applyPromoCode()" class="apply-btn">
+                  Apply
+                </button>
               </div>
 
               <div class="price-breakdown" *ngIf="discount > 0">
@@ -90,11 +100,9 @@
               </div>
               <div class="meta-item">
                 <span>SKU:</span>
-                <span>SBMA-{{ product.id.toString().padStart(4, '0') }}</span>
+                <span>SBMA-{{ product.id.toString().padStart(4, "0") }}</span>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -103,30 +111,54 @@
     <!-- Product Details Tabs -->
     <div class="product-details">
       <div class="product-tabs">
-        <button class="tab-button" [ngClass]="{active: activeTab === 'description'}" (click)="setActiveTab('description')">
+        <button
+          class="tab-button"
+          [ngClass]="{ active: activeTab === 'description' }"
+          (click)="setActiveTab('description')"
+        >
           Description
         </button>
-        <button class="tab-button" [ngClass]="{active: activeTab === 'benefits'}" (click)="setActiveTab('benefits')">
+        <button
+          class="tab-button"
+          [ngClass]="{ active: activeTab === 'benefits' }"
+          (click)="setActiveTab('benefits')"
+        >
           Benefits
         </button>
-        <button class="tab-button" [ngClass]="{active: activeTab === 'ingredients'}" (click)="setActiveTab('ingredients')">
+        <button
+          class="tab-button"
+          [ngClass]="{ active: activeTab === 'ingredients' }"
+          (click)="setActiveTab('ingredients')"
+        >
           Ingredients
         </button>
-        <button class="tab-button" [ngClass]="{active: activeTab === 'usage'}" (click)="setActiveTab('usage')">
+        <button
+          class="tab-button"
+          [ngClass]="{ active: activeTab === 'usage' }"
+          (click)="setActiveTab('usage')"
+        >
           Usage
         </button>
       </div>
 
       <div class="tab-content">
-        <div class="tab-pane" [ngClass]="{active: activeTab === 'description'}">
+        <div
+          class="tab-pane"
+          [ngClass]="{ active: activeTab === 'description' }"
+        >
           <h3>Product Description</h3>
           <div class="tab-inner-content">
             <p>{{ product.description }}</p>
-            <p>Experience the authentic power of Ayurveda with our carefully crafted formulation. Made with ingredients sourced from the purest regions of India, processed using traditional methods that preserve their natural potency.</p>
+            <p>
+              Experience the authentic power of Ayurveda with our carefully
+              crafted formulation. Made with ingredients sourced from the purest
+              regions of India, processed using traditional methods that
+              preserve their natural potency.
+            </p>
           </div>
         </div>
 
-        <div class="tab-pane" [ngClass]="{active: activeTab === 'benefits'}">
+        <div class="tab-pane" [ngClass]="{ active: activeTab === 'benefits' }">
           <h3>Key Benefits</h3>
           <div class="tab-inner-content">
             <ul class="benefits-list">
@@ -135,24 +167,41 @@
           </div>
         </div>
 
-        <div class="tab-pane" [ngClass]="{active: activeTab === 'ingredients'}">
+        <div
+          class="tab-pane"
+          [ngClass]="{ active: activeTab === 'ingredients' }"
+        >
           <h3>Ingredients</h3>
           <div class="tab-inner-content">
             <ul class="ingredients-list">
-              <li *ngFor="let ingredient of product.ingredients">{{ ingredient }}</li>
+              <li *ngFor="let ingredient of product.ingredients">
+                {{ ingredient }}
+              </li>
             </ul>
-            <p class="ingredients-note">All our ingredients are 100% natural, ethically sourced, and processed following authentic Ayurvedic principles.</p>
+            <p class="ingredients-note">
+              All our ingredients are 100% natural, ethically sourced, and
+              processed following authentic Ayurvedic principles.
+            </p>
           </div>
         </div>
 
-        <div class="tab-pane" [ngClass]="{active: activeTab === 'usage'}">
+        <div class="tab-pane" [ngClass]="{ active: activeTab === 'usage' }">
           <h3>Recommended Usage</h3>
           <div class="tab-inner-content">
             <p>{{ product.usage }}</p>
             <div class="usage-notes">
-              <p><strong>Note:</strong> Results may vary from person to person. For best results, use regularly as directed.</p>
-              <p><strong>Storage:</strong> Store in a cool, dry place away from direct sunlight.</p>
-              <p><strong>Shelf Life:</strong> 24 months from date of manufacture when stored properly.</p>
+              <p>
+                <strong>Note:</strong> Results may vary from person to person.
+                For best results, use regularly as directed.
+              </p>
+              <p>
+                <strong>Storage:</strong> Store in a cool, dry place away from
+                direct sunlight.
+              </p>
+              <p>
+                <strong>Shelf Life:</strong> 24 months from date of manufacture
+                when stored properly.
+              </p>
             </div>
           </div>
         </div>
@@ -171,31 +220,52 @@
         <div class="col-md-4" *ngFor="let relatedProduct of relatedProducts">
           <div class="product-card">
             <div class="product-badges">
-              <span class="badge featured" *ngIf="relatedProduct.featured">Featured</span>
-              <span class="badge bestseller" *ngIf="relatedProduct.bestSeller">Best Seller</span>
+              <span class="badge featured" *ngIf="relatedProduct.featured"
+                >Featured</span
+              >
+              <span class="badge bestseller" *ngIf="relatedProduct.bestSeller"
+                >Best Seller</span
+              >
               <span class="badge new" *ngIf="relatedProduct.new">New</span>
             </div>
             <div class="product-image">
               <a [routerLink]="['/products', relatedProduct.id]">
-                <img [src]="relatedProduct.imageUrl" [alt]="relatedProduct.name" class="img-fluid">
+                <img
+                  [src]="relatedProduct.imageUrl"
+                  [alt]="relatedProduct.name"
+                  class="img-fluid"
+                />
               </a>
             </div>
             <div class="product-info">
               <div class="product-category">{{ relatedProduct.category }}</div>
               <h3 class="product-title">
-                <a [routerLink]="['/products', relatedProduct.id]">{{ relatedProduct.name }}</a>
+                <a [routerLink]="['/products', relatedProduct.id]">{{
+                  relatedProduct.name
+                }}</a>
               </h3>
-              <div class="product-description">{{ relatedProduct.shortDescription }}</div>
+              <div class="product-description">
+                {{ relatedProduct.shortDescription }}
+              </div>
               <div class="product-rating">
                 <div class="stars">
-                  <span class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" 
-                       [ngClass]="{'checked': star <= relatedProduct.rating}"></span>
+                  <span
+                    class="fa fa-star"
+                    *ngFor="let star of [1, 2, 3, 4, 5]"
+                    [ngClass]="{
+                      checked: star <= (relatedProduct.rating ?? 0)
+                    }"
+                  ></span>
                 </div>
                 <span class="rating-count">({{ relatedProduct.reviews }})</span>
               </div>
               <div class="product-price">₹{{ relatedProduct.price }}</div>
               <div class="product-actions">
-                <a [routerLink]="['/products', relatedProduct.id]" class="btn btn-primary">View Details</a>
+                <a
+                  [routerLink]="['/products', relatedProduct.id]"
+                  class="btn btn-primary"
+                  >View Details</a
+                >
               </div>
             </div>
           </div>

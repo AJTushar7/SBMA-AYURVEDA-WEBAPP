@@ -19,7 +19,7 @@ import { FooterComponent } from "../../../shared/components/footer/footer.compon
 import { AnnouncementBarComponent } from "../../../shared/components/announcement-bar/announcement-bar.component";
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from "../../../core/models/product.model";
-import { FormsModule } from '@angular/forms'; // Added import
+import { FormsModule } from "@angular/forms"; // Added import
 
 @Component({
   selector: "app-product-detail",
@@ -48,26 +48,30 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   activeTab: "description" | "benefits" | "ingredients" | "usage" =
     "description";
   quantity: number = 1;
-  promoCode: string = '';
+  promoCode: string = "";
   discount: number = 0;
   availablePromoCodes = [
-    { code: 'WELCOME10', type: 'percent', value: 10 },
-    { code: 'FLAT500', type: 'price', value: 500 },
-    { code: 'AYURVEDA15', type: 'percent', value: 15 }
+    { code: "WELCOME10", type: "percent", value: 10 },
+    { code: "FLAT500", type: "price", value: 500 },
+    { code: "AYURVEDA15", type: "percent", value: 15 },
   ];
 
   @ViewChild("zoomImage") zoomImage?: ElementRef;
 
   applyPromoCode() {
     const promoCode = this.availablePromoCodes.find(
-      p => p.code === this.promoCode.toUpperCase()
+      (p) => p.code === this.promoCode.toUpperCase()
     );
 
     if (promoCode) {
-      if (promoCode.type === 'percent') {
-        this.discount = (this.product!.price * this.quantity * promoCode.value) / 100;
+      if (promoCode.type === "percent") {
+        this.discount =
+          (this.product!.price * this.quantity * promoCode.value) / 100;
       } else {
-        this.discount = Math.min(promoCode.value, this.product!.price * this.quantity);
+        this.discount = Math.min(
+          promoCode.value,
+          this.product!.price * this.quantity
+        );
       }
     } else {
       this.discount = 0;
@@ -76,7 +80,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   getFinalPrice(): number {
     if (!this.product) return 0;
-    return (this.product.price * this.quantity) - this.discount;
+    return this.product.price * this.quantity - this.discount;
   }
   @ViewChild("zoomLens") zoomLens?: ElementRef;
   @ViewChild("zoomResult") zoomResult?: ElementRef;
@@ -212,7 +216,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         shareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
           productUrl
         )}&description=${encodeURIComponent(
-          productDesc
+          productDesc || ""
         )}&media=${encodeURIComponent(this.product.imageUrl)}`;
         break;
       case "whatsapp":
