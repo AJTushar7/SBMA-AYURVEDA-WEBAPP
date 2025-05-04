@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { ProductService } from "../../core/services/product.service";
 import { Product } from "../../core/models/product.model";
 import { Testimonial } from "../../core/models/testimonial.model";
@@ -14,6 +16,7 @@ import { CategoryProductsComponent } from "./components/category-products/catego
   selector: "app-home",
   standalone: true,
   imports: [
+    CommonModule,
     HeroSliderComponent,
     FeaturedProductsComponent,
     SuperpowerSectionComponent,
