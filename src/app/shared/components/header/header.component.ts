@@ -66,6 +66,20 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  getFilteredProducts(category: string): Product[] {
+    return this.products.filter(product => product.category === category);
+  }
+
+  navigateToProduct(id: number, event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/products', id]);
+  }
+
+  viewAllProducts(event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/products']);
+  }
+
   ngOnInit(): void {
     this.checkScroll();
     this.searchTerms.pipe(

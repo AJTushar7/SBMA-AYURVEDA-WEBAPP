@@ -32,7 +32,7 @@
            [routerLink]="['/products', product.id]">
         <div class="badge" *ngIf="product.tag">{{ product.tag }}</div>
         <div class="product-image">
-          <img [src]="hoveredProduct === product.id ? ('assets/images/' + product.name.split(' ').join('-').toLowerCase() + '-hover.jpg') : product.imageUrl" 
+          <img [src]="product.imageUrl" 
                [alt]="product.name"
                (mouseenter)="hoveredProduct = product.id"
                (mouseleave)="hoveredProduct = null"
