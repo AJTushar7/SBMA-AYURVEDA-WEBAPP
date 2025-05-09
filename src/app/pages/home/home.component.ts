@@ -12,10 +12,6 @@ import { AboutUsComponent } from "./components/about-us/about-us.component";
 import { TestimonialsComponent } from "./components/testimonials/testimonials.component";
 import { AvailableOnComponent } from "./components/available-on/available-on.component";
 import { CertificationsComponent } from "./components/certifications/certifications.component";
-import { AvailableOnComponent } from "./components/available-on/available-on.component";
-import { TestimonialsComponent } from "./components/testimonials/testimonials.component";
-import { CertificationsComponent } from "./components/certifications/certifications.component";
-import { CategoryProductsComponent } from "./components/category-products/category-products.component";
 
 @Component({
   selector: "app-home",
@@ -30,10 +26,6 @@ import { CategoryProductsComponent } from "./components/category-products/catego
     TestimonialsComponent,
     AvailableOnComponent,
     CertificationsComponent,
-    AvailableOnComponent,
-    TestimonialsComponent,
-    CertificationsComponent,
-    CategoryProductsComponent,
   ],
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],

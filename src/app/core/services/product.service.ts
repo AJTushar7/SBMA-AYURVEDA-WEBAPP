@@ -27,10 +27,6 @@ export class ProductService {
     return of(products.filter((product) => product.category === category));
   }
 
-  getProductById(id: number): Observable<Product | undefined> {
-    return of(products.find((product) => product.id === id));
-  }
-
   searchProducts(term: string): Observable<Product[]> {
     const searchTerm = term.toLowerCase();
     return of(
