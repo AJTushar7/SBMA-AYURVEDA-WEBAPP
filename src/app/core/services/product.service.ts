@@ -6,7 +6,7 @@ import { TESTIMONIALS } from "../data/testimonials.data";
 import { Testimonial } from "../models/testimonial.model";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class ProductService {
   constructor() {}
@@ -25,6 +25,10 @@ export class ProductService {
 
   getProductsByCategory(category: string): Observable<Product[]> {
     return of(products.filter((product) => product.category === category));
+  }
+
+  getProductById(id: number): Observable<Product | undefined> {
+    return of(products.find((product) => product.id === id));
   }
 
   searchProducts(term: string): Observable<Product[]> {
